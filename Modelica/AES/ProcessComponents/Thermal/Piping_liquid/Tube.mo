@@ -1,0 +1,52 @@
+within AES.ProcessComponents.Thermal.Piping_liquid;
+
+model Tube
+  extends Interfaces.flowTwoPorts_pwh;
+  parameter SI.Length L=10 "length";
+  parameter SI.Length D=0.05 "diameter";
+  parameter SI.Length dz=0 "height of port b (out) over port a (in)";
+  parameter SI.MassFlowRate wnom=0.5 "nominal flow rate";
+  parameter Real kdp=0.1 "nominal dp [bar] per km at nominal flow";
+  parameter Integer n=10 "No. of lumps";
+  parameter SI.Temperature Tstart=293.15 "initial T, all lumps";
+  parameter Boolean fluidHeats=true "T if fluid heats the outside, F otherwise";
+  ProcessComponents.Thermal.Interfaces.vectorHeatPort surf(n=n) annotation(
+    Placement(visible = true, transformation(origin = {-14, 38}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {0, 54}, extent = {{-42, -14}, {42, 14}}, rotation = 0)));
+  SI.Velocity u "fluid velocity";
+  Real Re,Nu,Pr;
+  SI.CoefficientOfHeatTransfer gamma;
+  SI.Temperature T[n](each start=Tstart, each fixed=true) "fluid T, 1->n ia a->b side";
+protected
+  final parameter Real kf(fixed=false) annotation(Evaluate = true);
+  final parameter SI.Area Across=Modelica.Constants.pi*D^2/4;
+  final parameter SI.Area Alat_lump=Modelica.Constants.pi*D*L/n;
+  final parameter SI.Volume Vlump=Across*L/n;
+  final parameter SI.HeatCapacity Clump=cp*ro*Vlump;
+equation
+  w               = Functions.sqrtReg((dp/ro-Modelica.Constants.g_n*dz)/kf);
+  w               = ro*Across*u;
+  Re              = ro*abs(u)*D/mu;
+  Nu              = gamma*D/lambda;
+  Pr              = mu*cp/lambda;
+  Nu              = 0.023*Re^0.8*Pr^(if fluidHeats then 0.3 else 0.4); /* Dittus-Boelter */
+  surf.Q_flow     = gamma*Alat_lump*(surf.T-T);
+  Clump*der(T[1]) = pwh_a.w*actualStream(pwh_a.h)
+                    +w*cp*(if w>0 then -T[1] else -T[2])
+                    +surf.Q_flow[1];
+  for i in 2:n-1 loop
+      Clump*der(T[i]) = w*cp*(if w>0 then T[i-1]-T[i] else T[i]-T[i+1])
+                        +surf.Q_flow[i];
+  end for;
+  Clump*der(T[n]) = pwh_b.w*actualStream(pwh_b.h)
+                    +w*cp*(if w>0 then T[n-1] else T[n])
+                    +surf.Q_flow[n];
+  hao             = cp*T[1];
+  hbo             = cp*T[n];
+initial equation
+  kdp*1e5*L/1000/ro = kf*wnom^2;
+annotation(
+    Icon(graphics = {Rectangle(lineColor = {46, 52, 54}, fillColor = {211, 215, 207}, fillPattern = FillPattern.HorizontalCylinder, extent = {{-100, 40}, {100, -40}})}),
+    experiment(StartTime = 0, StopTime = 1, Tolerance = 1e-6, Interval = 0.002),
+  __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian -d=aliasConflicts ",
+  __OpenModelica_simulationFlags(lv = "LOG_STATS", s = "dassl"));
+end Tube;
