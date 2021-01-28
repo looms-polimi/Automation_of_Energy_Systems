@@ -13,3 +13,4 @@ surfTcond_fixed
 surfTcond_prescribed
 surfQcond_fixed
 surfQcond_prescribed
+VectorHPtoHP_conductor

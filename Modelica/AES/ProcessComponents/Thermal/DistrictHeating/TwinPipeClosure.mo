@@ -1,7 +1,6 @@
 within AES.ProcessComponents.Thermal.DistrictHeating;
 
-model TwinPipe
-  extends Interfaces.flowTwoTwinPorts_pwh;
+model TwinPipeClosure
   outer System_settings.System_terrain terrain;
   
   parameter SI.Length L=100 "length";
@@ -30,15 +29,13 @@ model TwinPipe
   Modelica.Thermal.HeatTransfer.Sources.FixedTemperature Tterrain(T = terrain.T)  annotation(
     Placement(visible = true, transformation(origin = {40, 0}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
   SI.Temperature Thi,Tho,Tci,Tco;
+  AES.ProcessComponents.Thermal.Interfaces.pwhTwinPort tpwh_a annotation(
+    Placement(visible = true, transformation(origin = {-110, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {-116, 0}, extent = {{-16, -20}, {16, 20}}, rotation = 0)));
 protected
   final parameter SI.ThermalConductance Gloss = kloss*L/(Thnom-terrain.T);
 equation
   connect(tpwh_a.H, tubeH.pwh_a) annotation(
     Line(points = {{-110, 0}, {-80, 0}, {-80, 70}, {-44, 70}}));
-  connect(tubeH.pwh_b, tpwh_b.H) annotation(
-    Line(points = {{4, 70}, {80, 70}, {80, 0}, {110, 0}}, color = {46, 52, 54}));
-  connect(tpwh_b.C, tubeC.pwh_a) annotation(
-    Line(points = {{110, 0}, {80, 0}, {80, -70}, {4, -70}}));
   connect(tubeC.pwh_b, tpwh_a.C) annotation(
     Line(points = {{-44, -70}, {-80, -70}, {-80, 0}, {-110, 0}}, color = {46, 52, 54}));
   Thi = tubeH.fluidStream.Ta;
@@ -53,6 +50,12 @@ equation
     Line(points = {{-20, 23}, {-20, -23}}, color = {191, 0, 0}));
   connect(pipeH2filler.HP, Tterrain.port) annotation(
     Line(points = {{-20, 23}, {-20, 0}, {30, 0}}, color = {191, 0, 0}));
+  connect(tubeH.pwh_b, tubeC.pwh_a) annotation(
+    Line(points = {{4, 70}, {80, 70}, {80, -70}, {4, -70}}, color = {46, 52, 54}));
+  connect(tpwh_a.H, tubeH.pwh_a) annotation(
+    Line(points = {{-110, 0}, {-80, 0}, {-80, 70}, {-44, 70}}));
+  connect(tpwh_a.C, tubeC.pwh_b) annotation(
+    Line(points = {{-110, 0}, {-80, 0}, {-80, -70}, {-44, -70}}));
   annotation(
-    Icon(graphics = {Rectangle(fillColor = {193, 125, 17}, fillPattern = FillPattern.Solid, extent = {{-100, 50}, {100, -50}}), Rectangle(lineColor = {193, 125, 17},fillColor = {252, 213, 155}, fillPattern = FillPattern.CrossDiag, extent = {{-95, 45}, {95, -45}}), Rectangle(origin = {0, -18}, lineColor = {32, 74, 135}, fillColor = {255, 255, 255}, fillPattern = FillPattern.HorizontalCylinder, extent = {{-95, 15}, {95, -15}}), Rectangle(origin = {0, 18}, lineColor = {204, 0, 0}, fillColor = {255, 255, 255}, fillPattern = FillPattern.HorizontalCylinder, extent = {{-95, 15}, {95, -15}}), Polygon(origin = {-60, -18}, rotation = 180, fillColor = {252, 233, 79}, fillPattern = FillPattern.Solid, points = {{-70, -4}, {0, -4}, {0, -10}, {22, 0}, {0, 10}, {0, 4}, {-70, 4}, {-70, -4}}), Polygon(origin = {58, 18}, fillColor = {252, 233, 79}, fillPattern = FillPattern.Solid, points = {{-68, -4}, {0, -4}, {0, -10}, {22, 0}, {0, 10}, {0, 4}, {-68, 4}, {-68, -4}}), Text(origin = {-116, 38}, extent = {{-18, 18}, {18, -18}}, textString = "a"), Text(origin = {116, 38}, extent = {{-18, 18}, {18, -18}}, textString = "b")}));
-end TwinPipe;
+    Icon(graphics = {Rectangle(origin = {-11, 0},fillColor = {193, 125, 17}, fillPattern = FillPattern.Solid, extent = {{-89, 50}, {89, -50}}), Rectangle(origin = {-11, 0},lineColor = {193, 125, 17},fillColor = {252, 213, 155}, fillPattern = FillPattern.CrossDiag, extent = {{-84, 45}, {84, -45}}), Rectangle(origin = {-31, -17}, lineColor = {32, 74, 135}, fillColor = {255, 255, 255}, fillPattern = FillPattern.HorizontalCylinder, extent = {{-64, 14}, {64, -14}}), Rectangle(origin = {-31, 18}, lineColor = {204, 0, 0}, fillColor = {255, 255, 255}, fillPattern = FillPattern.HorizontalCylinder, extent = {{-64, 15}, {64, -15}}), Polygon(origin = {-64, -18}, rotation = 180, fillColor = {252, 233, 79}, fillPattern = FillPattern.Solid, points = {{-70, -4}, {0, -4}, {0, -10}, {22, 0}, {0, 10}, {0, 4}, {-70, 4}, {-70, -4}}), Polygon(origin = {-16, 18}, fillColor = {252, 233, 79}, fillPattern = FillPattern.Solid, points = {{-68, -4}, {0, -4}, {0, -10}, {22, 0}, {0, 10}, {0, 4}, {-68, 4}, {-68, -4}}), Text(origin = {-116, 38}, extent = {{-18, 18}, {18, -18}}, textString = "a"), Rectangle(origin = {46.93, 0.85}, fillColor = {136, 138, 133}, fillPattern = FillPattern.Solid, extent = {{-14.93, 35.15}, {14.93, -35.15}})}));
+end TwinPipeClosure;

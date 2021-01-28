@@ -14,6 +14,7 @@ model TubeStream
     Placement(visible = true, transformation(origin = {0, 40}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {0, 54}, extent = {{-42, -14}, {42, 14}}, rotation = 0)));
   SI.Velocity u "fluid velocity";
   Real Re,Nu,Pr;
+  SI.Temperature Ta,Tb;
   SI.CoefficientOfHeatTransfer gamma;
   SI.Temperature T[n](each start=Tstart, each fixed=true) "fluid T, 1->n is a->b side";
 protected
@@ -42,10 +43,12 @@ equation
                     +surf.Q_flow[n];
   hao             = cp*T[1];
   hbo             = cp*T[n];
+  Ta              = T[1];
+  Tb              = T[n];
 initial equation
   kdp*1e5*L/1000/ro = kf*wnom^2;
 annotation(
-    Icon(graphics = {Rectangle(lineColor = {46, 52, 54}, fillColor = {211, 215, 207}, fillPattern = FillPattern.HorizontalCylinder, extent = {{-100, 40}, {100, -40}})}),
+    Icon(graphics = {Rectangle(lineColor = {46, 52, 54}, fillColor = {211, 215, 207}, fillPattern = FillPattern.HorizontalCylinder, extent = {{-100, 40}, {100, -40}}), Text(origin = {-76, 3}, lineColor = {204, 0, 0}, extent = {{-44, 29}, {44, -29}}, textString = "a"), Text(origin = {70, 3}, lineColor = {204, 0, 0}, extent = {{-44, 29}, {44, -29}}, textString = "b")}),
     experiment(StartTime = 0, StopTime = 1, Tolerance = 1e-6, Interval = 0.002),
   __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian -d=aliasConflicts -d=aliasConflicts ",
   __OpenModelica_simulationFlags(lv = "LOG_STATS", s = "dassl"));

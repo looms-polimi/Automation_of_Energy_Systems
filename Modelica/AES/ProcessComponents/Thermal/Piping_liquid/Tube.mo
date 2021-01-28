@@ -39,7 +39,7 @@ equation
     Line(points = {{2, 54}, {0, 54}, {0, 90}}, color = {144, 5, 5}));
 
 annotation(
-    Icon(graphics = {Rectangle(lineColor = {46, 52, 54}, fillColor = {211, 215, 207}, fillPattern = FillPattern.HorizontalCylinder, extent = {{-100, 40}, {100, -40}})}),
+    Icon(graphics = {Rectangle(lineColor = {46, 52, 54}, fillColor = {211, 215, 207}, fillPattern = FillPattern.HorizontalCylinder, extent = {{-100, 40}, {100, -40}}), Text(origin = {-76, 3}, lineColor = {204, 0, 0}, extent = {{-44, 29}, {44, -29}}, textString = "a"), Text(origin = {70, 3}, lineColor = {204, 0, 0}, extent = {{-44, 29}, {44, -29}}, textString = "b")}),
     experiment(StartTime = 0, StopTime = 1, Tolerance = 1e-6, Interval = 0.002),
   __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian -d=aliasConflicts -d=aliasConflicts ",
   __OpenModelica_simulationFlags(lv = "LOG_STATS", s = "dassl"));

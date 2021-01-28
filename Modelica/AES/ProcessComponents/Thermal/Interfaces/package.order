@@ -1,4 +1,7 @@
 pwhPort
+pwhTwinPort
+pwhPortSplitter
 vectorHeatPort
 flowOnePort_pwh
 flowTwoPorts_pwh
+flowTwoTwinPorts_pwh
