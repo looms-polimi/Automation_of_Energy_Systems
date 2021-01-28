@@ -4,4 +4,6 @@ Tuning_brushup
 ElecSys_generator_models
 ElecSys_PwrFreq_control
 Typical_control_structures
-foo
+Typical_actuation_schemes
+ThermSys_Generation
+ThermSys_Networks

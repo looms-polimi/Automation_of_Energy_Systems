@@ -2,7 +2,7 @@ within AES.ProcessComponents.Thermal.Piping_liquid;
 
 model surfTcond_fixed
   parameter SI.Temperature T=293.15 "temperature";
-  parameter Integer n=10;
+  parameter Integer n=5;
   ProcessComponents.Thermal.Interfaces.vectorHeatPort surf(n=n) annotation(
     Placement(visible = true, transformation(origin = {-4, -74}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {0, -86.6667}, extent = {{-40, -13.3333}, {40, 13.3333}}, rotation = 0)));
 equation

@@ -4,9 +4,9 @@ partial model flowTwoPorts_pwh
   outer System_settings.System_liquid system;
   parameter Boolean pbhi=false "if true dp is pb-pa,otherwise pa-pb";
   AES.ProcessComponents.Thermal.Interfaces.pwhPort pwh_a annotation(
-    Placement(visible = true, transformation(origin = {-108, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {-120, 1.11022e-16}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
+    Placement(visible = true, transformation(origin = {-110, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {-120, 1.11022e-16}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
   AES.ProcessComponents.Thermal.Interfaces.pwhPort pwh_b annotation(
-    Placement(visible = true, transformation(origin = {-98, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {120, 2.22045e-16}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
+    Placement(visible = true, transformation(origin = {110, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {120, 2.22045e-16}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
   SI.PressureDifference dp;
   SI.MassFlowRate w;
   SI.SpecificEnthalpy hai,hbi,hao,hbo;

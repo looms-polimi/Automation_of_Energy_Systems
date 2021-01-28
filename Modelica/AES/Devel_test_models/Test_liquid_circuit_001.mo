@@ -8,7 +8,7 @@ model Test_liquid_circuit_001
     Placement(visible = true, transformation(origin = {10, 30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   AES.ProcessComponents.Thermal.Piping_liquid.Node_pT_fixed snk(p(displayUnit = "Pa")) annotation(
     Placement(visible = true, transformation(origin = {50, -10}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Piping_liquid.Tube tube(dz = 2.5)  annotation(
+  AES.ProcessComponents.Thermal.Piping_liquid.TubeStream tube(dz = 2.5)  annotation(
     Placement(visible = true, transformation(origin = {10, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   AES.ProcessComponents.Thermal.Piping_liquid.Node_pT_prescribed src annotation(
     Placement(visible = true, transformation(origin = {-70, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -28,7 +28,7 @@ equation
   connect(pi.y, src.p) annotation(
     Line(points = {{-99, 10}, {-91, 10}, {-91, -4}, {-81, -4}}, color = {0, 0, 127}));
   connect(surfTcond.surf, tube.surf) annotation(
-    Line(points = {{10, 22}, {10, -4}}, color = {144, 5, 5}));
+    Line(points = {{10, 22}, {10, -5}}, color = {144, 5, 5}));
   connect(src.pwh_a, valve.pwh_a) annotation(
     Line(points = {{-58, -10}, {-42, -10}}, color = {46, 52, 54}));
   connect(valve.pwh_b, tube.pwh_a) annotation(

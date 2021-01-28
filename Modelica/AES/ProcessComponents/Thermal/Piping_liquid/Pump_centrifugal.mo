@@ -12,7 +12,7 @@ equation
   dp  = dp0*max(0,min(cmd,1))-kp*w^2;
   hao = hbi;
   hbo = hai;
-  assert(w>=0, "flow reversal not allowed in centrifugal pump");
+  //assert(w>=0, "flow reversal not allowed in centrifugal pump");
 initial equation
   dp0-kp*w0^2 = 0;
 annotation(

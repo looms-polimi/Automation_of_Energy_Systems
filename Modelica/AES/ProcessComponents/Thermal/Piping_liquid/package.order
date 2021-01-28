@@ -2,6 +2,8 @@ Valve_linear
 Pump_volumetric
 Pump_centrifugal
 Pressuriser
+TubeStream
+TubeWall
 Tube
 Node_pT_fixed
 Node_pT_prescribed
