@@ -1,5 +1,6 @@
 MSL_loop_base
 MSL_loop_2dof_noise
+MSL_loop_SPtimeTable
 MSL_electrical_thermal_OpenLoop
 MSL_electrical_thermal_control
 PI_loop_analogue_digital
