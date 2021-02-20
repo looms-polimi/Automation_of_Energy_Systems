@@ -1,6 +1,7 @@
 BlocksPackage
 ComponentsPackage
 ProcessBlock
+ControlBlock
 AnaloguePackage
 AnalogueController200x200
 AnalogueController200x400
