@@ -28,11 +28,11 @@ model BO_rigid_two_generators_PriSec
     Placement(visible = true, transformation(origin = {-110, 50}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
   Modelica.Blocks.Math.Gain beta2(k = 0.75) annotation(
     Placement(visible = true, transformation(origin = {-70, 50}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
-  Modelica.Blocks.Continuous.Integrator Cs(k = 0.04) annotation(
+  Modelica.Blocks.Continuous.Integrator Cs(k = 0.02) annotation(
     Placement(visible = true, transformation(origin = {-150, 80}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Blocks.Continuous.TransferFunction Cp1(a = {1}, b = {1.5}) annotation(
+  Modelica.Blocks.Continuous.TransferFunction Cp1(a = {1}, b = {2.5}) annotation(
     Placement(visible = true, transformation(origin = {-150, -6}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Blocks.Continuous.TransferFunction Cp2(a = {1}, b = {1.5})  annotation(
+  Modelica.Blocks.Continuous.TransferFunction Cp2(a = {1}, b = {2.5})  annotation(
     Placement(visible = true, transformation(origin = {-150, -46}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(Pbal.y, N.u) annotation(
@@ -75,7 +75,7 @@ equation
     Line(points = {{-39, -40}, {-24, -40}}, color = {0, 0, 127}));
   annotation(
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}})),
-    experiment(StartTime = 0, StopTime = 300, Tolerance = 1e-6, Interval = 0.6),
-  __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian -d=aliasConflicts ",
+    experiment(StartTime = 0, StopTime = 600, Tolerance = 1e-6, Interval = 1.2),
+  __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian -d=aliasConflicts -d=aliasConflicts ",
   __OpenModelica_simulationFlags(lv = "LOG_STATS", s = "dassl"));
 end BO_rigid_two_generators_PriSec;

@@ -16,7 +16,7 @@ extends Icons.DigitalController200x200;
   parameter Real Ts = 0.05;
   discrete Real xfb, ulin, ulino, u;
 equation
-  CS = u;
+  CS - u = 0;
 algorithm
   when sample(0, Ts) then
     xfb    := (Ti*xfb+Ts*u)/(Ti+Ts);

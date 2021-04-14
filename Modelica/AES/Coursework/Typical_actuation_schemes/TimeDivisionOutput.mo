@@ -8,7 +8,7 @@ model TimeDivisionOutput
     Placement(visible = true, transformation(origin = {-50, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Math.Feedback fb annotation(
     Placement(visible = true, transformation(origin = {-90, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Blocks.Sources.RealExpression SP(y = if time < 1 then 0 else 1 + 0.5 * sign(sin((time - 1) / 20)))  annotation(
+  Modelica.Blocks.Sources.RealExpression SP(y = if time < 1 then 0 else 0.6 + 0.5 * sign(sin((time - 1) / 20)))  annotation(
     Placement(visible = true, transformation(origin = {-130, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   AES.ControlBlocks.ActuationSchemes.TimeDivisionOutput TDO annotation(
     Placement(visible = true, transformation(origin = {-10, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -26,6 +26,6 @@ equation
   annotation(
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}})),
     experiment(StartTime = 0, StopTime = 300, Tolerance = 1e-6, Interval = 0.6),
-  __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian -d=aliasConflicts -d=aliasConflicts ",
+  __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts ",
   __OpenModelica_simulationFlags(lv = "LOG_STATS", s = "dassl"));
 end TimeDivisionOutput;

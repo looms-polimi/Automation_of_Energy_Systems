@@ -2,7 +2,6 @@ within AES.Coursework.Modelling_principles;
 
 model M1_TimeDomain
   extends Icons.CourseworkModel;
-  
   parameter Real w = 6.28 * 50;
   parameter Real R = 50;
   parameter Real L = 0.01;
@@ -32,5 +31,7 @@ equation
   Pwe = Gwe * (Tw - Te);
   Te = 5;
   annotation(
-    experiment(StartTime = 0, StopTime = 100, Tolerance = 1e-06, Interval = 0.0025));
+    experiment(StartTime = 0, StopTime = 100, Tolerance = 1e-6, Interval = 0.001),
+    __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian -d=aliasConflicts ",
+  __OpenModelica_simulationFlags(lv = "LOG_STATS", s = "dassl"));
 end M1_TimeDomain;

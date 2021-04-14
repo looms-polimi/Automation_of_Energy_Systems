@@ -21,7 +21,6 @@ protected
   final parameter SI.AngularVelocity wnom = 2*Modelica.Constants.pi*fnom; 
 equation
   w    = der(port.theta);
-  //Pact = max((1-beta)*Pnom,min((1+beta)*Pnom,Preq+droop*(w-wnom)/wnom*Pnom));
   Pact = max((1-beta)*Preq,min((1+beta)*Preq,Preq+droop*(w-wnom)/wnom*Pnom));
 
   port.P = Pact;
