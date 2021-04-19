@@ -1,0 +1,34 @@
+within AES.ProcessComponents.Thermal.Piping_liquid;
+
+model foo
+  AES.ProcessComponents.Thermal.Interfaces.pwhPort coldOut annotation(
+    Placement(visible = true, transformation(origin = {-102, 82}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {-120, -60}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
+  AES.ProcessComponents.Thermal.Interfaces.pwhPort coldIn annotation(
+    Placement(visible = true, transformation(origin = {-82, 102}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {120, -60}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
+  parameter SI.Area Abase=1 "base area";
+  parameter SI.Length H=3 "height";
+  parameter SI.Temperature Tcoldstart=273.15+20;
+  parameter SI.Length lcoldstart=0.5 "initial cold height";
+  SI.Length lcold(start=lcoldstart) "cold height";
+  SI.Mass Mcold;
+  SI.Temperature Tcold(start=Tcoldstart);
+  SI.Energy Ecold;
+protected
+  parameter SI.Density ro=1;
+  parameter SI.SpecificHeatCapacity cp=1;
+  parameter SI.ThermalConductivity lambda=1;
+  parameter SI.DynamicViscosity mu=1;
+equation
+
+  coldIn.p   = coldOut.p;
+  Mcold      = ro*Abase*lcold;
+  der(Mcold) = coldIn.w+coldOut.w;  
+  Ecold      = Mcold*cp*Tcold;  
+  der(Ecold) = coldIn.w*actualStream(coldIn.h)+coldOut.w*actualStream(coldOut.h);
+  coldIn.h   = cp*Tcold;
+  coldOut.h  = cp*Tcold;  
+  
+  
+annotation(
+    Icon(graphics = {Rectangle(origin = {0, 40}, lineColor = {204, 0, 0}, fillColor = {250, 173, 173}, fillPattern = FillPattern.VerticalCylinder, extent = {{-100, 60}, {100, -60}}), Polygon(origin = {-82, 59}, fillColor = {250, 173, 173}, fillPattern = FillPattern.Solid, points = {{-10, 21}, {-10, -19}, {10, 1}, {-10, 21}}), Polygon(origin = {82, 59}, fillColor = {250, 173, 173}, fillPattern = FillPattern.Solid, points = {{-10, 21}, {-10, -19}, {10, 1}, {-10, 21}}), Rectangle(origin = {0, -60}, lineColor = {32, 74, 135}, fillColor = {170, 255, 255}, fillPattern = FillPattern.VerticalCylinder, extent = {{-100, 40}, {100, -40}}), Polygon(origin = {-62, -61}, fillColor = {170, 255, 255}, fillPattern = FillPattern.Solid, points = {{-10, 21}, {-10, -19}, {-30, 1}, {-10, 21}}), Polygon(origin = {98, -61}, fillColor = {170, 255, 255}, fillPattern = FillPattern.Solid, points = {{-10, 21}, {-10, -19}, {-30, 1}, {-10, 21}}), Polygon(origin = {14, -11}, fillColor = {252, 233, 79}, fillPattern = FillPattern.Solid, points = {{-2, 21}, {-12, 9}, {-4, 9}, {-4, -29}, {-12, -29}, {-2, -39}, {8, -29}, {0, -29}, {0, 9}, {8, 9}, {-2, 21}})}));
+end foo;
