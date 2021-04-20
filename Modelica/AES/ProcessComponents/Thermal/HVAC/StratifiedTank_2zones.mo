@@ -1,6 +1,6 @@
-within AES.ProcessComponents.Thermal.Piping_liquid;
+within AES.ProcessComponents.Thermal.HVAC;
 
-model StratificationTank
+model StratifiedTank_2zones
   outer System_settings.System_liquid system;
   AES.ProcessComponents.Thermal.Interfaces.pwhPort hotIn annotation(
     Placement(visible = true, transformation(origin = {-112, 72}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {-120, 60}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
@@ -14,18 +14,21 @@ model StratificationTank
   parameter SI.Length H=3 "height";
   parameter SI.Temperature Thotstart=273.15+40;
   parameter SI.Temperature Tcoldstart=273.15+20;
-  parameter SI.Length lcoldstart=0.5 "initial cold height";
-  parameter SI.Length lhotstart=0.5 "initial cold height";
+  parameter SI.Length lcoldstart=1.5 "initial cold height";
+  parameter SI.Time tmix=86400 "time to reach uniform T at lcold=H/2";
   SI.Length lcold(start=lcoldstart,stateSelect=StateSelect.prefer) "cold height";
-  SI.Mass Mhot,Mcold;
   SI.Temperature Thot(start=Thotstart,stateSelect=StateSelect.prefer);
   SI.Temperature Tcold(start=Tcoldstart,stateSelect=StateSelect.prefer);
-  SI.Energy Ehot,Ecold;
+  SI.Mass Mhot(stateSelect=StateSelect.never);
+  SI.Mass Mcold(stateSelect=StateSelect.never);
+  SI.Energy Ehot(stateSelect=StateSelect.never);
+  SI.Energy Ecold(stateSelect=StateSelect.never);
 protected
   parameter SI.Density ro=system.ro;
   parameter SI.SpecificHeatCapacity cp=system.cp;
   parameter SI.ThermalConductivity lambda=system.lambda;
   parameter SI.DynamicViscosity mu=system.mu;
+  parameter SI.ThermalConductance Gmix=cp*ro*Abase*H/tmix;
 equation
 
   0          = coldIn.w+coldOut.w+hotIn.w+hotOut.w;
@@ -58,8 +61,10 @@ equation
      hotOut.h   = cp*Tcold;  
   else /* normal */
      der(Mcold) = coldIn.w+coldOut.w;
-     der(Ecold) = coldIn.w*actualStream(coldIn.h)+coldOut.w*actualStream(coldOut.h);
-     der(Ehot)  = hotIn.w*actualStream(hotIn.h)+hotOut.w*actualStream(hotOut.h);
+     der(Ecold) = coldIn.w*actualStream(coldIn.h)+coldOut.w*actualStream(coldOut.h)
+                  +Gmix*(Thot-Tcold);
+     der(Ehot)  = hotIn.w*actualStream(hotIn.h)+hotOut.w*actualStream(hotOut.h)
+                  -Gmix*(Thot-Tcold);
      coldIn.h   = cp*Tcold;
      coldOut.h  = cp*Tcold;   
      hotIn.h    = cp*Thot;
@@ -73,4 +78,4 @@ annotation(
     experiment(StartTime = 0, StopTime = 1, Tolerance = 1e-6, Interval = 0.002),
     __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian -d=aliasConflicts -d=aliasConflicts ",
     __OpenModelica_simulationFlags(lv = "LOG_STATS", s = "dassl"));
-end StratificationTank;
+end StratifiedTank_2zones;

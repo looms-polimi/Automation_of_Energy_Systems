@@ -6,12 +6,14 @@ model Pump_centrifugal
   parameter SI.MassFlowRate w0=1 "mass flowrate at cmd=1, zero dp";
   Modelica.Blocks.Interfaces.RealInput cmd annotation(
     Placement(visible = true, transformation(origin = {-114, 108}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {0, 80}, extent = {{-20, -20}, {20, 20}}, rotation = -90)));
+  SI.Power P;
 protected
   final parameter Real kp(fixed=false) annotation(Evaluate = true);
 equation
   dp  = dp0*max(0,min(cmd,1))-kp*w^2;
-  hao = hbi;
-  hbo = hai;
+  hao = hbi-dp/ro;
+  hbo = hai+dp/ro;
+  P   = w*(pwh_b.h-pwh_a.h);
   assert(w>=0, "flow reversal not allowed in centrifugal pump");
 initial equation
   dp0-kp*w0^2 = 0;

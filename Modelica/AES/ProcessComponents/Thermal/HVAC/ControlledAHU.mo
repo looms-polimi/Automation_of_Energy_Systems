@@ -12,11 +12,11 @@ model ControlledAHU
   Real phi(start = phistart);
   SI.Power Qbal, Qcons_est;
   Modelica.Blocks.Interfaces.BooleanInput ON annotation(
-    Placement(visible = true,transformation(extent = {{-110, 48}, {-70, 88}}, rotation = 0), iconTransformation(extent = {{-120, -80}, {-100, -60}}, rotation = 0)));
+    Placement(visible = true,transformation(extent = {{-110, 48}, {-70, 88}}, rotation = 0), iconTransformation(origin = {-120, -60}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
   Modelica.Blocks.Interfaces.RealInput Tsp annotation(
-    Placement(visible = true,transformation(extent = {{-110, 10}, {-70, 50}}, rotation = 0), iconTransformation(extent = {{-120, 70}, {-100, 90}}, rotation = 0)));
+    Placement(visible = true,transformation(extent = {{-110, 10}, {-70, 50}}, rotation = 0), iconTransformation(origin = {-120, 80}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
   Modelica.Blocks.Interfaces.RealInput phisp annotation(
-    Placement(visible = true,transformation(extent = {{-108, -62}, {-68, -22}}, rotation = 0), iconTransformation(extent = {{-120, 42}, {-100, 62}}, rotation = 0)));
+    Placement(visible = true,transformation(extent = {{-108, -62}, {-68, -22}}, rotation = 0), iconTransformation(origin = {-120, 40}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
 equation
   assert(air_flange1.wa >= 0, "No flow reversal here");
   pa1 = pa2;

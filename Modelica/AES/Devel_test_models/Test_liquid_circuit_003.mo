@@ -22,7 +22,7 @@ model Test_liquid_circuit_003
     Placement(visible = true, transformation(origin = {90, 30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   AES.ProcessComponents.Thermal.Piping_liquid.Pump_volumetric pumpV(w0 = 0.2)  annotation(
     Placement(visible = true, transformation(origin = {-30, -30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.HVAC.ControlledLiquidHeater H annotation(
+  AES.ProcessComponents.Thermal.HVAC.ControlledLiquidHeater_ideal H annotation(
     Placement(visible = true, transformation(origin = {32, -30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.RealExpression spTf(y = 313.25) annotation(
     Placement(visible = true, transformation(origin = {-10, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));

@@ -12,7 +12,7 @@ equation
   csi = CSi01;
   cso = CSo01;
   for i in 1:ns loop
-    cso[i] = max(0, min(1, csi - (i - 1) / ns));
+    cso[i] = max(0, min(1, (csi - (i - 1) / ns)*ns));
   end for;
   cso01tot = sum(cso);
   annotation(
