@@ -10,7 +10,7 @@ model Heater_control_case_001
     Placement(visible = true, transformation(origin = {30, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.RealExpression spT(y = 273.15 + 50)  annotation(
     Placement(visible = true, transformation(origin = {-110, 16}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Blocks.Sources.RealExpression cmdP(y = 0.5)  annotation(
+  Modelica.Blocks.Sources.RealExpression cmdP(y = 0.9)  annotation(
     Placement(visible = true, transformation(origin = {-110, 40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   AES.ProcessComponents.Thermal.Piping_liquid.Convection_VecVec conv(A = 2)  annotation(
     Placement(visible = true, transformation(origin = {30, 36}, extent = {{-10, 10}, {10, -10}}, rotation = 0)));

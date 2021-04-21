@@ -4,7 +4,7 @@ model Test_HP_001
   extends Icons.TestModel;
   Modelica.Blocks.Sources.RealExpression iTc(y = 273.15 + 7 - min(5, time / 200)) annotation(
     Placement(visible = true, transformation(origin = {-150, -30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.HVAC.HP_CarnotFractionCOPh HP annotation(
+  AES.ProcessComponents.Thermal.HVAC.HP_ConstCOPh HP annotation(
     Placement(visible = true, transformation(origin = {-50, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Thermal.HeatTransfer.Sources.PrescribedTemperature Th annotation(
     Placement(visible = true, transformation(origin = {-90, 50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));

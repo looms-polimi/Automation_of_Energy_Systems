@@ -1,8 +1,8 @@
 ControlledAHU
+ControlledLiquidHeater_ideal
 ControlledLiquidHeater_lim
 StratifiedTank_2zones
 HP_ConstCOPh
 HP_ConstCOPc
 HP_CarnotFractionCOPh
 HP_CarnotFractionCOPc
-ControlledLiquidHeater_ideal
