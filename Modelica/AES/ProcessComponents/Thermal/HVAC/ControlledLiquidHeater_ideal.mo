@@ -39,7 +39,7 @@ equation
   oTi = Tfi;
   oTo = Tfo;
   annotation(
-    Icon(coordinateSystem(preserveAspectRatio = false, extent = {{-100, -100}, {100, 100}}), graphics = {Rectangle(lineColor = {85, 87, 83}, fillColor = {186, 189, 182}, fillPattern = FillPattern.VerticalCylinder, extent = {{-100, 100}, {100, -100}}), Text(origin = {-13.17, -30.15}, lineColor = {252, 233, 79}, fillColor = {170, 255, 255}, fillPattern = FillPattern.Sphere, extent = {{-58.83, 82.15}, {75.17, -23.85}}, textString = "LH")}),
+    Icon(coordinateSystem(preserveAspectRatio = false, extent = {{-100, -100}, {100, 100}}), graphics = {Rectangle(lineColor = {85, 87, 83}, fillColor = {186, 189, 182}, fillPattern = FillPattern.VerticalCylinder, extent = {{-100, 100}, {100, -100}}), Text(origin = {-13.17, -30.15}, lineColor = {252, 233, 79}, fillColor = {170, 255, 255}, fillPattern = FillPattern.Sphere, extent = {{-58.83, 82.15}, {75.17, -23.85}}, textString = "LHid")}),
     Diagram(coordinateSystem(preserveAspectRatio = false, extent = {{-100, -100}, {100, 100}})),
   experiment(StartTime = 0, StopTime = 1, Tolerance = 1e-6, Interval = 0.002),
   __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian -d=aliasConflicts -d=aliasConflicts ",

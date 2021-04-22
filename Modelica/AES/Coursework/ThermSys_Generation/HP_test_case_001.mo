@@ -1,7 +1,7 @@
-within AES.Devel_test_models;
+within AES.Coursework.ThermSys_Generation;
 
-model Test_HP_001
-  extends Icons.TestModel;
+model HP_test_case_001
+  extends AES.Icons.CourseworkModel;
   Modelica.Blocks.Sources.RealExpression iTc(y = 273.15 + 7 - min(5, time / 200)) annotation(
     Placement(visible = true, transformation(origin = {-150, -30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   AES.ProcessComponents.Thermal.HVAC.HP_CarnotFractionCOPh HP annotation(
@@ -30,4 +30,4 @@ equation
     __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts ",
     __OpenModelica_simulationFlags(lv = "LOG_STATS", s = "dassl"),
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}})));
-end Test_HP_001;
+end HP_test_case_001;

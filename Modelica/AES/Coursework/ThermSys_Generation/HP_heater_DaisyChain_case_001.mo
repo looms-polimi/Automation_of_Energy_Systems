@@ -42,10 +42,10 @@ model HP_heater_DaisyChain_case_001
     Placement(visible = true, transformation(origin = {170, 80}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.RealExpression iQload(y = -200) annotation(
     Placement(visible = true, transformation(origin = {-30, 80}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  ProcessComponents.Thermal.Piping_liquid.Tsensor sTh annotation(
-    Placement(visible = true, transformation(origin = {-64, 4}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  ProcessComponents.Thermal.Piping_liquid.Tsensor sTc annotation(
-    Placement(visible = true, transformation(origin = {-82, 32}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  AES.ProcessComponents.Thermal.Piping_liquid.Tsensor Tlow annotation(
+    Placement(visible = true, transformation(origin = {-50, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  AES.ProcessComponents.Thermal.Piping_liquid.Tsensor Thi annotation(
+    Placement(visible = true, transformation(origin = {-50, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(streamElecHtr.pwh_b, P.pwh_a) annotation(
     Line(points = {{-2, -20}, {-16, -20}, {-16, 10}, {38, 10}}, color = {46, 52, 54}));
@@ -89,10 +89,10 @@ equation
     Line(points = {{10, -32}, {10, -26}}, color = {144, 5, 5}));
   connect(cmdP.y, P.cmd) annotation(
     Line(points = {{-18, 40}, {50, 40}, {50, 18}}, color = {0, 0, 127}));
-  connect(sTh.pwh_a, streamElecHtr.pwh_b) annotation(
-    Line(points = {{-52, 4}, {-32, 4}, {-32, -20}, {-2, -20}}, color = {46, 52, 54}));
-  connect(sTc.pwh_a, P.pwh_b) annotation(
-    Line(points = {{-70, 32}, {62, 32}, {62, 10}}, color = {46, 52, 54}));
+  connect(Tlow.pwh_a, streamHP.pwh_a) annotation(
+    Line(points = {{-38, -10}, {62, -10}, {62, -20}}, color = {46, 52, 54}));
+  connect(Thi.pwh_a, streamElecHtr.pwh_b) annotation(
+    Line(points = {{-38, 10}, {-16, 10}, {-16, -20}, {-2, -20}}, color = {46, 52, 54}));
   annotation(
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}})),
     experiment(StartTime = 0, StopTime = 50000, Tolerance = 1e-6, Interval = 100),
