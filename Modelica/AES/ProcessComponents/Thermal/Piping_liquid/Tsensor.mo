@@ -9,5 +9,5 @@ equation
   pwh_a.h = -1; /* meaningless, no flow */
   oT=inStream(pwh_a.h)/system.cp;
 annotation(
-    Icon(graphics = {Ellipse(origin = {60, -60}, lineColor = {239, 41, 41}, fillColor = {239, 41, 41}, fillPattern = FillPattern.Solid, extent = {{-20, 20}, {20, -20}}, endAngle = 360), Ellipse(origin = {60, 72}, lineColor = {239, 41, 41}, fillColor = {239, 41, 41}, fillPattern = FillPattern.Solid, extent = {{-10, 8}, {10, -8}}, endAngle = 360), Rectangle(origin = {60, 12}, lineColor = {239, 41, 41}, fillColor = {239, 41, 41}, fillPattern = FillPattern.Solid, extent = {{-10, 60}, {10, -60}})}));
+    Icon(graphics = {Ellipse(origin = {60, -42}, lineColor = {239, 41, 41}, fillColor = {239, 41, 41}, fillPattern = FillPattern.Solid, extent = {{-20, 20}, {20, -20}}, endAngle = 360), Ellipse(origin = {60, 72}, lineColor = {239, 41, 41}, fillColor = {239, 41, 41}, fillPattern = FillPattern.Solid, extent = {{-10, 8}, {10, -8}}, endAngle = 360), Rectangle(origin = {60, 12}, lineColor = {239, 41, 41}, fillColor = {239, 41, 41}, fillPattern = FillPattern.Solid, extent = {{-10, 60}, {10, -60}}), Text(origin = {-40, -70}, extent = {{-60, 30}, {60, -30}}, textString = "%name")}));
 end Tsensor;

@@ -17,7 +17,7 @@ model PI_loop_analogue_digital
     Placement(visible = true, transformation(origin = {-10, -30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Continuous.TransferFunction Process_d(a = {5, 6, 1}, b = {1}) annotation(
     Placement(visible = true, transformation(origin = {30, -30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ControlBlocks.DigitalControllers.PI_awfb_basic PI_d(CSmax = 3, CSmin = 0, K = 2, Ti = 5, Ts = 0.1)  annotation(
+  AES.ControlBlocks.DigitalControllers.PI_awfb_basic PI_d(CSmax = 3, CSmin = 0, K = 2, Ti = 5, Ts = 0.25)  annotation(
     Placement(visible = true, transformation(origin = {-52, -36}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(ald_a.y, Process_a.u) annotation(

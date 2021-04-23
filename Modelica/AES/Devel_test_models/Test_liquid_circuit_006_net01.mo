@@ -136,7 +136,7 @@ equation
 protected
   annotation(
     experiment(StartTime = 0, StopTime = 4000, Tolerance = 1e-6, Interval = 0.4),
-    __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts ",
+    __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts ",
     __OpenModelica_simulationFlags(lv = "LOG_STATS", s = "dassl"),
   Diagram(coordinateSystem(extent = {{-300, -200}, {300, 200}})));
 end Test_liquid_circuit_006_net01;

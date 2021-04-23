@@ -16,3 +16,6 @@ surfQcond_prescribed
 VectorHPtoHP_conductor
 Convection_VecVec
 Tsensor
+TwinPipeTsensor
+LumpedPlanarWall
+HE_LiquidLiquid

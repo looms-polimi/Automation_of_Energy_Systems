@@ -35,6 +35,8 @@ model Test_twin_pipes_002
     Placement(visible = true, transformation(origin = {10, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   AES.ProcessComponents.Thermal.DistrictHeating.TwinPipeClosure Tpipec2 annotation(
     Placement(visible = true, transformation(origin = {50, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  AES.ProcessComponents.Thermal.Piping_liquid.TwinPipeTsensor tTs1 annotation(
+    Placement(visible = true, transformation(origin = {-70, 70}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
 equation
   connect(cmdQ.y, Q.Q) annotation(
     Line(points = {{-219, 110}, {-158, 110}}, color = {0, 0, 127}));
@@ -66,10 +68,12 @@ equation
     Line(points = {{22, 50}, {38, 50}}));
   connect(Tpipe6.tpwh_b, Tpipec2.tpwh_a) annotation(
     Line(points = {{22, -10}, {38, -10}}));
+  connect(tTs1.tpwh_a, Tpipe1.tpwh_a) annotation(
+    Line(points = {{-82, 70}, {-88, 70}, {-88, 24}, {-82, 24}}));
 protected
   annotation(
     experiment(StartTime = 0, StopTime = 1e+7, Tolerance = 1e-6, Interval = 1000),
-    __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts ",
+    __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts ",
     __OpenModelica_simulationFlags(lv = "LOG_STATS", s = "dassl"),
     Diagram(coordinateSystem(extent = {{-300, -200}, {300, 200}})));
 end Test_twin_pipes_002;

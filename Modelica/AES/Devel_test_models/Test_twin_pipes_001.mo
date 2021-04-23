@@ -4,7 +4,8 @@ model Test_twin_pipes_001
   extends Icons.TestModel;
   inner AES.ProcessComponents.Thermal.System_settings.System_liquid system annotation(
     Placement(visible = true, transformation(origin = {-270, 148}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Blocks.Sources.RealExpression cmdP(y = if time < 500 then 0.1 elseif time < 2000 then 0.6    elseif time < 3000 then 0.9 else 0.2) annotation(
+  Modelica.Blocks.Sources.RealExpression cmdP(y = if time < 500 then 0.1 elseif time < 2000 then 0.6
+   elseif time < 3000 then 0.9 else 0.2) annotation(
     Placement(visible = true, transformation(origin = {-230, 90}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.RealExpression cmdQ(y = 5000) annotation(
     Placement(visible = true, transformation(origin = {-230, 110}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -12,7 +13,7 @@ model Test_twin_pipes_001
     Placement(visible = true, transformation(origin = {-150, 110}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   AES.ProcessComponents.Thermal.Piping_liquid.Pressuriser pressuriser annotation(
     Placement(visible = true, transformation(origin = {-230, 36}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Piping_liquid.Pump_volumetric pumpC(w0 = 5)  annotation(
+  AES.ProcessComponents.Thermal.Piping_liquid.Pump_volumetric pumpC(w0 = 5) annotation(
     Placement(visible = true, transformation(origin = {-190, 30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   AES.ProcessComponents.Thermal.Piping_liquid.Tube tube01 annotation(
     Placement(visible = true, transformation(origin = {-150, 30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -49,8 +50,8 @@ equation
     Line(points = {{-20, 24}, {-2, 24}}));
 protected
   annotation(
-    experiment(StartTime = 0, StopTime = 1e7, Tolerance = 1e-6, Interval = 1000),
-    __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts ",
+    experiment(StartTime = 0, StopTime = 1e+7, Tolerance = 1e-6, Interval = 1000),
+    __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts ",
     __OpenModelica_simulationFlags(lv = "LOG_STATS", s = "dassl"),
-  Diagram(coordinateSystem(extent = {{-300, -200}, {300, 200}})));
+    Diagram(coordinateSystem(extent = {{-300, -200}, {300, 200}})));
 end Test_twin_pipes_001;

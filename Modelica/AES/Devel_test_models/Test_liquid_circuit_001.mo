@@ -37,7 +37,7 @@ equation
     Line(points = {{-98, 50}, {-30, 50}, {-30, 0}}, color = {0, 0, 127}));
   annotation(
     experiment(StartTime = 0, StopTime = 1000, Tolerance = 1e-6, Interval = 0.1),
-    __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts ",
+    __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts ",
     __OpenModelica_simulationFlags(lv = "LOG_STATS", s = "dassl"),
   Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}})));
 end Test_liquid_circuit_001;

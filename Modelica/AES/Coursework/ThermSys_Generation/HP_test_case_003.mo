@@ -1,10 +1,10 @@
 within AES.Coursework.ThermSys_Generation;
 
-model HP_test_case_002
+model HP_test_case_003
   extends AES.Icons.CourseworkModel;
   Modelica.Blocks.Sources.RealExpression iTc(y = 273.15 + 20) annotation(
     Placement(visible = true, transformation(origin = {150, 10}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.HVAC.HP_ConstCOPh HP(Wmax = 500) annotation(
+  AES.ProcessComponents.Thermal.HVAC.HP_CarnotFractionCOPh HP(Wmax = 500) annotation(
     Placement(visible = true, transformation(origin = {-10, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Thermal.HeatTransfer.Sources.PrescribedTemperature Tc annotation(
     Placement(visible = true, transformation(origin = {110, 10}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
@@ -71,7 +71,7 @@ equation
     Line(points = {{-22, -30}, {-138, -30}}, color = {46, 52, 54}));
   annotation(
     experiment(StartTime = 0, StopTime = 2000, Tolerance = 1e-6, Interval = 1),
-    __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts ",
+    __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts ",
     __OpenModelica_simulationFlags(lv = "LOG_STATS", s = "dassl"),
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}})));
-end HP_test_case_002;
+end HP_test_case_003;

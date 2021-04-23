@@ -7,7 +7,7 @@ model TubeStream
   parameter SI.Length dz=0 "height of port b (out) over port a (in)";
   parameter SI.MassFlowRate wnom=0.5 "nominal flow rate";
   parameter Real kdp=0.1 "nominal dp [bar] per km at nominal flow";
-  parameter Integer n=10 "No. of lumps";
+  parameter Integer n=5 "No. of lumps";
   parameter SI.Temperature Tstart=293.15 "initial T, all lumps";
   parameter Boolean fluidHeats=true "T if fluid heats the outside, F otherwise";
   AES.ProcessComponents.Thermal.Interfaces.vectorHeatPort surf(n=n) annotation(
