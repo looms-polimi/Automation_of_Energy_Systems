@@ -1,4 +1,6 @@
 Valve_linear
+dp_linear
+dp_quadratic
 Pump_volumetric
 Pump_centrifugal
 Pressuriser
@@ -18,4 +20,4 @@ Convection_VecVec
 Tsensor
 TwinPipeTsensor
 LumpedPlanarWall
-HE_LiquidLiquid
+HE_LiquidLiquid_1vol

@@ -1,4 +1,4 @@
-within AES.Coursework.ThermSys_Networks;
+within AES.Coursework.ThermSys_Transport;
 
 model Valve_linearisation_case_001
   extends AES.Icons.CourseworkModel;

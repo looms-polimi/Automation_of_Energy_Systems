@@ -1,14 +1,14 @@
-within AES.Devel_test_models;
+within AES.Coursework.ThermSys_Transport;
 
-model Test_HE_LiquidLiquid_001
-  extends Icons.TestModel;
-  AES.ProcessComponents.Thermal.Piping_liquid.Node_wT_fixed Hsrc(T = 343.15, w = 0.2)  annotation(
+model HE_simple_case_001
+  extends AES.Icons.CourseworkModel;
+  AES.ProcessComponents.Thermal.Piping_liquid.Node_wT_fixed Hsrc(T = 343.15, w = 0.2) annotation(
     Placement(visible = true, transformation(origin = {-50, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   AES.ProcessComponents.Thermal.Piping_liquid.Node_pT_fixed Hsnk annotation(
     Placement(visible = true, transformation(origin = {-10, -30}, extent = {{10, -10}, {-10, 10}}, rotation = -90)));
   AES.ProcessComponents.Thermal.Piping_liquid.HE_LiquidLiquid_1vol HE annotation(
     Placement(visible = true, transformation(origin = {-10, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Piping_liquid.Node_wT_fixed Csrc(w = 0.1)  annotation(
+  AES.ProcessComponents.Thermal.Piping_liquid.Node_wT_fixed Csrc(w = 0.1) annotation(
     Placement(visible = true, transformation(origin = {30, 10}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
   AES.ProcessComponents.Thermal.Piping_liquid.Node_pT_fixed Csnk annotation(
     Placement(visible = true, transformation(origin = {-10, 50}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
@@ -26,4 +26,4 @@ equation
     __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts ",
     __OpenModelica_simulationFlags(lv = "LOG_STATS", s = "dassl"),
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}})));
-end Test_HE_LiquidLiquid_001;
+end HE_simple_case_001;

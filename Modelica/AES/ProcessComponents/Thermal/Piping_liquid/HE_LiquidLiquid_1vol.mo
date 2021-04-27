@@ -1,6 +1,6 @@
 within AES.ProcessComponents.Thermal.Piping_liquid;
 
-model HE_LiquidLiquid
+model HE_LiquidLiquid_1vol
   outer System_settings.System_liquid system;
   parameter SI.Volume Vh=0.01 "H side volume";
   parameter SI.Volume Vc=0.01 "C side volume";
@@ -72,4 +72,4 @@ annotation(
   experiment(StartTime = 0, StopTime = 1, Tolerance = 1e-6, Interval = 0.002),
   __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian -d=aliasConflicts ",
   __OpenModelica_simulationFlags(lv = "LOG_STATS", s = "dassl"));
-end HE_LiquidLiquid;
+end HE_LiquidLiquid_1vol;

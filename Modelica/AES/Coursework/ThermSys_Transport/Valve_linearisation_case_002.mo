@@ -1,8 +1,8 @@
-within AES.Coursework.ThermSys_Networks;
+within AES.Coursework.ThermSys_Transport;
 
-model Valve_linearisation_case_003
+model Valve_linearisation_case_002
   extends AES.Icons.CourseworkModel;
-  parameter Real c = 3.5; /* 3.5 achieves quasi-linear inst char in 0.2-0.8*/
+  parameter Real c = 0.5;  /* 0.5 */
   inner AES.ProcessComponents.Thermal.System_settings.System_liquid system annotation(
     Placement(visible = true, transformation(origin = {-170, 70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   AES.ProcessComponents.Thermal.Piping_liquid.Node_pT_fixed src(p = 150000) annotation(
@@ -19,9 +19,9 @@ model Valve_linearisation_case_003
     Placement(visible = true, transformation(origin = {-10, -30}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.RealExpression linearising_char(y = 1 / (1 - exp(c)) + 1 / (exp(c) - 1) * exp(c * xv.y)) annotation(
     Placement(visible = true, transformation(origin = {-110, 70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Piping_liquid.Pump_volumetric pumpNL annotation(
+  AES.ProcessComponents.Thermal.Piping_liquid.Pump_centrifugal pumpNL annotation(
     Placement(visible = true, transformation(origin = {-72, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Piping_liquid.Pump_volumetric pumpLIN annotation(
+  AES.ProcessComponents.Thermal.Piping_liquid.Pump_centrifugal pumpLIN annotation(
     Placement(visible = true, transformation(origin = {-10, -70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.RealExpression xp(y = 1) annotation(
     Placement(visible = true, transformation(origin = {-150, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -58,7 +58,7 @@ equation
     Line(points = {{-98, 50}, {-72, 50}, {-72, 38}}, color = {0, 0, 127}));
   annotation(
     experiment(StartTime = 0, StopTime = 100, Tolerance = 1e-6, Interval = 0.2),
-    __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts ",
+    __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts ",
     __OpenModelica_simulationFlags(lv = "LOG_STATS", s = "dassl"),
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}})));
-end Valve_linearisation_case_003;
+end Valve_linearisation_case_002;

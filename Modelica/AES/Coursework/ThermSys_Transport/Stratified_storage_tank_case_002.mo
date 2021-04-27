@@ -1,10 +1,10 @@
-within AES.Coursework.ThermSys_Networks;
+within AES.Coursework.ThermSys_Transport;
 
-model Stratified_storage_tank_case_001
+model Stratified_storage_tank_case_002
   extends AES.Icons.CourseworkModel;
   inner AES.ProcessComponents.Thermal.System_settings.System_liquid system annotation(
     Placement(visible = true, transformation(origin = {-170, 70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Blocks.Sources.RealExpression pi(y = if time < 5000 then 0.5 else 0.01) annotation(
+  Modelica.Blocks.Sources.RealExpression PhotOn(y = if time < 10000 then 0.5 else 0) annotation(
     Placement(visible = true, transformation(origin = {-110, 26}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.RealExpression x(y = 273.15 + 50) annotation(
     Placement(visible = true, transformation(origin = {-176, 6}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -14,7 +14,7 @@ model Stratified_storage_tank_case_001
     Placement(visible = true, transformation(origin = {-72, -46}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   AES.ProcessComponents.Thermal.HVAC.ControlledLiquidHeater_ideal H annotation(
     Placement(visible = true, transformation(origin = {-124, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Blocks.Sources.BooleanExpression Hon(y = true) annotation(
+  Modelica.Blocks.Sources.BooleanExpression Hon(y = time < 10000) annotation(
     Placement(visible = true, transformation(origin = {-160, 46}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   AES.ProcessComponents.Thermal.Piping_liquid.Pump_volumetric pump_heat annotation(
     Placement(visible = true, transformation(origin = {-88, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -24,6 +24,8 @@ model Stratified_storage_tank_case_001
     Placement(visible = true, transformation(origin = {62, 30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   AES.ProcessComponents.Thermal.Piping_liquid.Pump_volumetric pump_circ(w0 = 1.1) annotation(
     Placement(visible = true, transformation(origin = {24, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  Modelica.Blocks.Sources.RealExpression PcoldOn(y = if time < 10000 then 0 else 0.5) annotation(
+    Placement(visible = true, transformation(origin = {-50, 50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(x.y, H.To) annotation(
     Line(points = {{-165, 6}, {-147, 6}, {-147, -5}, {-135, -5}}, color = {0, 0, 127}));
@@ -37,7 +39,7 @@ equation
     Line(points = {{-112, -10}, {-100, -10}}, color = {46, 52, 54}));
   connect(pump_heat.pwh_b, stank.hotIn) annotation(
     Line(points = {{-76, -10}, {-22, -10}}, color = {46, 52, 54}));
-  connect(pi.y, pump_heat.cmd) annotation(
+  connect(PhotOn.y, pump_heat.cmd) annotation(
     Line(points = {{-98, 26}, {-88, 26}, {-88, -2}}, color = {0, 0, 127}));
   connect(surfTcond.surf, tube.surf) annotation(
     Line(points = {{62, 21.3333}, {62, -5.66664}}, color = {144, 5, 5}));
@@ -47,11 +49,11 @@ equation
     Line(points = {{36, -10}, {50, -10}}, color = {46, 52, 54}));
   connect(tube.pwh_b, stank.coldIn) annotation(
     Line(points = {{74, -10}, {86, -10}, {86, -22}, {2, -22}}, color = {46, 52, 54}));
-  connect(pi.y, pump_circ.cmd) annotation(
-    Line(points = {{-98, 26}, {24, 26}, {24, -2}}, color = {0, 0, 127}));
+  connect(PcoldOn.y, pump_circ.cmd) annotation(
+    Line(points = {{-39, 50}, {24, 50}, {24, -2}}, color = {0, 0, 127}));
   annotation(
-    experiment(StartTime = 0, StopTime = 10000, Tolerance = 1e-6, Interval = 1),
-    __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts ",
+    experiment(StartTime = 0, StopTime = 20000, Tolerance = 1e-6, Interval = 2),
+    __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts ",
     __OpenModelica_simulationFlags(lv = "LOG_STATS", s = "dassl"),
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}})));
-end Stratified_storage_tank_case_001;
+end Stratified_storage_tank_case_002;
