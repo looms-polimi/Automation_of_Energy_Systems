@@ -5,8 +5,10 @@ Pump_volumetric
 Pump_centrifugal
 Pressuriser
 TubeStream
+LumpedPlanarWall
 TubeWall
 Tube
+HE_LiquidLiquid_1vol
 Node_pT_fixed
 Node_pT_prescribed
 Node_wT_fixed
@@ -19,5 +21,3 @@ VectorHPtoHP_conductor
 Convection_VecVec
 Tsensor
 TwinPipeTsensor
-LumpedPlanarWall
-HE_LiquidLiquid_1vol

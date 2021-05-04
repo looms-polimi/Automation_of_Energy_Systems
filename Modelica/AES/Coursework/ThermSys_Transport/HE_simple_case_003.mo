@@ -2,19 +2,19 @@ within AES.Coursework.ThermSys_Transport;
 
 model HE_simple_case_003
   extends AES.Icons.CourseworkModel;
-  AES.ProcessComponents.Thermal.Piping_liquid.HE_LiquidLiquid_1vol HE annotation(
+  AES.ProcessComponents.Thermal.Liquid.HE_LiquidLiquid_1vol HE annotation(
     Placement(visible = true, transformation(origin = {-10, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Piping_liquid.Node_pT_fixed Hsnk annotation(
+  AES.ProcessComponents.Thermal.Liquid.Node_pT_fixed Hsnk annotation(
     Placement(visible = true, transformation(origin = {-10, -70}, extent = {{10, -10}, {-10, 10}}, rotation = -90)));
-  AES.ProcessComponents.Thermal.Piping_liquid.Node_wT_fixed Hsrc(T = 343.15, w = 0.2) annotation(
+  AES.ProcessComponents.Thermal.Liquid.Node_wT_fixed Hsrc(T = 343.15, w = 0.2) annotation(
     Placement(visible = true, transformation(origin = {-92, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  ProcessComponents.Thermal.Piping_liquid.Node_wT_fixed Csrc(w = 0.1) annotation(
+  ProcessComponents.Thermal.Liquid.Node_wT_fixed Csrc(w = 0.1) annotation(
     Placement(visible = true, transformation(origin = {30, 10}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
-  ProcessComponents.Thermal.Piping_liquid.Node_pT_fixed Csnk annotation(
+  ProcessComponents.Thermal.Liquid.Node_pT_fixed Csnk annotation(
     Placement(visible = true, transformation(origin = {-10, 50}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
-  AES.ProcessComponents.Thermal.Piping_liquid.dp_quadratic dpHE(dpnom = 10000, wnom = 0.2)  annotation(
+  AES.ProcessComponents.Thermal.Liquid.dp_quadratic dpHE(dpnom = 10000, wnom = 0.2)  annotation(
     Placement(visible = true, transformation(origin = {-10, -30}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
-  AES.ProcessComponents.Thermal.Piping_liquid.Valve_linear V(dpnom = 10000, wnom = 5)  annotation(
+  AES.ProcessComponents.Thermal.Liquid.Valve_linear V(dpnom = 10000, wnom = 5)  annotation(
     Placement(visible = true, transformation(origin = {-50, -30}, extent = {{-10, 10}, {10, -10}}, rotation = -90)));
   Modelica.Blocks.Sources.RealExpression cmdV(y = max(0, min(1, (time - 100) / 50)))  annotation(
     Placement(visible = true, transformation(origin = {-110, -30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));

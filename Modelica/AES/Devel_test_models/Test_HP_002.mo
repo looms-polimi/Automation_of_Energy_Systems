@@ -10,23 +10,23 @@ model Test_HP_002
     Placement(visible = true, transformation(origin = {-28, -70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.RealExpression cmdHP(y = 0.5) annotation(
     Placement(visible = true, transformation(origin = {-170, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Piping_liquid.Pressuriser pressuriser annotation(
+  AES.ProcessComponents.Thermal.Liquid.Pressuriser pressuriser annotation(
     Placement(visible = true, transformation(origin = {-92, 76}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Piping_liquid.Pump_centrifugal pump(dp0 = 10000)  annotation(
+  AES.ProcessComponents.Thermal.Liquid.Pump_centrifugal pump(dp0 = 10000)  annotation(
     Placement(visible = true, transformation(origin = {-50, 70}, extent = {{-10, 10}, {10, -10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Piping_liquid.Tube tubeH(Di = 0.02, L = 1, t = 0.001)  annotation(
+  AES.ProcessComponents.Thermal.Liquid.Tube tubeH(Di = 0.02, L = 1, t = 0.001)  annotation(
     Placement(visible = true, transformation(origin = {-10, 70}, extent = {{-10, 10}, {10, -10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Piping_liquid.Tube tubeC(Di = 0.02, L = 1, t = 0.001)  annotation(
+  AES.ProcessComponents.Thermal.Liquid.Tube tubeC(Di = 0.02, L = 1, t = 0.001)  annotation(
     Placement(visible = true, transformation(origin = {-10, -30}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Piping_liquid.Tube tubeLoad(Di = 0.02, L = 1, t = 0.001)  annotation(
+  AES.ProcessComponents.Thermal.Liquid.Tube tubeLoad(Di = 0.02, L = 1, t = 0.001)  annotation(
     Placement(visible = true, transformation(origin = {48, -30}, extent = {{10, 10}, {-10, -10}}, rotation = 0)));
   Modelica.Blocks.Sources.RealExpression cmdP(y = 0.5) annotation(
     Placement(visible = true, transformation(origin = {-170, 40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Piping_liquid.VectorHPtoHP_conductor adapLoad(Gtotal = 500)  annotation(
+  AES.ProcessComponents.Thermal.Liquid.VectorHPtoHP_conductor adapLoad(Gtotal = 500)  annotation(
     Placement(visible = true, transformation(origin = {12, -70}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
-  AES.ProcessComponents.Thermal.Piping_liquid.VectorHPtoHP_conductor adapH(Gtotal = 100)  annotation(
+  AES.ProcessComponents.Thermal.Liquid.VectorHPtoHP_conductor adapH(Gtotal = 100)  annotation(
     Placement(visible = true, transformation(origin = {-10, 50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Piping_liquid.VectorHPtoHP_conductor adapC annotation(
+  AES.ProcessComponents.Thermal.Liquid.VectorHPtoHP_conductor adapC annotation(
     Placement(visible = true, transformation(origin = {-48, -4}, extent = {{-10, -10}, {10, 10}}, rotation = 180)));
 equation
   connect(tubeC.pwh_b, pressuriser.pwh_a) annotation(

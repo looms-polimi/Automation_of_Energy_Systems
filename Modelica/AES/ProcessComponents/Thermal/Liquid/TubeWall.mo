@@ -1,4 +1,4 @@
-within AES.ProcessComponents.Thermal.Piping_liquid;
+within AES.ProcessComponents.Thermal.Liquid;
 
 model TubeWall
   parameter SI.Length L=10 "length";
@@ -14,7 +14,7 @@ model TubeWall
     Placement(visible = true, transformation(origin = {0, -50}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {2, -2}, extent = {{-42, -14}, {42, 14}}, rotation = 0)));
   AES.ProcessComponents.Thermal.Interfaces.vectorHeatPort outerSurf(n=n) annotation(
     Placement(visible = true, transformation(origin = {0, 50}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {2, 54}, extent = {{-42, -14}, {42, 14}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Piping_liquid.LumpedPlanarWall wall(L = L, Tstart = Tstart, W = Modelica.Constants.pi * Di, c = c, l = l, lambda = lambda, n = n, ro = ro, t = t)  annotation(
+  AES.ProcessComponents.Thermal.Liquid.LumpedPlanarWall wall(L = L, Tstart = Tstart, W = Modelica.Constants.pi * Di, c = c, l = l, lambda = lambda, n = n, ro = ro, t = t)  annotation(
     Placement(visible = true, transformation(origin = {0, -2}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 
 equation

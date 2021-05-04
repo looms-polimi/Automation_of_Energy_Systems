@@ -1,7 +1,7 @@
 within AES.ProcessComponents.Thermal.HVAC;
 
 model ControlledLiquidHeater_lim
-  extends Interfaces.flowTwoPorts_pwh;
+  extends Interfaces.flowTwoPorts_pwh(final pbhi=true);
   parameter SI.Power Pmax=2e4 "max power";
   parameter SI.Volume V=0.25 "volume";
   parameter SI.Time Tcl = 30 "CL temp ctrl TC";
@@ -20,8 +20,8 @@ model ControlledLiquidHeater_lim
     Placement(visible = true,transformation(extent = {{60, 50}, {100, 90}}, rotation = 0), iconTransformation( origin = {-60, -120},extent = {{-20, -20}, {20, 20}}, rotation = 270)));
   Modelica.Blocks.Interfaces.RealOutput oTo "outlet T meas" annotation(
     Placement(visible = true,transformation(extent = {{60, 50}, {100, 90}}, rotation = 0), iconTransformation( origin = {-20, -120},extent = {{-20, -20}, {20, 20}}, rotation = 270)));
-//protected
-  parameter Real K=ro*V*cp/Tcl annotation(Evaluate = true);
+protected
+  final parameter Real K=ro*V*cp/Tcl annotation(Evaluate = true);
   Real Ti,xpi(start=0);
 equation
 // no pressure drop
@@ -30,7 +30,7 @@ equation
   hao              = cp*Tfo;
   hbo              = cp*Tfo;
   cp*Tfi           = hai;
-  ro*V*cp*der(Tfo) = Pc+w*cp*(Tfi-Tfo);
+  ro*V*cp*der(Tfo) = Pc+w*cp*(Tfi-Tfo); /* enegry balance */
   Ti               = if w>0 then ro*V/w else Tcl;
   if ON then
     xpi+Ti*der(xpi) = Pc;

@@ -1,4 +1,4 @@
-within AES.ProcessComponents.Thermal.Piping_liquid;
+within AES.ProcessComponents.Thermal.Liquid;
 
 model TubeStream
   extends Interfaces.flowTwoPorts_pwh;

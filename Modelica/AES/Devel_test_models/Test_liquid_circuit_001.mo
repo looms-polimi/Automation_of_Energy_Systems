@@ -4,19 +4,19 @@ model Test_liquid_circuit_001
   extends Icons.TestModel;
   inner AES.ProcessComponents.Thermal.System_settings.System_liquid system annotation(
     Placement(visible = true, transformation(origin = {-170, 70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Piping_liquid.surfTcond_fixed surfTcond(T = 303.15) annotation(
+  AES.ProcessComponents.Thermal.Liquid.surfTcond_fixed surfTcond(T = 303.15) annotation(
     Placement(visible = true, transformation(origin = {10, 30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Piping_liquid.Node_pT_fixed snk(p(displayUnit = "Pa")) annotation(
+  AES.ProcessComponents.Thermal.Liquid.Node_pT_fixed snk(p(displayUnit = "Pa")) annotation(
     Placement(visible = true, transformation(origin = {50, -10}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Piping_liquid.TubeStream tube(dz = 2.5)  annotation(
+  AES.ProcessComponents.Thermal.Liquid.TubeStream tube(dz = 2.5)  annotation(
     Placement(visible = true, transformation(origin = {10, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Piping_liquid.Node_pT_prescribed src annotation(
+  AES.ProcessComponents.Thermal.Liquid.Node_pT_prescribed src annotation(
     Placement(visible = true, transformation(origin = {-70, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.RealExpression pi(y = 101315 + 20000 + 10000 * sin(time / 50))  annotation(
     Placement(visible = true, transformation(origin = {-110, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.RealExpression Ti(y = 293.15)  annotation(
     Placement(visible = true, transformation(origin = {-110, -30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Piping_liquid.Valve_linear valve(dpnom = 20000)  annotation(
+  AES.ProcessComponents.Thermal.Liquid.Valve_linear valve(dpnom = 20000)  annotation(
     Placement(visible = true, transformation(origin = {-30, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.RealExpression x(y = if time < 500 then 0.1 else 0.9) annotation(
     Placement(visible = true, transformation(origin = {-110, 50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));

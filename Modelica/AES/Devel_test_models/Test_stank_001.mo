@@ -6,7 +6,7 @@ model Test_stank_001
     Placement(visible = true, transformation(origin = {-170, 70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   AES.ProcessComponents.Thermal.HVAC.StratifiedTank_2zones stank(Thotstart(displayUnit = "K") = 310)  annotation(
     Placement(visible = true, transformation(origin = {-10, -16}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Piping_liquid.Node_pT_fixed pref annotation(
+  AES.ProcessComponents.Thermal.Liquid.Node_pT_fixed pref annotation(
     Placement(visible = true, transformation(origin = {-74, -22}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(pref.pwh_a, stank.coldOut) annotation(

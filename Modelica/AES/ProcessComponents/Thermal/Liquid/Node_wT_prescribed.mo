@@ -1,4 +1,4 @@
-within AES.ProcessComponents.Thermal.Piping_liquid;
+within AES.ProcessComponents.Thermal.Liquid;
 
 model Node_wT_prescribed
   extends Interfaces.flowOnePort_pwh;

@@ -1,7 +1,7 @@
 within AES.ProcessComponents.Thermal.HVAC;
 
 model ControlledLiquidHeater_ideal
-  extends Interfaces.flowTwoPorts_pwh;
+  extends Interfaces.flowTwoPorts_pwh(final pbhi=true);
   parameter SI.Time Tcl = 5 "CL temp ctrl TC";
   parameter SI.Time Thc = 20 "intrinsic cooling TC";
   parameter SI.Temperature Tstart = 273.15 + 25 "initial fluid temp";
@@ -9,7 +9,7 @@ model ControlledLiquidHeater_ideal
   SI.Temperature Tfo(start = Tstart) "outlet fluid temp";
   Modelica.Blocks.Interfaces.BooleanInput ON annotation(
     Placement(visible = true, transformation(extent = {{-102, 54}, {-62, 94}}, rotation = 0), iconTransformation(origin = {-120, -60}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
-  Modelica.Blocks.Interfaces.RealInput To annotation(
+  Modelica.Blocks.Interfaces.RealInput To "outlet T set point" annotation(
     Placement(visible = true,transformation(extent = {{-92, 20}, {-52, 60}}, rotation = 0), iconTransformation(origin = {-121, 61}, extent = {{-21, -21}, {21, 21}}, rotation = 0)));
   Modelica.Blocks.Interfaces.RealOutput Pc annotation(
     Placement(visible = true,transformation(extent = {{60, 50}, {100, 90}}, rotation = 0), iconTransformation(origin = {20, -120}, extent = {{-20, -20}, {20, 20}}, rotation = -90)));

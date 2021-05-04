@@ -1,4 +1,4 @@
-within AES.ProcessComponents.Thermal.Piping_liquid;
+within AES.ProcessComponents.Thermal.Liquid;
 
 model Tube
   parameter SI.Length L=10 "length";
@@ -16,9 +16,9 @@ model Tube
   parameter Boolean fluidHeats=true "T if fluid heats the outside, F otherwise";
   AES.ProcessComponents.Thermal.Interfaces.vectorHeatPort surf(n=n) annotation(
     Placement(visible = true, transformation(origin = {0, 90}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {0, 54}, extent = {{-42, -14}, {42, 14}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Piping_liquid.TubeStream fluidStream(D = Di, L = L, Tstart = Tstart, dz = dz, fluidHeats = fluidHeats, kdp = kdp, n = n, pbhi = false, wnom = wnom)  annotation(
+  AES.ProcessComponents.Thermal.Liquid.TubeStream fluidStream(D = Di, L = L, Tstart = Tstart, dz = dz, fluidHeats = fluidHeats, kdp = kdp, n = n, pbhi = false, wnom = wnom)  annotation(
     Placement(visible = true, transformation(origin = {0, 0}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Piping_liquid.TubeWall wall(Di = Di, L = L, Tstart = Tstart, c = cw, l = l, lambda = lambdaw, n = n, ro = row, t = t)  annotation(
+  AES.ProcessComponents.Thermal.Liquid.TubeWall wall(Di = Di, L = L, Tstart = Tstart, c = cw, l = l, lambda = lambdaw, n = n, ro = row, t = t)  annotation(
     Placement(visible = true, transformation(origin = {1, 43}, extent = {{-21, -21}, {21, 21}}, rotation = 0)));
   AES.ProcessComponents.Thermal.Interfaces.pwhPort pwh_a annotation(
     Placement(visible = true, transformation(origin = {-110, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {-120, 0}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));

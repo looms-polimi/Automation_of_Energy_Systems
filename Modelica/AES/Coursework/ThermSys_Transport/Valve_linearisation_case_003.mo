@@ -5,27 +5,27 @@ model Valve_linearisation_case_003
   parameter Real c = 3.5; /* 3.5 achieves quasi-linear inst char in 0.2-0.8*/
   inner AES.ProcessComponents.Thermal.System_settings.System_liquid system annotation(
     Placement(visible = true, transformation(origin = {-170, 70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Piping_liquid.Node_pT_fixed src(p = 150000) annotation(
+  AES.ProcessComponents.Thermal.Liquid.Node_pT_fixed src annotation(
     Placement(visible = true, transformation(origin = {-130, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Piping_liquid.TubeStream streamNL(L = 20000) annotation(
+  AES.ProcessComponents.Thermal.Liquid.TubeStream streamNL(L = 20000) annotation(
     Placement(visible = true, transformation(origin = {50, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Piping_liquid.Node_pT_fixed snk(p = 1e5) annotation(
+  AES.ProcessComponents.Thermal.Liquid.Node_pT_fixed snk annotation(
     Placement(visible = true, transformation(origin = {110, -10}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.RealExpression xv(y = max(0, min(1, 0.01 * time))) annotation(
     Placement(visible = true, transformation(origin = {-110, 50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Piping_liquid.TubeStream streamLIN(L = 20000) annotation(
+  AES.ProcessComponents.Thermal.Liquid.TubeStream streamLIN(L = 20000) annotation(
     Placement(visible = true, transformation(origin = {50, -70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Piping_liquid.Valve_linear valveLIN annotation(
+  AES.ProcessComponents.Thermal.Liquid.Valve_linear valveLIN annotation(
     Placement(visible = true, transformation(origin = {-10, -30}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.RealExpression linearising_char(y = 1 / (1 - exp(c)) + 1 / (exp(c) - 1) * exp(c * xv.y)) annotation(
     Placement(visible = true, transformation(origin = {-110, 70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Piping_liquid.Pump_volumetric pumpNL annotation(
+  AES.ProcessComponents.Thermal.Liquid.Pump_volumetric pumpNL annotation(
     Placement(visible = true, transformation(origin = {-72, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Piping_liquid.Pump_volumetric pumpLIN annotation(
+  AES.ProcessComponents.Thermal.Liquid.Pump_volumetric pumpLIN annotation(
     Placement(visible = true, transformation(origin = {-10, -70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.RealExpression xp(y = 1) annotation(
     Placement(visible = true, transformation(origin = {-150, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  ProcessComponents.Thermal.Piping_liquid.Valve_linear valveNL annotation(
+  ProcessComponents.Thermal.Liquid.Valve_linear valveNL annotation(
     Placement(visible = true, transformation(origin = {-72, 28}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
 equation
   connect(streamNL.pwh_b, snk.pwh_a) annotation(

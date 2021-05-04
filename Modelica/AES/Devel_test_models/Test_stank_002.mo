@@ -10,19 +10,19 @@ model Test_stank_002
     Placement(visible = true, transformation(origin = {-176, 6}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   AES.ProcessComponents.Thermal.HVAC.StratifiedTank_2zones stank(Abase = 4, H = 5, lcoldstart = 2)  annotation(
     Placement(visible = true, transformation(origin = {-10, -16}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Piping_liquid.Pressuriser psrc annotation(
+  AES.ProcessComponents.Thermal.Liquid.Pressuriser psrc annotation(
     Placement(visible = true, transformation(origin = {-72, -46}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   AES.ProcessComponents.Thermal.HVAC.ControlledLiquidHeater_ideal H annotation(
     Placement(visible = true, transformation(origin = {-124, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.BooleanExpression Hon(y = true) annotation(
     Placement(visible = true, transformation(origin = {-160, 46}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Piping_liquid.Pump_volumetric pump_heat annotation(
+  AES.ProcessComponents.Thermal.Liquid.Pump_volumetric pump_heat annotation(
     Placement(visible = true, transformation(origin = {-88, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  ProcessComponents.Thermal.Piping_liquid.TubeStream tube(dz = 2.5, n = 5) annotation(
+  ProcessComponents.Thermal.Liquid.TubeStream tube(dz = 2.5, n = 5) annotation(
     Placement(visible = true, transformation(origin = {62, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  ProcessComponents.Thermal.Piping_liquid.surfTcond_fixed surfTcond(T = 283.15) annotation(
+  ProcessComponents.Thermal.Liquid.surfTcond_fixed surfTcond(T = 283.15) annotation(
     Placement(visible = true, transformation(origin = {62, 30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Piping_liquid.Pump_volumetric pump_circ(w0 = 1.1)  annotation(
+  AES.ProcessComponents.Thermal.Liquid.Pump_volumetric pump_circ(w0 = 1.1)  annotation(
     Placement(visible = true, transformation(origin = {24, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(x.y, H.To) annotation(

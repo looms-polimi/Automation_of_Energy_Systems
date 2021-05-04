@@ -4,9 +4,9 @@ model Test_liquid_circuit_003
   extends Icons.TestModel;
   inner AES.ProcessComponents.Thermal.System_settings.System_liquid system annotation(
     Placement(visible = true, transformation(origin = {-170, 70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Piping_liquid.Node_pT_fixed snk(p(displayUnit = "Pa")) annotation(
+  AES.ProcessComponents.Thermal.Liquid.Node_pT_fixed snk(p(displayUnit = "Pa")) annotation(
     Placement(visible = true, transformation(origin = {128, -30}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Piping_liquid.Node_pT_prescribed src annotation(
+  AES.ProcessComponents.Thermal.Liquid.Node_pT_prescribed src annotation(
     Placement(visible = true, transformation(origin = {-70, -30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.RealExpression pi(y = 101315)  annotation(
     Placement(visible = true, transformation(origin = {-112, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -16,11 +16,11 @@ model Test_liquid_circuit_003
     Placement(visible = true, transformation(origin = {-112, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.RealExpression xV(y = -50) annotation(
     Placement(visible = true, transformation(origin = {-112, 30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Piping_liquid.Tube tube annotation(
+  AES.ProcessComponents.Thermal.Liquid.Tube tube annotation(
     Placement(visible = true, transformation(origin = {90, -30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Piping_liquid.surfQcond_prescribed Q annotation(
+  AES.ProcessComponents.Thermal.Liquid.surfQcond_prescribed Q annotation(
     Placement(visible = true, transformation(origin = {90, 30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Piping_liquid.Pump_volumetric pumpV(w0 = 0.2)  annotation(
+  AES.ProcessComponents.Thermal.Liquid.Pump_volumetric pumpV(w0 = 0.2)  annotation(
     Placement(visible = true, transformation(origin = {-30, -30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   AES.ProcessComponents.Thermal.HVAC.ControlledLiquidHeater_ideal H annotation(
     Placement(visible = true, transformation(origin = {32, -30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));

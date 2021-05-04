@@ -1,6 +1,6 @@
 within AES.Devel_test_models;
 
-model Test_liquid_circuit_007_net02
+model Test_liquid_circuit_008_net02
   extends Icons.TestModel;
   inner AES.ProcessComponents.Thermal.System_settings.System_liquid system annotation(
     Placement(visible = true, transformation(origin = {-270, 148}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -8,59 +8,59 @@ model Test_liquid_circuit_007_net02
     Placement(visible = true, transformation(origin = {-230, 90}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.RealExpression cmdQ(y = 5000) annotation(
     Placement(visible = true, transformation(origin = {-230, 110}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Piping_liquid.surfQcond_prescribed Q annotation(
+  AES.ProcessComponents.Thermal.Liquid.surfQcond_prescribed Q annotation(
     Placement(visible = true, transformation(origin = {-150, 110}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.RealExpression cmdT(y = 293.15) annotation(
     Placement(visible = true, transformation(origin = {-230, 130}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Piping_liquid.surfTcond_prescribed T annotation(
+  AES.ProcessComponents.Thermal.Liquid.surfTcond_prescribed T annotation(
     Placement(visible = true, transformation(origin = {-30, 130}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Piping_liquid.Pressuriser pressuriser annotation(
+  AES.ProcessComponents.Thermal.Liquid.Pressuriser pressuriser annotation(
     Placement(visible = true, transformation(origin = {-230, 36}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Piping_liquid.Pump_volumetric pumpC(w0 = 5)  annotation(
+  AES.ProcessComponents.Thermal.Liquid.Pump_volumetric pumpC(w0 = 5)  annotation(
     Placement(visible = true, transformation(origin = {-190, 30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Piping_liquid.Tube tube01 annotation(
+  AES.ProcessComponents.Thermal.Liquid.Tube tube01 annotation(
     Placement(visible = true, transformation(origin = {-150, 30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Piping_liquid.Tube tube02 annotation(
+  AES.ProcessComponents.Thermal.Liquid.Tube tube02 annotation(
     Placement(visible = true, transformation(origin = {-90, 70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Piping_liquid.Tube tube03 annotation(
+  AES.ProcessComponents.Thermal.Liquid.Tube tube03 annotation(
     Placement(visible = true, transformation(origin = {-30, 70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Piping_liquid.Tube tube04 annotation(
+  AES.ProcessComponents.Thermal.Liquid.Tube tube04 annotation(
     Placement(visible = true, transformation(origin = {30, 70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Piping_liquid.Tube tube05 annotation(
+  AES.ProcessComponents.Thermal.Liquid.Tube tube05 annotation(
     Placement(visible = true, transformation(origin = {-90, 30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Piping_liquid.Tube tube06 annotation(
+  AES.ProcessComponents.Thermal.Liquid.Tube tube06 annotation(
     Placement(visible = true, transformation(origin = {-30, 30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Piping_liquid.Tube tube07 annotation(
+  AES.ProcessComponents.Thermal.Liquid.Tube tube07 annotation(
     Placement(visible = true, transformation(origin = {30, 30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Piping_liquid.Tube tube08 annotation(
+  AES.ProcessComponents.Thermal.Liquid.Tube tube08 annotation(
     Placement(visible = true, transformation(origin = {-90, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Piping_liquid.Tube tube09 annotation(
+  AES.ProcessComponents.Thermal.Liquid.Tube tube09 annotation(
     Placement(visible = true, transformation(origin = {-30, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Piping_liquid.Tube tube10 annotation(
+  AES.ProcessComponents.Thermal.Liquid.Tube tube10 annotation(
     Placement(visible = true, transformation(origin = {90, 50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Piping_liquid.Tube tube11 annotation(
+  AES.ProcessComponents.Thermal.Liquid.Tube tube11 annotation(
     Placement(visible = true, transformation(origin = {90, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Piping_liquid.Tube tube12 annotation(
+  AES.ProcessComponents.Thermal.Liquid.Tube tube12 annotation(
     Placement(visible = true, transformation(origin = {150, 70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Piping_liquid.Tube tube13 annotation(
+  AES.ProcessComponents.Thermal.Liquid.Tube tube13 annotation(
     Placement(visible = true, transformation(origin = {210, 70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Piping_liquid.Tube tube14 annotation(
+  AES.ProcessComponents.Thermal.Liquid.Tube tube14 annotation(
     Placement(visible = true, transformation(origin = {150, 30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Piping_liquid.Tube tube15 annotation(
+  AES.ProcessComponents.Thermal.Liquid.Tube tube15 annotation(
     Placement(visible = true, transformation(origin = {90, -50}, extent = {{10, 10}, {-10, -10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Piping_liquid.Tube tube16 annotation(
+  AES.ProcessComponents.Thermal.Liquid.Tube tube16 annotation(
     Placement(visible = true, transformation(origin = {30, -50}, extent = {{10, 10}, {-10, -10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Piping_liquid.Tube tube17 annotation(
+  AES.ProcessComponents.Thermal.Liquid.Tube tube17 annotation(
     Placement(visible = true, transformation(origin = {-30, -50}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Piping_liquid.Tube tube18 annotation(
+  AES.ProcessComponents.Thermal.Liquid.Tube tube18 annotation(
     Placement(visible = true, transformation(origin = {-90, -50}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Piping_liquid.Tube tube19 annotation(
+  AES.ProcessComponents.Thermal.Liquid.Tube tube19 annotation(
     Placement(visible = true, transformation(origin = {-90, -90}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Piping_liquid.Tube tube20 annotation(
+  AES.ProcessComponents.Thermal.Liquid.Tube tube20 annotation(
     Placement(visible = true, transformation(origin = {-90, -130}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Piping_liquid.surfTcond_fixed Tcond1 annotation(
+  AES.ProcessComponents.Thermal.Liquid.surfTcond_fixed Tcond1 annotation(
     Placement(visible = true, transformation(origin = {30, -90}, extent = {{-10, 10}, {10, -10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Piping_liquid.surfTcond_fixed Tcond2 annotation(
+  AES.ProcessComponents.Thermal.Liquid.surfTcond_fixed Tcond2 annotation(
     Placement(visible = true, transformation(origin = {210, 110}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(cmdQ.y, Q.Q) annotation(
@@ -139,4 +139,4 @@ protected
     __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts ",
     __OpenModelica_simulationFlags(lv = "LOG_STATS", s = "dassl"),
   Diagram(coordinateSystem(extent = {{-300, -200}, {300, 200}})));
-end Test_liquid_circuit_007_net02;
+end Test_liquid_circuit_008_net02;

@@ -8,19 +8,19 @@ model Test_liquid_circuit_005
     Placement(visible = true, transformation(origin = {-110, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.RealExpression cmdQ(y = 500) annotation(
     Placement(visible = true, transformation(origin = {-110, 30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  ProcessComponents.Thermal.Piping_liquid.Tube tubeH annotation(
+  ProcessComponents.Thermal.Liquid.Tube tubeH annotation(
     Placement(visible = true, transformation(origin = {10, -30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Piping_liquid.surfQcond_prescribed Q annotation(
+  AES.ProcessComponents.Thermal.Liquid.surfQcond_prescribed Q annotation(
     Placement(visible = true, transformation(origin = {10, 30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Piping_liquid.Tube tubeC annotation(
+  AES.ProcessComponents.Thermal.Liquid.Tube tubeC annotation(
     Placement(visible = true, transformation(origin = {70, -30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.RealExpression cmdT(y = 293.15) annotation(
     Placement(visible = true, transformation(origin = {-110, 50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Piping_liquid.surfTcond_prescribed T annotation(
+  AES.ProcessComponents.Thermal.Liquid.surfTcond_prescribed T annotation(
     Placement(visible = true, transformation(origin = {70, 50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Piping_liquid.Pressuriser pressuriser annotation(
+  AES.ProcessComponents.Thermal.Liquid.Pressuriser pressuriser annotation(
     Placement(visible = true, transformation(origin = {-72, -24}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Piping_liquid.Pump_centrifugal pumpC annotation(
+  AES.ProcessComponents.Thermal.Liquid.Pump_centrifugal pumpC annotation(
     Placement(visible = true, transformation(origin = {-30, -30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(cmdQ.y, Q.Q) annotation(

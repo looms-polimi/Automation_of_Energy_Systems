@@ -1,4 +1,4 @@
-within AES.ProcessComponents.Thermal.Piping_liquid;
+within AES.ProcessComponents.Thermal.Liquid;
 
 model surfTcond_fixed
   parameter SI.Temperature T=293.15 "temperature";

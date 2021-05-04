@@ -1,4 +1,4 @@
-within AES.ProcessComponents.Thermal.Piping_liquid;
+within AES.ProcessComponents.Thermal.Liquid;
 
 model HE_LiquidLiquid_1vol
   outer System_settings.System_liquid system;

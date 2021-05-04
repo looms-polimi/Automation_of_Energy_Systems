@@ -1,4 +1,4 @@
-within AES.ProcessComponents.Thermal.Piping_liquid;
+within AES.ProcessComponents.Thermal.Liquid;
 
 model dp_quadratic
   extends Interfaces.flowTwoPorts_pwh;

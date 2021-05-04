@@ -1,4 +1,4 @@
-within AES.ProcessComponents.Thermal.Piping_liquid;
+within AES.ProcessComponents.Thermal.Liquid;
 
 model VectorHPtoHP_conductor
   parameter SI.ThermalConductance Gtotal=100 "total thermal conductance";

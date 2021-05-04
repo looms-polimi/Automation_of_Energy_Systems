@@ -1,4 +1,4 @@
-within AES.ProcessComponents.Thermal.Piping_liquid;
+within AES.ProcessComponents.Thermal.Liquid;
 
 model Pump_centrifugal
   extends Interfaces.flowTwoPorts_pwh(final pbhi=true,w(start=w0/1000));
@@ -13,7 +13,7 @@ equation
   dp  = dp0*max(0,min(cmd,1))-kp*w^2;
   hao = hbi-dp/ro;
   hbo = hai+dp/ro;
-  P   = w*(pwh_b.h-pwh_a.h);
+  P   = w*dp/ro;
   assert(w>=0, "flow reversal not allowed in centrifugal pump");
 initial equation
   dp0-kp*w0^2 = 0;

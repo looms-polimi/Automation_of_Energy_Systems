@@ -2,19 +2,19 @@ within AES.Coursework.ThermSys_Transport;
 
 model HE_simple_case_002
   extends AES.Icons.CourseworkModel;
-  AES.ProcessComponents.Thermal.Piping_liquid.HE_LiquidLiquid_1vol HE annotation(
+  AES.ProcessComponents.Thermal.Liquid.HE_LiquidLiquid_1vol HE annotation(
     Placement(visible = true, transformation(origin = {-10, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Piping_liquid.Node_pT_fixed Hsnk annotation(
+  AES.ProcessComponents.Thermal.Liquid.Node_pT_fixed Hsnk annotation(
     Placement(visible = true, transformation(origin = {-10, -30}, extent = {{10, -10}, {-10, 10}}, rotation = -90)));
-  ProcessComponents.Thermal.Piping_liquid.Node_wT_fixed Csrc(w = 0.1) annotation(
+  ProcessComponents.Thermal.Liquid.Node_wT_fixed Csrc(w = 0.1) annotation(
     Placement(visible = true, transformation(origin = {30, 10}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
-  ProcessComponents.Thermal.Piping_liquid.Node_pT_fixed Csnk annotation(
+  ProcessComponents.Thermal.Liquid.Node_pT_fixed Csnk annotation(
     Placement(visible = true, transformation(origin = {-10, 50}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
-  AES.ProcessComponents.Thermal.Piping_liquid.Valve_linear V(dpnom (displayUnit = "Pa") = 5000, wnom = 0.2)  annotation(
+  AES.ProcessComponents.Thermal.Liquid.Valve_linear V(dpnom (displayUnit = "Pa") = 5000, wnom = 0.2)  annotation(
     Placement(visible = true, transformation(origin = {-50, 10}, extent = {{10, 10}, {-10, -10}}, rotation = 180)));
   Modelica.Blocks.Sources.RealExpression cmdV(y = max(0.05, min(1, 1 - (time - 100) / 50)))  annotation(
     Placement(visible = true, transformation(origin = {-106, 46}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Piping_liquid.Node_pT_fixed Hsrc(T = 343.15, p = 101325 + 5000)  annotation(
+  AES.ProcessComponents.Thermal.Liquid.Node_pT_fixed Hsrc(T = 343.15, p = 101325 + 5000)  annotation(
     Placement(visible = true, transformation(origin = {-90, 10}, extent = {{10, -10}, {-10, 10}}, rotation = 180)));
 equation
   connect(HE.coldOut, Csnk.pwh_a) annotation(
@@ -32,6 +32,6 @@ equation
   annotation(
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}})),
     experiment(StartTime = 0, StopTime = 1000, Tolerance = 1e-6, Interval = 2),
-    __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian -d=aliasConflicts ",
+    __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian -d=aliasConflicts -d=aliasConflicts ",
     __OpenModelica_simulationFlags(lv = "LOG_STATS", s = "dassl"));
 end HE_simple_case_002;

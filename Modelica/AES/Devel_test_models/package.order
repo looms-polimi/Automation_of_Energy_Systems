@@ -8,12 +8,12 @@ Test_conv
 Test_liquid_circuit_001
 Test_liquid_circuit_002
 Test_liquid_circuit_003
+Test_liquid_circuit_006
 Test_liquid_circuit_004
 Test_liquid_circuit_005
-Test_liquid_circuit_006_net01
-Test_liquid_circuit_007_net02
 Test_twin_pipes_001
 Test_twin_pipes_002
+Test_twin_pipes_003
 Test_air_circ_001
 Test_air_circ_002
 Test_air_circ_003
@@ -23,3 +23,7 @@ Test_stank_002
 Test_HP_001
 Test_HP_002
 Test_HE_LiquidLiquid_001
+Test_HC_001
+Test_liquid_circuit_007_net01
+Test_liquid_circuit_008_net02
+foo

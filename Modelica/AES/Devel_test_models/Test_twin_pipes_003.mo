@@ -1,6 +1,6 @@
 within AES.Devel_test_models;
 
-model Test_twin_pipes_001
+model Test_twin_pipes_003
   extends Icons.TestModel;
   inner AES.ProcessComponents.Thermal.System_settings.System_liquid system annotation(
     Placement(visible = true, transformation(origin = {-270, 148}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -24,9 +24,17 @@ model Test_twin_pipes_001
   AES.ProcessComponents.Thermal.DistrictHeating.TwinPipe Tpipe1 annotation(
     Placement(visible = true, transformation(origin = {-70, 24}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   AES.ProcessComponents.Thermal.DistrictHeating.TwinPipe Tpipe2 annotation(
-    Placement(visible = true, transformation(origin = {-32, 24}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.DistrictHeating.TwinPipeClosure TpipeC annotation(
-    Placement(visible = true, transformation(origin = {10, 24}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+    Placement(visible = true, transformation(origin = {-30, 24}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  AES.ProcessComponents.Thermal.DistrictHeating.TwinPipeClosure TpipeC1 annotation(
+    Placement(visible = true, transformation(origin = {50, 50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  AES.ProcessComponents.Thermal.DistrictHeating.TwinPipe Tpipe3 annotation(
+    Placement(visible = true, transformation(origin = {-48, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  AES.ProcessComponents.Thermal.DistrictHeating.TwinPipe Tpipe4 annotation(
+    Placement(visible = true, transformation(origin = {10, 50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  AES.ProcessComponents.Thermal.DistrictHeating.TwinPipe Tpipe6 annotation(
+    Placement(visible = true, transformation(origin = {10, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  AES.ProcessComponents.Thermal.DistrictHeating.TwinPipeClosure Tpipec2 annotation(
+    Placement(visible = true, transformation(origin = {50, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(cmdQ.y, Q.Q) annotation(
     Line(points = {{-219, 110}, {-158, 110}}, color = {0, 0, 127}));
@@ -45,13 +53,23 @@ equation
   connect(split.pwhTwin_HC, Tpipe1.tpwh_a) annotation(
     Line(points = {{-96, 24}, {-82, 24}}));
   connect(Tpipe1.tpwh_b, Tpipe2.tpwh_a) annotation(
-    Line(points = {{-58, 24}, {-44, 24}}));
-  connect(Tpipe2.tpwh_b, TpipeC.tpwh_a) annotation(
-    Line(points = {{-20, 24}, {-2, 24}}));
+    Line(points = {{-58, 24}, {-42, 24}}));
+  connect(split.pwhTwin_HC, Tpipe3.tpwh_a) annotation(
+    Line(points = {{-96, 24}, {-88, 24}, {-88, -10}, {-60, -10}}));
+  connect(Tpipe3.tpwh_b, Tpipe6.tpwh_a) annotation(
+    Line(points = {{-36, -10}, {-2, -10}}));
+  connect(Tpipe2.tpwh_b, Tpipe6.tpwh_a) annotation(
+    Line(points = {{-18, 24}, {-10, 24}, {-10, -10}, {-2, -10}}));
+  connect(Tpipe2.tpwh_b, Tpipe4.tpwh_a) annotation(
+    Line(points = {{-18, 24}, {-10, 24}, {-10, 50}, {-2, 50}}));
+  connect(Tpipe4.tpwh_b, TpipeC1.tpwh_a) annotation(
+    Line(points = {{22, 50}, {38, 50}}));
+  connect(Tpipe6.tpwh_b, Tpipec2.tpwh_a) annotation(
+    Line(points = {{22, -10}, {38, -10}}));
 protected
   annotation(
     experiment(StartTime = 0, StopTime = 1e+7, Tolerance = 1e-6, Interval = 1000),
-    __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts ",
+    __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts ",
     __OpenModelica_simulationFlags(lv = "LOG_STATS", s = "dassl"),
     Diagram(coordinateSystem(extent = {{-300, -200}, {300, 200}})));
-end Test_twin_pipes_001;
+end Test_twin_pipes_003;

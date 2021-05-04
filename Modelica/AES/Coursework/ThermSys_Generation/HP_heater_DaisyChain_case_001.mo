@@ -2,19 +2,19 @@ within AES.Coursework.ThermSys_Generation;
 
 model HP_heater_DaisyChain_case_001
   extends AES.Icons.CourseworkModel;
-  AES.ProcessComponents.Thermal.Piping_liquid.Pump_volumetric P(w0 = 0.2)  annotation(
+  AES.ProcessComponents.Thermal.Liquid.Pump_volumetric P(w0 = 0.2)  annotation(
     Placement(visible = true, transformation(origin = {50, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Piping_liquid.Tube pipeline(Di = 0.01, L = 50)  annotation(
+  AES.ProcessComponents.Thermal.Liquid.Tube pipeline(Di = 0.01, L = 50)  annotation(
     Placement(visible = true, transformation(origin = {128, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.RealExpression cmdP(y = min(0.1 *time, 0.5))  annotation(
     Placement(visible = true, transformation(origin = {-30, 40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Piping_liquid.Convection_VecVec loss(A = 2)  annotation(
+  AES.ProcessComponents.Thermal.Liquid.Convection_VecVec loss(A = 2)  annotation(
     Placement(visible = true, transformation(origin = {128, 36}, extent = {{-10, 10}, {10, -10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Piping_liquid.surfTcond_prescribed Te annotation(
+  AES.ProcessComponents.Thermal.Liquid.surfTcond_prescribed Te annotation(
     Placement(visible = true, transformation(origin = {128, 60}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.RealExpression iTe(y = 273.15 + 10)  annotation(
     Placement(visible = true, transformation(origin = {-30, 60}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Piping_liquid.Pressuriser pressuriser annotation(
+  AES.ProcessComponents.Thermal.Liquid.Pressuriser pressuriser annotation(
     Placement(visible = true, transformation(origin = {170, -14}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Thermal.HeatTransfer.Sources.PrescribedTemperature pTcold annotation(
     Placement(visible = true, transformation(origin = {90, -80}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
@@ -24,27 +24,27 @@ model HP_heater_DaisyChain_case_001
     Placement(visible = true, transformation(origin = {-150, 70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   ControlBlocks.ActuationSchemes.DaisyChain_uniform DC annotation(
     Placement(visible = true, transformation(origin = {-70, -40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  ProcessComponents.Thermal.Piping_liquid.Tube streamElecHtr(Di = 0.01, L = 2) annotation(
+  ProcessComponents.Thermal.Liquid.Tube streamElecHtr(Di = 0.01, L = 2) annotation(
     Placement(visible = true, transformation(origin = {10, -20}, extent = {{10, 10}, {-10, -10}}, rotation = 0)));
   Modelica.Blocks.Math.Gain PmaxElec(k = 1000) annotation(
     Placement(visible = true, transformation(origin = {-30, -40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  ProcessComponents.Thermal.Piping_liquid.surfQcond_prescribed ElecHtr annotation(
+  ProcessComponents.Thermal.Liquid.surfQcond_prescribed ElecHtr annotation(
     Placement(visible = true, transformation(origin = {10, -40}, extent = {{-10, 10}, {10, -10}}, rotation = 0)));
-  ProcessComponents.Thermal.Piping_liquid.Tube streamHP(Di = 0.01, L = 2) annotation(
+  ProcessComponents.Thermal.Liquid.Tube streamHP(Di = 0.01, L = 2) annotation(
     Placement(visible = true, transformation(origin = {50, -20}, extent = {{10, 10}, {-10, -10}}, rotation = 0)));
-  ProcessComponents.Thermal.Piping_liquid.VectorHPtoHP_conductor HP2pipe annotation(
+  ProcessComponents.Thermal.Liquid.VectorHPtoHP_conductor HP2pipe annotation(
     Placement(visible = true, transformation(origin = {50, -40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   ProcessComponents.Thermal.HVAC.HP_CarnotFractionCOPh HP(Wmax = 2000) annotation(
     Placement(visible = true, transformation(origin = {50, -60}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  ProcessComponents.Thermal.Piping_liquid.Tube delivery(Di = 0.01, L = 10) annotation(
+  ProcessComponents.Thermal.Liquid.Tube delivery(Di = 0.01, L = 10) annotation(
     Placement(visible = true, transformation(origin = {170, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  ProcessComponents.Thermal.Piping_liquid.surfQcond_prescribed load annotation(
+  ProcessComponents.Thermal.Liquid.surfQcond_prescribed load annotation(
     Placement(visible = true, transformation(origin = {170, 80}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.RealExpression iQload(y = -200) annotation(
     Placement(visible = true, transformation(origin = {-30, 80}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Piping_liquid.Tsensor Tlow annotation(
+  AES.ProcessComponents.Thermal.Liquid.Tsensor Tlow annotation(
     Placement(visible = true, transformation(origin = {-50, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Piping_liquid.Tsensor Thi annotation(
+  AES.ProcessComponents.Thermal.Liquid.Tsensor Thi annotation(
     Placement(visible = true, transformation(origin = {-50, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(streamElecHtr.pwh_b, P.pwh_a) annotation(
