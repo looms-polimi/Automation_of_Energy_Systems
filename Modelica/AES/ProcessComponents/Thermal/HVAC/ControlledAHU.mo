@@ -4,7 +4,8 @@ model ControlledAHU
   extends ProcessComponents.Thermal.Interfaces.PartialTwoPorts_waxa;
   parameter SI.Temperature Tstart = 273.15 + 20 "initial T";
   parameter Real phistart = 0.5 "initial phi";
-  parameter SI.Time TC = 4 "T control TC";
+  parameter SI.Time TCT = 10 "T control TC";
+  parameter SI.Time TCphi = 15 "T control TC";
   parameter Real eta = 0.5 "efficiency";
   Media.Substances.MoistAir airin;
   Media.Substances.MoistAir air;
@@ -24,8 +25,8 @@ equation
   airin.p = air_flange1.pa;
   airin.h = inStream(air_flange1.ha);
   airin.X = inStream(air_flange1.xa);
-  T + TC * der(T) = if ON then Tsp else airin.T;
-  phi + TC * der(phi) = if ON then phisp else airin.phi;
+  T + TCT * der(T) = if ON then Tsp else airin.T;
+  phi + TCphi * der(phi) = if ON then phisp else airin.phi;
   air.p = airin.p;
   air.phi = phi;
   air.T = T;
