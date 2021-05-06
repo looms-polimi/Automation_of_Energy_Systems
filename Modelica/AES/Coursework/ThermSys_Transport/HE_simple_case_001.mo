@@ -12,6 +12,8 @@ model HE_simple_case_001
     Placement(visible = true, transformation(origin = {30, 10}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
   AES.ProcessComponents.Thermal.Liquid.Node_pT_fixed Csnk annotation(
     Placement(visible = true, transformation(origin = {-10, 50}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
+  inner AES.ProcessComponents.Thermal.System_settings.System_liquid system annotation(
+    Placement(visible = true, transformation(origin = {-150, 50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(Hsrc.pwh_a, HE.hotIn) annotation(
     Line(points = {{-38, 10}, {-22, 10}}, color = {46, 52, 54}));

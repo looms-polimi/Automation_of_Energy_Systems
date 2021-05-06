@@ -1,7 +1,7 @@
 within AES.ProcessComponents.Thermal.DistrictHeating;
 
 model HeatingCentral
-  parameter SI.Power Pmax=2e4 "max power";
+  parameter SI.Power Pmax=1e6 "max power";
   parameter SI.MassFlowRate w0=1 "mass flowrate at spw01=1";
   parameter Real w0off=0.02 "fraction of w0 when off";
   parameter SI.Volume V=0.25 "liquid volume";

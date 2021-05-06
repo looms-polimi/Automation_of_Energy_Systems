@@ -31,7 +31,7 @@ model TwinPipe
     Placement(visible = true, transformation(origin = {40, 0}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
   SI.Temperature Thi,Tho,Tci,Tco;
 protected
-  final parameter SI.ThermalConductance Gloss = kloss*L/(Thnom-terrain.T);
+  final parameter SI.ThermalConductance Gloss = kloss*L/(Thnom-terrain.T) annotation(Evaluate = true);
 equation
   connect(tpwh_a.H, tubeH.pwh_a) annotation(
     Line(points = {{-110, 0}, {-80, 0}, {-80, 70}, {-44, 70}}));

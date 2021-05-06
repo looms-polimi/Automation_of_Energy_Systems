@@ -16,6 +16,8 @@ model HE_simple_case_002
     Placement(visible = true, transformation(origin = {-106, 46}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   AES.ProcessComponents.Thermal.Liquid.Node_pT_fixed Hsrc(T = 343.15, p = 101325 + 5000)  annotation(
     Placement(visible = true, transformation(origin = {-90, 10}, extent = {{10, -10}, {-10, 10}}, rotation = 180)));
+  inner ProcessComponents.Thermal.System_settings.System_liquid system annotation(
+    Placement(visible = true, transformation(origin = {-170, 70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(HE.coldOut, Csnk.pwh_a) annotation(
     Line(points = {{-10, 22}, {-10, 38}}, color = {46, 52, 54}));
@@ -31,7 +33,7 @@ equation
     Line(points = {{-38, 10}, {-22, 10}}, color = {46, 52, 54}));
   annotation(
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}})),
-    experiment(StartTime = 0, StopTime = 1000, Tolerance = 1e-6, Interval = 2),
+    experiment(StartTime = 0, StopTime = 1500, Tolerance = 1e-6, Interval = 3),
     __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian -d=aliasConflicts -d=aliasConflicts ",
     __OpenModelica_simulationFlags(lv = "LOG_STATS", s = "dassl"));
 end HE_simple_case_002;
