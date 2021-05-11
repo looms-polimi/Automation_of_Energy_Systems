@@ -18,9 +18,9 @@ model TwinPipeClosure
   parameter Real kloss=5 "loss [W/m] to terrain at Thnom";
   parameter SI.Temperature Tstart=293.15 "initial T, all lumps";
 
-  AES.ProcessComponents.Thermal.Liquid.Tube tubeH(Di = Di, L = L, Tstart = Tstart, cw = cw, dz = dz, fluidHeats = true, kdp = kdp, l = l, lambdaw = lambdaw, n = n, row = row, t = t, wnom = wnom)  annotation(
+  AES.ProcessComponents.Thermal.Liquid.Tube tubeH(Di = Di, L = L, Tstart = Tstart, cw = cw, dz = dz, fluidHeats = true, kdp = kdp / 2, l = l, lambdaw = lambdaw, n = n, row = row, t = t, wnom = wnom)  annotation(
     Placement(visible = true, transformation(origin = {-20, 70}, extent = {{-20, 20}, {20, -20}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Liquid.Tube tubeC(Di = Di, L = L, Tstart = Tstart, cw = cw, dz = dz, fluidHeats = true, kdp = kdp, l = l, lambdaw = lambdaw, n = n, row = row, t = t, wnom = wnom) annotation(
+  AES.ProcessComponents.Thermal.Liquid.Tube tubeC(Di = Di, L = L, Tstart = Tstart, cw = cw, dz = dz, fluidHeats = true, kdp = kdp / 2, l = l, lambdaw = lambdaw, n = n, row = row, t = t, wnom = wnom) annotation(
     Placement(visible = true, transformation(origin = {-20, -70}, extent = {{20, -20}, {-20, 20}}, rotation = 0)));
   AES.ProcessComponents.Thermal.Liquid.VectorHPtoHP_conductor pipeH2filler(Gtotal = Gloss, n = n)  annotation(
     Placement(visible = true, transformation(origin = {-20, 30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));

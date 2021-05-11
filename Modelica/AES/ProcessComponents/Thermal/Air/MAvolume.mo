@@ -38,6 +38,6 @@ equation
   haout1 = air.h;
   haout2 = air.h;
   annotation(
-  Diagram(coordinateSystem(preserveAspectRatio = false, extent = {{-100, -100}, {100, 100}}), graphics), Icon(coordinateSystem(preserveAspectRatio = false, extent = {{-100, -100}, {100, 100}}), graphics = {Rectangle(extent = {{-80, 80}, {80, -80}}, lineColor = {0, 100, 255}, fillColor = {170, 255, 255}, fillPattern = FillPattern.Sphere), Text(extent = {{-54, 52}, {50, -46}}, lineColor = {0, 0, 0}, fillColor = {0, 127, 255}, fillPattern = FillPattern.Solid, textString = "AirVolume")}),
+  Diagram(coordinateSystem(preserveAspectRatio = false, extent = {{-100, -100}, {100, 100}}), graphics), Icon(coordinateSystem(preserveAspectRatio = false, extent = {{-100, -100}, {100, 100}}), graphics = {Rectangle(lineColor = {0, 100, 255}, fillColor = {170, 255, 255}, fillPattern = FillPattern.Sphere, extent = {{-80, 80}, {80, -80}}), Text(origin = {1.5, 53.4286}, fillColor = {0, 127, 255}, fillPattern = FillPattern.Solid, extent = {{-67.5, 44.5714}, {62.5, -39.4286}}, textString = "AirVolume"), Text(origin = {-3, -39}, extent = {{-53, 23}, {53, -23}}, textString = "%name")}),
     experiment(StartTime = 0, StopTime = 1, Tolerance = 1e-6, Interval = 0.002));
 end MAvolume;

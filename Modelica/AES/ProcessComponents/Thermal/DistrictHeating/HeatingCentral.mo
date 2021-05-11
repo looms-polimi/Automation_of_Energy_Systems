@@ -2,7 +2,8 @@ within AES.ProcessComponents.Thermal.DistrictHeating;
 
 model HeatingCentral
   parameter SI.Power Pmax=1e6 "max power";
-  parameter SI.MassFlowRate w0=1 "mass flowrate at spw01=1";
+  parameter SI.MassFlowRate dp0=1 "nominal H-C pressore deop at w=w0";
+  parameter SI.MassFlowRate w0=1 "mass flowrate at dp0 and spw01=1";
   parameter Real w0off=0.02 "fraction of w0 when off";
   parameter SI.Volume V=0.25 "liquid volume";
   parameter SI.Time Tcl = 30 "CL temp ctrl TC";
@@ -10,8 +11,6 @@ model HeatingCentral
   parameter SI.Temperature Tstart = 273.15 + 25 "initial fluid temp";
   AES.ProcessComponents.Thermal.HVAC.ControlledLiquidHeater_lim H(Pmax = Pmax, Tcl = Tcl, Tstart = Tstart, V = V)  annotation(
     Placement(visible = true, transformation(origin = {-10, -4}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Liquid.Pump_volumetric P(w0 = w0)  annotation(
-    Placement(visible = true, transformation(origin = {28, -4}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   AES.ProcessComponents.Thermal.Interfaces.pwhTwinPort tpwh_a annotation(
     Placement(visible = true, transformation(origin = {110, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {116, 0}, extent = {{16, -20}, {-16, 20}}, rotation = 0)));
   AES.ProcessComponents.Thermal.Interfaces.pwhPortSplitter pwh annotation(
@@ -30,27 +29,29 @@ model HeatingCentral
     Placement(visible = true, transformation(origin = {-2, 80}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Liquid.Tsensor t2 annotation(
     Placement(visible = true, transformation(origin = {52, 74}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  Liquid.Pump_volumetric P(w0 = w0)  annotation(
+    Placement(visible = true, transformation(origin = {28, -4}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(pwh.pwhTwin_HC, tpwh_a) annotation(
     Line(points = {{81.6, -10}, {109.6, -10}}));
-  connect(P.pwh_b, pwh.pwh_H) annotation(
-    Line(points = {{40, -4}, {58, -4}}, color = {46, 52, 54}));
-  connect(H.pwh_b, P.pwh_a) annotation(
-    Line(points = {{2, -4}, {16, -4}}, color = {46, 52, 54}));
   connect(pwh.pwh_C, H.pwh_a) annotation(
     Line(points = {{58, -16}, {58, -34}, {-34, -34}, {-34, -4}, {-22, -4}}, color = {46, 52, 54}));
   connect(spTfo, H.To) annotation(
     Line(points = {{-100, 2}, {-22, 2}}, color = {0, 0, 127}));
   connect(ON, H.ON) annotation(
     Line(points = {{-100, -30}, {-60, -30}, {-60, -10}, {-22, -10}}, color = {255, 0, 255}));
-  connect(FlowCtrl.y, P.cmd) annotation(
-    Line(points = {{1, 50}, {28, 50}, {28, 4}}, color = {0, 0, 127}));
   connect(wsp.y, FlowCtrl.u) annotation(
     Line(points = {{-34, 50}, {-22, 50}}, color = {0, 0, 127}));
+  connect(FlowCtrl.y, P.cmd) annotation(
+    Line(points = {{2, 50}, {28, 50}, {28, 4}}, color = {0, 0, 127}));
+  connect(H.pwh_b, P.pwh_a) annotation(
+    Line(points = {{2, -4}, {16, -4}}, color = {46, 52, 54}));
   connect(t1.pwh_a, P.pwh_a) annotation(
     Line(points = {{10, 80}, {16, 80}, {16, -4}}, color = {46, 52, 54}));
-  connect(t2.pwh_a, P.pwh_b) annotation(
-    Line(points = {{64, 74}, {78, 74}, {78, 26}, {40, 26}, {40, -4}}, color = {46, 52, 54}));
+  connect(P.pwh_b, pwh.pwh_H) annotation(
+    Line(points = {{40, -4}, {58, -4}}, color = {46, 52, 54}));
+  connect(t2.pwh_a, pwh.pwh_H) annotation(
+    Line(points = {{64, 74}, {74, 74}, {74, 44}, {48, 44}, {48, -4}, {58, -4}}, color = {46, 52, 54}));
 initial equation
   FlowCtrl.y = if ON then spw01 else w0off * spw01
 annotation(

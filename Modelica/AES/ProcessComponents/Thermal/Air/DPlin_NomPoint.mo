@@ -17,5 +17,5 @@ equation
   xaout1 = inStream(air_flange2.xa);
   xaout2 = inStream(air_flange1.xa);
   annotation(
-  Icon(coordinateSystem(preserveAspectRatio = false, extent = {{-100, -100}, {100, 100}}), graphics = {Rectangle(lineColor = {52, 101, 164}, fillColor = {114, 159, 207}, fillPattern = FillPattern.HorizontalCylinder,extent = {{-60, 30}, {60, -30}})}));
+  Icon(coordinateSystem(preserveAspectRatio = false, extent = {{-100, -100}, {100, 100}}), graphics = {Rectangle(lineColor = {52, 101, 164}, fillColor = {114, 159, 207}, fillPattern = FillPattern.HorizontalCylinder, extent = {{-60, 30}, {60, -30}}), Text(origin = {0, -60}, extent = {{-100, 20}, {100, -20}}, textString = "%name")}));
 end DPlin_NomPoint;

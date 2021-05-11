@@ -24,7 +24,7 @@ model HC_SS_case_001
     Placement(visible = true, transformation(origin = {70, 50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   ProcessComponents.Thermal.Liquid.Tube tubeload annotation(
     Placement(visible = true, transformation(origin = {70, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  ProcessComponents.Thermal.DistrictHeating.Substation SS annotation(
+  ProcessComponents.Thermal.DistrictHeating.TwinPipeSubstation SS annotation(
     Placement(visible = true, transformation(origin = {14, -40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   AES.ProcessComponents.Thermal.Liquid.ExpansionVessel_isoT vessel(V = 0.2, p0 = 300000)  annotation(
     Placement(visible = true, transformation(origin = {22, 24}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));

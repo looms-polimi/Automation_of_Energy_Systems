@@ -18,5 +18,5 @@ equation
   air.h = haout1;
   air.X = xaout1;
   annotation(
-  Icon(graphics = {Ellipse(lineColor = {52, 101, 164}, fillColor = {255, 255, 255}, fillPattern = FillPattern.Sphere, extent = {{-100, 100}, {100, -100}}, endAngle = 360), Text(extent = {{80, -80}, {-80, 80}}, textString = "pTphi")}));
+  Icon(graphics = {Ellipse(lineColor = {52, 101, 164}, fillColor = {255, 255, 255}, fillPattern = FillPattern.Sphere, extent = {{-100, 100}, {100, -100}}, endAngle = 360), Text(extent = {{80, -80}, {-80, 80}}, textString = "pTphi"), Text(origin = {0, -120}, extent = {{-100, 20}, {100, -20}}, textString = "%name")}));
 end Node_pTphi_prescribed;

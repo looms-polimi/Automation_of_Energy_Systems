@@ -4,7 +4,7 @@ model AHU_case_001
   extends Icons.CourseworkModel;
   AES.ProcessComponents.Thermal.Air.Fan_controlled_q fan(qmax = 0.5) annotation(
     Placement(visible = true, transformation(origin = {-110, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  ProcessComponents.Thermal.Air.Node_pTphi_fixed src(T0 = 273.15 + 28, phi0 = 0.9) annotation(
+  ProcessComponents.Thermal.Air.Node_pTphi_fixed src(T0 = 273.15 + 32, phi0 = 0.9) annotation(
     Placement(visible = true, transformation(origin = {-152, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   AES.ProcessComponents.Thermal.Air.Node_pTphi_fixed snk annotation(
     Placement(visible = true, transformation(origin = {30, 10}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));

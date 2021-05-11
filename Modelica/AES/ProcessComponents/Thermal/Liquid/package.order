@@ -21,4 +21,5 @@ VectorHPtoHP_conductor
 Convection_VecVec
 Tsensor
 TwinPipeTsensor
+TwinPipeDiffPressureSensor
 ExpansionVessel_isoT
