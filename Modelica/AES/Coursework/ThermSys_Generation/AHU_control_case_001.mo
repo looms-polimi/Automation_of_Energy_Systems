@@ -38,7 +38,7 @@ model AHU_control_case_001
     Placement(visible = true, transformation(origin = {-110, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Thermal.HeatTransfer.Components.ThermalConductor conv1a(G = 2 * 10 * 3)  annotation(
     Placement(visible = true, transformation(origin = {100, 52}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
-  Modelica.Thermal.HeatTransfer.Components.ThermalConductor conv2a(G = 2 * 10 * 3)  annotation(
+  Modelica.Thermal.HeatTransfer.Components.ThermalConductor conv2a(G = 2.5 * 10 * 3)  annotation(
     Placement(visible = true, transformation(origin = {100, -30}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
   AES.ProcessComponents.Thermal.Air.Tsensor sTret annotation(
     Placement(visible = true, transformation(origin = {-114, -120}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));

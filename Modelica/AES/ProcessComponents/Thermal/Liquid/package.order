@@ -4,6 +4,7 @@ dp_quadratic
 Pump_volumetric
 Pump_centrifugal
 Pressuriser
+ExpansionVessel_isoT
 TubeStream
 LumpedPlanarWall
 TubeWall
@@ -21,5 +22,6 @@ VectorHPtoHP_conductor
 Convection_VecVec
 Tsensor
 TwinPipeTsensor
+DiffPressureSensor
 TwinPipeDiffPressureSensor
-ExpansionVessel_isoT
+MassFlowrateSensor
