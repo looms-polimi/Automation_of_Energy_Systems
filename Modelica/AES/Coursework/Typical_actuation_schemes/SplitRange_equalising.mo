@@ -19,10 +19,10 @@ model SplitRange_equalising
     Placement(visible = true, transformation(origin = {50, 30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Continuous.FirstOrder Act2(T = 0.7, k = -0.8)  annotation(
     Placement(visible = true, transformation(origin = {50, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Blocks.Continuous.TransferFunction FA1(a = {0.5, 1}, b = {0.2, 1})  annotation(
-    Placement(visible = true, transformation(origin = {10, 30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Continuous.TransferFunction FA2(a = 0.8 * {0.5, 1}, b = {0.7, 1})  annotation(
     Placement(visible = true, transformation(origin = {10, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  Modelica.Blocks.Continuous.TransferFunction FA1(a = {0.5, 1}, b = {0.2, 1})  annotation(
+    Placement(visible = true, transformation(origin = {10, 30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(fb.y, Cfb.u) annotation(
     Line(points = {{-101, 10}, {-82, 10}}, color = {0, 0, 127}));
@@ -38,15 +38,15 @@ equation
     Line(points = {{101, 10}, {117, 10}}, color = {0, 0, 127}));
   connect(Cfb.y, SR.CSi01) annotation(
     Line(points = {{-58, 10}, {-42, 10}}, color = {0, 0, 127}));
-  connect(SR.CSo01_pos, FA1.u) annotation(
-    Line(points = {{-18, 16}, {-10, 16}, {-10, 30}, {-2, 30}}, color = {0, 0, 127}));
-  connect(FA1.y, Act1.u) annotation(
-    Line(points = {{22, 30}, {38, 30}}, color = {0, 0, 127}));
   connect(SR.CSo01_neg, FA2.u) annotation(
     Line(points = {{-18, 4}, {-10, 4}, {-10, -10}, {-2, -10}}, color = {0, 0, 127}));
   connect(FA2.y, Act2.u) annotation(
     Line(points = {{22, -10}, {38, -10}}, color = {0, 0, 127}));
-annotation(
+  connect(FA1.y, Act1.u) annotation(
+    Line(points = {{22, 30}, {38, 30}}, color = {0, 0, 127}));
+  connect(SR.CSo01_pos, FA1.u) annotation(
+    Line(points = {{-18, 16}, {-10, 16}, {-10, 30}, {-2, 30}}, color = {0, 0, 127}));
+  annotation(
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}})),
     experiment(StartTime = 0, StopTime = 300, Tolerance = 1e-6, Interval = 0.6),
   __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian -d=aliasConflicts ",
