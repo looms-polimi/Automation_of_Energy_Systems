@@ -2,11 +2,11 @@ within AES.Coursework.ThermSys_Generation;
 
 model Hcentral_control_case_002
   extends Icons.CourseworkModel;
-  Modelica.Blocks.Continuous.FirstOrder FlowCtrl(T = 2, initType = Modelica.Blocks.Types.Init.InitialOutput, y_start = 1e-6) annotation(
+  Modelica.Blocks.Continuous.FirstOrder FlowCtrl(T = 5, initType = Modelica.Blocks.Types.Init.InitialOutput, y_start = 1e-6) annotation(
     Placement(visible = true, transformation(origin = {-30, 50}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
   AES.ProcessComponents.Thermal.Liquid.DiffPressureSensor sdp annotation(
     Placement(visible = true, transformation(origin = {70, -30}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
-  AES.ControlBlocks.AnalogueControllers.PI_awfb_basic PI_dpHC(CSmin = 0, K = 0.1, Ti = 2) annotation(
+  AES.ControlBlocks.AnalogueControllers.PI_awfb_basic PI_dpHC(CSmin = 0, K = 0.01, Ti = 5) annotation(
     Placement(visible = true, transformation(origin = {30, 50}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
   AES.ProcessComponents.Thermal.Liquid.Pump_centrifugal P(dp0 = 799999.9999999999, w0 = 20) annotation(
     Placement(visible = true, transformation(origin = {-70, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
