@@ -4,9 +4,10 @@ model TwinPipeSubstation_PriValve
   extends Interfaces.flowTwoTwinPorts_pwh;
   parameter SI.Power Pn=1e5 "rated thermal power";
   parameter SI.Temperature Tn_pi=273.15+100 "nominal primary inlet T";
-  parameter SI.Temperature Tn_po=273.15+60 "nominal primary outlet T";
+ // parameter SI.Temperature Tn_po=273.15+60 "nominal primary outlet T";
   parameter SI.Temperature Tn_si=273.15+20 "nominal secondary inlet T";
   parameter SI.Temperature Tn_so=273.15+50 "nominal secondary outlet T";
+  parameter Real eta=0.85 "efficiency";
   parameter SI.PressureDifference Dpn_p=1e5 "nominal primary pressure drop";
 
   
@@ -18,7 +19,7 @@ model TwinPipeSubstation_PriValve
     Placement(visible = true, transformation(origin = {-70, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   AES.ProcessComponents.Thermal.Interfaces.pwhPortSplitter split_b annotation(
     Placement(visible = true, transformation(origin = {70, 0}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Liquid.HE_LiquidLiquid_1vol HE(Tcinom = Tn_si, Tconom = Tn_so, Thinom = Tn_pi, qCnom = qn_s, qHnom = qn_p)  annotation(
+  AES.ProcessComponents.Thermal.Liquid.HE_LiquidLiquid_1vol HE(Tcinom = Tn_si, Tconom = Tn_so, Thinom = Tn_pi, qCnom = qn_s, qHnom = qn_p,eta=eta)  annotation(
     Placement(visible = true, transformation(origin = {0, 60}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   AES.ProcessComponents.Thermal.Liquid.dp_linear dplC(dpnom = 0.1 *Dpn_p, wnom = system.ro * qn_p)  annotation(
     Placement(visible = true, transformation(origin = {0, 22}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));

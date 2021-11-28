@@ -9,8 +9,9 @@ model HE_LiquidLiquid_1vol
   parameter SI.Temperature Thinom=273.15+70 "H side nominal inlet T";
   parameter SI.Temperature Tcinom=273.15+20 "C side nominal inlet T";
   parameter SI.Temperature Tconom=273.15+40 "C side nominal outlet T";
+  parameter SI.Temperature Thostart=Thonom;
   parameter SI.Temperature Tcostart=Tconom;
-  parameter SI.Temperature Thostart=(Thinom*qHnom+(Tcinom-Tconom)*qCnom)/qHnom;
+  parameter Real eta=0.85 "efficiency";
   AES.ProcessComponents.Thermal.Interfaces.pwhPort hotOut annotation(
     Placement(visible = true, transformation(origin = {-92, 92}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {0, -120}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
   AES.ProcessComponents.Thermal.Interfaces.pwhPort coldIn annotation(
@@ -22,19 +23,12 @@ model HE_LiquidLiquid_1vol
   SI.Temperature Thi,Tci;
   SI.Temperature Tho(start=Thostart);
   SI.Temperature Tco(start=Tcostart);
-  SI.Power Qhc;
-protected
+  SI.Power Q,Qloss;
+//protected
   /*
-  Given cp,wh,wc,Thi,Tco,P
-     e1: cp*wh*(Thi-Tho) = P; 
-     e2: cp*wc*(Tco-Tci) = P;
-     e3: P =G*(Tho-Tco); 
-         solve([e1,e2,e3],[G,Tho,Tci]);
-  Given cp,wh,wc,Thi,Tco,Tci
-     e1: cp*wh*(Thi-Tho) = P; 
-     e2: cp*wc*(Tco-Tci) = P;
-     e3: P =G*(Tho-Tco); 
-         solve([e1,e2,e3],[G,Tho,P]);
+     e1: Q = G*(Thi+Tho-Tci-Tco);
+     e2: Q = wH*cp*(Thi-Tho)/eta;
+     e3: Q = wC*cp*(Tco-Tci)/eta;
   */
 
   parameter SI.HeatCapacity Ch=system.ro*system.cp*Vh annotation(Evaluate = true);
@@ -42,15 +36,14 @@ protected
   parameter SI.MassFlowRate wHnom=system.ro*qHnom annotation(Evaluate = true);
   parameter SI.MassFlowRate wCnom=system.ro*qCnom annotation(Evaluate = true);
   parameter SI.Power Pnom=wCnom*system.cp*(Tconom-Tcinom) annotation(Evaluate = true);
-  parameter SI.ThermalConductance G=((Tconom-Tcinom)*system.cp*wCnom*wHnom)
-                                    /((Thinom-Tconom)*wHnom+(Tcinom-Tconom)*wCnom)
-                                    annotation(Evaluate = true);
+  parameter SI.ThermalConductance G(fixed=false) annotation(Evaluate = true);
+  parameter SI.Temperature Thonom(fixed=false) annotation(Evaluate = true);
 equation
 
-
-  Ch*der(Tho) = hotIn.w*system.cp*(Thi-Tho)-Qhc;
-  Cc*der(Tco) = coldIn.w*system.cp*(Tci-Tco)+Qhc;
-  Qhc         = G*(Tho-Tco);
+  Ch*der(Tho) = hotIn.w*system.cp*(Thi-Tho)-Q/eta;
+  Cc*der(Tco) = coldIn.w*system.cp*(Tci-Tco)+Q;
+  Q           = G*(Thi+Tho-Tci-Tco)/2;
+  Qloss       = (1-eta)*Q;
 
   Thi=actualStream(hotIn.h)/system.cp;
   Tci=actualStream(coldIn.h)/system.cp;
@@ -64,8 +57,10 @@ equation
   coldIn.w+coldOut.w = 0;
   coldIn.h = system.cp*Tho;
   coldOut.h = system.cp*Tho;
-  
-
+initial equation
+  Q = G*(Thinom+Thonom-Tcinom-Tconom)/2;
+  Q = wHnom*system.cp*(Thinom-Thonom)/eta;
+  Q = wCnom*system.cp*(Tconom-Tcinom);
 annotation(
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}})),
     Icon(graphics = {Polygon(origin = {-52, -72}, lineColor = {204, 0, 0}, fillColor = {255, 219, 219}, fillPattern = FillPattern.VerticalCylinder, points = {{-48, 172}, {-48, -28}, {152, -28}, {-48, 172}}), Polygon(origin = {14, 120}, lineColor = {32, 74, 135}, fillColor = {170, 255, 255}, fillPattern = FillPattern.HorizontalCylinder, points = {{86, -220}, {-114, -20}, {86, -20}, {86, -220}}), Line(origin = {-40.65, -39.94}, points = {{-30, 30}, {30, -30}}, thickness = 3, arrow = {Arrow.None, Arrow.Filled}, arrowSize = 20), Line(origin = {99.4, -28.97}, points = {{-30, 30}, {-90, 90}}, thickness = 3, arrow = {Arrow.None, Arrow.Filled}, arrowSize = 20)}),
