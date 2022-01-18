@@ -5,6 +5,8 @@ Typical_control_structures
 Typical_actuation_schemes
 ElecSys_generator_models
 ElecSys_PwrFreq_control
+ThermSys_component_models
+ThermSys_control_problems
 ThermSys_Generation
 ThermSys_Transport
 ThermSys_Networks

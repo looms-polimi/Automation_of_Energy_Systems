@@ -3,7 +3,7 @@ within AES.ProcessComponents.Thermal.Interfaces;
 connector MAport_waxa "Interface for moist air (w,AU)"
   SI.AbsolutePressure pa "Pressure";
   flow SI.MassFlowRate wa "Dry air mass flowrate";
-  stream SI.SpecificEnthalpy ha "Specifc enthalpy";
+  stream SI.SpecificEnthalpy ha "Specific enthalpy";
   stream SI.MassFraction xa "Absolute humidity [Kg vap/Kg dry air]";
   annotation(
     defaultComponentName = "air_flange",

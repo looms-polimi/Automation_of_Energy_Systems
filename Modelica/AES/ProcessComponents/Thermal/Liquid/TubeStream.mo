@@ -17,6 +17,7 @@ model TubeStream
   SI.Temperature Ta,Tb;
   SI.CoefficientOfHeatTransfer gamma;
   SI.Temperature T[n](each start=Tstart, each fixed=true) "fluid T, 1->n is a->b side";
+  SI.Power Q_surf_tot;
 protected
   final parameter Real kf(fixed=false) annotation(Evaluate = true);
   final parameter SI.Area Across=Modelica.Constants.pi*D^2/4;
@@ -45,6 +46,7 @@ equation
   hbo             = cp*T[n];
   Ta              = T[1];
   Tb              = T[n];
+  Q_surf_tot      = sum(surf.Q_flow);
 initial equation
   kdp*1e5*L/1000/ro = kf*wnom^2;
 annotation(

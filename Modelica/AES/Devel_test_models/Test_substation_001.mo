@@ -14,13 +14,13 @@ model Test_substation_001
     Placement(visible = true, transformation(origin = {10, 30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   AES.ProcessComponents.Thermal.Liquid.Tube tube01 annotation(
     Placement(visible = true, transformation(origin = {110, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.DistrictHeating.HeatingCentral HC(Pmax = 1.2e5,V = 2, w0 = 0.6)  annotation(
+  AES.ProcessComponents.Thermal.DistrictHeating.HeatingCentral HC(Pmax = 1.2e5, V = 2, w0 = 0.6) annotation(
     Placement(visible = true, transformation(origin = {-110, -30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.DistrictHeating.TwinPipe tp01(kdp = 0.5)  annotation(
+  AES.ProcessComponents.Thermal.DistrictHeating.TwinPipe tp01(kdp = 0.5) annotation(
     Placement(visible = true, transformation(origin = {30, -30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.DistrictHeating.Substation ss1 annotation(
+  AES.ProcessComponents.Thermal.DistrictHeating.TwinPipeSubstation ss1 annotation(
     Placement(visible = true, transformation(origin = {70, -30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Liquid.Convection_VecVec conv01(A = 100)  annotation(
+  AES.ProcessComponents.Thermal.Liquid.Convection_VecVec conv01(A = 100) annotation(
     Placement(visible = true, transformation(origin = {110, 60}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.BooleanExpression HCon(y = true) annotation(
     Placement(visible = true, transformation(origin = {-170, -50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -34,8 +34,10 @@ model Test_substation_001
     Placement(visible = true, transformation(origin = {-50, 30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   AES.ProcessComponents.Thermal.Liquid.Node_pT_fixed ssnk annotation(
     Placement(visible = true, transformation(origin = {170, 20}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.DistrictHeating.pressuriser_tp_C ptpC(pC = 799999.9999999999)  annotation(
+  AES.ProcessComponents.Thermal.DistrictHeating.pressuriser_tp_C ptpC(pC = 799999.9999999999) annotation(
     Placement(visible = true, transformation(origin = {-70, -30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  AES.ProcessComponents.Thermal.DistrictHeating.TwinPipeClosure clo annotation(
+    Placement(visible = true, transformation(origin = {130, -30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(cmdT.y, T.T) annotation(
     Line(points = {{1, 90}, {102, 90}}, color = {0, 0, 127}));
@@ -65,9 +67,11 @@ equation
     Line(points = {{66, -18}, {66, 20}, {98, 20}}, color = {46, 52, 54}));
   connect(tube01.pwh_b, ssnk.pwh_a) annotation(
     Line(points = {{122, 20}, {158, 20}}, color = {46, 52, 54}));
+  connect(ss1.tpwh_b, clo.tpwh_a) annotation(
+    Line(points = {{82, -30}, {118, -30}}));
 protected
   annotation(
-    experiment(StartTime = 0, StopTime = 80000, Tolerance = 1e-06, Interval = 8),
+    experiment(StartTime = 0, StopTime = 80000, Tolerance = 1e-6, Interval = 8),
     __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts ",
     __OpenModelica_simulationFlags(lv = "LOG_STATS", s = "dassl"),
     Diagram(coordinateSystem(extent = {{-300, -200}, {300, 200}})));

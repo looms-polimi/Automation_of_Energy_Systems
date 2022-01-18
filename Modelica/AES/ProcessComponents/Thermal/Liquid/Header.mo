@@ -16,8 +16,8 @@ equation
                +pwh_b.w*actualStream(pwh_b.h)
                +heatPort.Q_flow;
   heatPort.T = T;
-  hao        = cp*T;
-  hbo        = cp*T;
+  hao        = system.cp*T;
+  hbo        = system.cp*T;
 initial equation
 annotation(
     Icon(graphics = {Ellipse(fillColor = {211, 215, 207}, fillPattern = FillPattern.Sphere, extent = {{-100, 100}, {100, -100}}, endAngle = 360), Text(origin = {0, -120}, extent = {{-100, 20}, {100, -20}}, textString = "%name")}));

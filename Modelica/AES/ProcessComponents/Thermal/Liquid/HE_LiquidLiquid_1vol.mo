@@ -8,9 +8,8 @@ model HE_LiquidLiquid_1vol
   parameter SI.VolumeFlowRate qCnom=0.0001 "C nominal volume flowrate";
   parameter SI.Temperature Thinom=273.15+70 "H side nominal inlet T";
   parameter SI.Temperature Tcinom=273.15+20 "C side nominal inlet T";
-  parameter SI.Temperature Tconom=273.15+40 "C side nominal outlet T";
-  parameter SI.Temperature Tcostart=Tconom;
-  parameter SI.Temperature Thostart=(Thinom*qHnom+(Tcinom-Tconom)*qCnom)/qHnom;
+  parameter SI.Temperature Pnom=3000 "Nominal P (taken from H side)";
+  parameter Real eta=0.95 "Efficiency";
   AES.ProcessComponents.Thermal.Interfaces.pwhPort hotOut annotation(
     Placement(visible = true, transformation(origin = {-92, 92}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {0, -120}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
   AES.ProcessComponents.Thermal.Interfaces.pwhPort coldIn annotation(
@@ -22,38 +21,38 @@ model HE_LiquidLiquid_1vol
   SI.Temperature Thi,Tci;
   SI.Temperature Tho(start=Thostart);
   SI.Temperature Tco(start=Tcostart);
-  SI.Power Qhc;
+  SI.Power Ph,Pc,Ploss;
 protected
   /*
-  Given cp,wh,wc,Thi,Tco,P
+  Given cp,wh,wc,Thi,Tci,P,eta
      e1: cp*wh*(Thi-Tho) = P; 
-     e2: cp*wc*(Tco-Tci) = P;
+     e2: cp*wc*(Tco-Tci) = P*eta;
      e3: P =G*(Tho-Tco); 
-         solve([e1,e2,e3],[G,Tho,Tci]);
-  Given cp,wh,wc,Thi,Tco,Tci
-     e1: cp*wh*(Thi-Tho) = P; 
-     e2: cp*wc*(Tco-Tci) = P;
-     e3: P =G*(Tho-Tco); 
-         solve([e1,e2,e3],[G,Tho,P]);
+         solve([e1,e2,e3],[G,Tho,Tco]);
   */
 
   parameter SI.HeatCapacity Ch=system.ro*system.cp*Vh annotation(Evaluate = true);
   parameter SI.HeatCapacity Cc=system.ro*system.cp*Vc annotation(Evaluate = true);
   parameter SI.MassFlowRate wHnom=system.ro*qHnom annotation(Evaluate = true);
   parameter SI.MassFlowRate wCnom=system.ro*qCnom annotation(Evaluate = true);
-  parameter SI.Power Pnom=wCnom*system.cp*(Tconom-Tcinom) annotation(Evaluate = true);
-  parameter SI.ThermalConductance G=((Tconom-Tcinom)*system.cp*wCnom*wHnom)
-                                    /((Thinom-Tconom)*wHnom+(Tcinom-Tconom)*wCnom)
-                                    annotation(Evaluate = true);
+  parameter SI.Temperature
+            Thostart=Thinom-Pnom/wCnom/system.cp
+            annotation(Evaluate = true);
+  parameter SI.Temperature
+            Tcostart=Tcinom+eta*Pnom/wCnom/system.cp
+            annotation(Evaluate = true);
+  parameter SI.ThermalConductance
+            G = Pnom/(Thinom-Tcinom)
+            annotation(Evaluate = true);
 equation
 
-
-  Ch*der(Tho) = hotIn.w*system.cp*(Thi-Tho)-Qhc;
-  Cc*der(Tco) = coldIn.w*system.cp*(Tci-Tco)+Qhc;
-  Qhc         = G*(Tho-Tco);
-
-  Thi=actualStream(hotIn.h)/system.cp;
-  Tci=actualStream(coldIn.h)/system.cp;
+  Ch*der(Tho) = hotIn.w*system.cp*(Thi-Tho)-Ph;
+  Cc*der(Tco) = coldIn.w*system.cp*(Tci-Tco)+Pc;
+  Ph          = G*(Thi-Tci);
+  Pc          = Ph*eta;
+  Ploss       = Ph-Pc;
+  Thi         = actualStream(hotIn.h)/system.cp;
+  Tci         = actualStream(coldIn.h)/system.cp;
 
   hotIn.p = hotOut.p;
   hotIn.w+hotOut.w = 0;
