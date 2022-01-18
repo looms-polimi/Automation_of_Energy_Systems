@@ -8,7 +8,7 @@ model HE_LiquidLiquid_1vol
   parameter SI.VolumeFlowRate qCnom=0.0001 "C nominal volume flowrate";
   parameter SI.Temperature Thinom=273.15+70 "H side nominal inlet T";
   parameter SI.Temperature Tcinom=273.15+20 "C side nominal inlet T";
-  parameter SI.Temperature Pnom=3000 "Nominal P (taken from H side)";
+  parameter SI.Power Pnom=3000 "Nominal P (taken from H side)";
   parameter Real eta=0.95 "Efficiency";
   AES.ProcessComponents.Thermal.Interfaces.pwhPort hotOut annotation(
     Placement(visible = true, transformation(origin = {-92, 92}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {0, -120}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
@@ -63,8 +63,6 @@ equation
   coldIn.w+coldOut.w = 0;
   coldIn.h = system.cp*Tho;
   coldOut.h = system.cp*Tho;
-  
-
 annotation(
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}})),
     Icon(graphics = {Polygon(origin = {-52, -72}, lineColor = {204, 0, 0}, fillColor = {255, 219, 219}, fillPattern = FillPattern.VerticalCylinder, points = {{-48, 172}, {-48, -28}, {152, -28}, {-48, 172}}), Polygon(origin = {14, 120}, lineColor = {32, 74, 135}, fillColor = {170, 255, 255}, fillPattern = FillPattern.HorizontalCylinder, points = {{86, -220}, {-114, -20}, {86, -20}, {86, -220}}), Line(origin = {-40.65, -39.94}, points = {{-30, 30}, {30, -30}}, thickness = 3, arrow = {Arrow.None, Arrow.Filled}, arrowSize = 20), Line(origin = {99.4, -28.97}, points = {{-30, 30}, {-90, 90}}, thickness = 3, arrow = {Arrow.None, Arrow.Filled}, arrowSize = 20)}),
