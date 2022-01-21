@@ -16,8 +16,8 @@ protected
   final parameter SI.HeatCapacity c[n]
         = A/n*(ro.*s.*cw);
   final parameter SI.ThermalConductance g[n+1]
-        = A*Functions.layer_fcf_conductivities(n, s, lambda)
-          ./Functions.layer_fcf_distances(n,s);
+        = A*Functions.layer_fcf_conductivities(s, lambda)
+          ./Functions.layer_fcf_distances(s);
 equation
   c[1] * der(T[1]) = side_a.Q_flow - g[2] * (T[1] - T[2]);
   side_a.T = T[1]+side_a.Q_flow/g[1];

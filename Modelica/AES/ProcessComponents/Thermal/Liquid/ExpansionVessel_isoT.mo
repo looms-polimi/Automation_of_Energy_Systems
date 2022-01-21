@@ -5,7 +5,7 @@ model ExpansionVessel_isoT
   parameter SI.Pressure p0=101325 "nominal p";
   parameter SI.Area V=5 "vessel volume";
   parameter SI.Temperature T0=293.15 "operating temperature";
-  parameter SI.MolarMass MM=29 "gas molar mass";
+  parameter SI.MolarMass MM=0.029 "gas molar mass";
   parameter Real lfracstart=0.5 "initial fractional (0-1) level";
   Real lfrac(start=lfracstart,fixed=true);
   SI.Pressure p;

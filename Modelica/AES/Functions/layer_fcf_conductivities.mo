@@ -1,11 +1,13 @@
 within AES.Functions;
 function layer_fcf_conductivities "face-centres-face"
   extends Modelica.Icons.Function;
-  input Integer n;
-  input Real s[n];
-  input Real lambda[n];
-  output Real L[n + 1];
+  input Real s[:];
+  input Real lambda[:];
+  output Real L[size(s,1) + 1];
+protected
+  Integer n;
 algorithm
+  n := size(s,1);
   L[1] := lambda[1];
   L[n + 1] := lambda[n];
   for i in 2:n loop

@@ -1,6 +1,6 @@
 within AES.Coursework.ThermSys_component_models;
 
-  model Pump_valve
+  model Pumps_valve
     extends Icons.CourseworkModel;
   AES.ProcessComponents.Thermal.Liquid.Pump_volumetric Pvol(w0 = 0.1)  annotation(
     Placement(visible = true, transformation(origin = {-90, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -43,4 +43,4 @@ within AES.Coursework.ThermSys_component_models;
     experiment(StartTime = 0, StopTime = 50, Tolerance = 1e-6, Interval = 0.1),
     __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian",
     __OpenModelica_simulationFlags(lv = "LOG_STATS", s = "dassl"));
-  end Pump_valve;
+  end Pumps_valve;
