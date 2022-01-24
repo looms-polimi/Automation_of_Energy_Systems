@@ -17,7 +17,7 @@ model DaisyChain
   Modelica.Blocks.Continuous.FirstOrder Act2(T = 0.7, k = 0.8)  annotation(
     Placement(visible = true, transformation(origin = {50, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   AES.ControlBlocks.ActuationSchemes.DaisyChain_uniform DC annotation(
-    Placement(visible = true, transformation(origin = {-10, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+    Placement(visible = true, transformation(origin = {-30, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(fb.y, Cfb.u) annotation(
     Line(points = {{-101, 10}, {-82, 10}}, color = {0, 0, 127}));
@@ -32,11 +32,11 @@ equation
   connect(au.y, Process.u) annotation(
     Line(points = {{101, 10}, {117, 10}}, color = {0, 0, 127}));
   connect(DC.CSo01[1], Act1.u) annotation(
-    Line(points = {{2, 10}, {20, 10}, {20, 30}, {38, 30}}, color = {0, 0, 127}));
+    Line(points = {{-18, 10}, {20, 10}, {20, 30}, {38, 30}}, color = {0, 0, 127}));
   connect(DC.CSo01[2], Act2.u) annotation(
-    Line(points = {{2, 10}, {20, 10}, {20, -10}, {38, -10}}, color = {0, 0, 127}));
+    Line(points = {{-18, 10}, {20, 10}, {20, -10}, {38, -10}}, color = {0, 0, 127}));
   connect(Cfb.y, DC.CSi01) annotation(
-    Line(points = {{-58, 10}, {-22, 10}}, color = {0, 0, 127}));
+    Line(points = {{-58, 10}, {-42, 10}}, color = {0, 0, 127}));
   annotation(
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}})),
     experiment(StartTime = 0, StopTime = 300, Tolerance = 1e-6, Interval = 0.6),

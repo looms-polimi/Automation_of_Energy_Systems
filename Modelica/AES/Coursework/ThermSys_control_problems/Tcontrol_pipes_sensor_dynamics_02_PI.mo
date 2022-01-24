@@ -1,8 +1,7 @@
-within AES.Coursework.Typical_control_structures;
+within AES.Coursework.ThermSys_control_problems;
 
-model Main_dynamics_in_FB_path
+model Tcontrol_pipes_sensor_dynamics_02_PI
   extends Icons.CourseworkModel;
-  
   Modelica.Blocks.Sources.RealExpression SP(y = if time < 10 then 0 else 0.5) annotation(
     Placement(visible = true, transformation(origin = {-110, 56}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Continuous.TransferFunction P_tforP(a = {5, 1}, b = {1}) annotation(
@@ -13,9 +12,9 @@ model Main_dynamics_in_FB_path
     Placement(visible = true, transformation(origin = {30, -30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Continuous.TransferFunction sens_tforS(a = {20, 1}, b = {1}) annotation(
     Placement(visible = true, transformation(origin = {-10, -70}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
-  AES.ControlBlocks.AnalogueControllers.PI_awfb_basic PI_tuned_for_process(K = 10, Ti = 10)  annotation(
+  AES.ControlBlocks.AnalogueControllers.PI_awfb_basic PI_tuned_for_process(K = 10, Ti = 10) annotation(
     Placement(visible = true, transformation(origin = {-30, 50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ControlBlocks.AnalogueControllers.PI_awfb_basic PI_tuned_for_sensor(K = 0.8, Ti = 20)  annotation(
+  AES.ControlBlocks.AnalogueControllers.PI_awfb_basic PI_tuned_for_sensor(K = 0.8, Ti = 20) annotation(
     Placement(visible = true, transformation(origin = {-30, -30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(P_tforP.y, sens_tforP.u) annotation(
@@ -37,6 +36,6 @@ equation
   annotation(
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}})),
     experiment(StartTime = 0, StopTime = 100, Tolerance = 1e-6, Interval = 0.2),
-  __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian -d=aliasConflicts -d=aliasConflicts ",
-  __OpenModelica_simulationFlags(lv = "LOG_STATS", s = "dassl"));
-end Main_dynamics_in_FB_path;
+    __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian -d=aliasConflicts -d=aliasConflicts ",
+    __OpenModelica_simulationFlags(lv = "LOG_STATS", s = "dassl"));
+end Tcontrol_pipes_sensor_dynamics_02_PI;
