@@ -87,7 +87,7 @@ equation
     Line(points = {{-2, -40}, {-120, -40}, {-120, 80}, {-138, 80}}, color = {0, 0, 127}));
   annotation(
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}})),
-    experiment(StartTime = 0, StopTime = 100, Tolerance = 1e-6, Interval = 0.2),
+    experiment(StartTime = 0, StopTime = 50, Tolerance = 1e-6, Interval = 0.1),
     __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian -d=aliasConflicts -d=aliasConflicts",
     __OpenModelica_simulationFlags(lv = "LOG_STATS", s = "dassl"));
 end Tcontrol_pipes_sensor_dynamics_01_gen;

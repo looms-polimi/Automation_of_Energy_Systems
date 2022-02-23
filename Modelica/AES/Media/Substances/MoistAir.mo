@@ -13,6 +13,7 @@ model MoistAir "Moist air"
   Real phi "relative humidity";
   SI.Temperature Twb "wet bulb temperature";
   SI.MassFraction Xs "absolute humidity [kg vap/kg da] at saturation (phi=1)";
+  SI.MassFraction xs "vapour fraction [kg vap/kg tot] at saturation (phi=1)";
   SI.SpecificEnthalpy ha "specific enthalpy of dry air [J/kg da]";
   SI.SpecificEnthalpy hv "specific enthalpy of vapour [J/kg vap]";
   SI.SpecificEnthalpy h "specific enthalpy of moist air [J/kg da]";
@@ -20,22 +21,28 @@ model MoistAir "Moist air"
   SI.Density d "density of moist air";
   SI.SpecificHeatCapacity cp "moist air specific heat capacity [J/kg da K]";
   SI.SpecificHeatCapacity R "equivalent gas constant of moist air";
+protected
+  SI.Conversions.NonSIunits.Temperature_degC Tc;
 equation
-  x = X / (1 + X);
-  pv = p * (X / 0.622) / (1 + X / 0.622);
-  pvs = 610.78 * exp((T - 273.15) / (T - 273.15 + 238.3) * 17.2694);
-  pv = pvs * phi;
-  pv = 610.78 * exp((Twb - 273.15) / (Twb - 273.15 + 238.3) * 17.2694);
-// for Twb
-  pvs = p * (Xs / 0.622) / (1 + Xs / 0.622);
-// for Xs
-  ha = MAC.cp_a * (T - 273.15);
-  hv = MAC.h_v_3pt + MAC.cp_v * (T - 273.15);
+  Tc  = T-273.15;
+  x   = X / (1 + X);
+  x   = pv/p;
+  phi = pv/pvs;
+  Xs  = pvs/(p-pvs)*MAC.MMw/MAC.MMa;
+  xs  = Xs / (1 + Xs);
+  pvs = exp(6.41542+2.302585*Tc/(31.614894+0.1327603*Tc+1.5593343e-5*Tc^2));
+
+  pv = 610.78 * exp((Twb - 273.15) / (Twb - 273.15 + 238.3) * 17.2694) "for Twb";
+  /*pvs = p * (Xs / 0.622) / (1 + Xs / 0.622) "for Xs"; */
+  
+  
+  ha = MAC.cp_a * Tc;
+  hv = MAC.h_v_3pt + MAC.cp_v * Tc;
   h = ha + X * hv;
-  hl = MAC.cp_l * (T - 273.15);
+  hl = MAC.cp_l * Tc;
   d = (p - pv) / (MAC.Ra * T) + pv / (MAC.Rv * T);
   cp = MAC.cp_a + X * MAC.cp_v;
-  R = MAC.Ra + MAC.Rv * X;
+  R = MAC.Ra*(1-x) + MAC.Rv * x;
   annotation(
     Documentation(info = "<html>
 <p>This is the moist air model that is based on Mollier Diagram.</p>
