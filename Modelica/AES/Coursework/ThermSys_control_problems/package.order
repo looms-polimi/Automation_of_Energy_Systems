@@ -3,4 +3,6 @@ Temperature_control_pipes
 Temperature_flow_control
 Thermal_control_central_local_sources
 Thermal_control_actuator_equalisation
+Thermal_zones_control
 Keep_limits_with_overrides
+Storage_management

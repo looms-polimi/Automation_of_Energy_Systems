@@ -1,6 +1,6 @@
 within AES.Coursework.ThermSys_control_problems;
 
-package Flow_pressure_control_liquids
+package Storage_management
   extends Modelica.Icons.Package;
   extends Icons.CourseworkModel;
-end Flow_pressure_control_liquids;
+end Storage_management;
