@@ -4,7 +4,7 @@ model Keep_within_two_limits
   extends Icons.CourseworkModel;
   AES.ControlBlocks.AnalogueControllers.PI_awfb_basic C_hi(CSmax = 0, CSmin = -10, K = 15, Ti = 6) annotation(
     Placement(visible = true, transformation(origin = {-50, 30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Blocks.Continuous.TransferFunction P(a = {10, 11, 1}, b = {1}) annotation(
+  Modelica.Blocks.Continuous.TransferFunction P(a = {10, 11, 1}, b = {1}, initType = Modelica.Blocks.Types.Init.InitialOutput, y_start = 20) annotation(
     Placement(visible = true, transformation(origin = {50, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.RealExpression HI_limit(y = 21) annotation(
     Placement(visible = true, transformation(origin = {-110, 36}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));

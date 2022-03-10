@@ -4,13 +4,13 @@ model Cascade_with_locks
   extends Icons.CourseworkModel;
   Modelica.Blocks.Continuous.FirstOrder P_I(T = 1, k = 1) annotation(
     Placement(visible = true, transformation(origin = {50, 30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Blocks.Continuous.FirstOrder P_E(T = 5, k = 1) annotation(
+  Modelica.Blocks.Continuous.FirstOrder P_E(T = 10, k = 1) annotation(
     Placement(visible = true, transformation(origin = {110, 30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.RealExpression SP(y = if time > 20 and time < 50 then 2 else 0.5) annotation(
     Placement(visible = true, transformation(origin = {-130, 30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ControlBlocks.AnalogueControllers.PI_awfb_full PI_E(CSmax = 100, CSmin = -100, K = 2, Ti = 5, hasLocks = true)  annotation(
+  AES.ControlBlocks.AnalogueControllers.PI_awfb_full PI_E(CSmax = 100, CSmin = -100, K = 2, Ti = 10, hasLocks = true)  annotation(
     Placement(visible = true, transformation(origin = {-70, 16}, extent = {{-10, -20}, {10, 20}}, rotation = 0)));
-  AES.ControlBlocks.AnalogueControllers.PI_awfb_full PI_I(K = 3)  annotation(
+  AES.ControlBlocks.AnalogueControllers.PI_awfb_full PI_I(K = 2)  annotation(
     Placement(visible = true, transformation(origin = {-10, 16}, extent = {{-10, -20}, {10, 20}}, rotation = 0)));
 equation
   connect(P_I.y, P_E.u) annotation(

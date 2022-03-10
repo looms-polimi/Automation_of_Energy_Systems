@@ -1,4 +1,4 @@
-within AES.Coursework.ThermSys_Transport;
+within AES.Coursework.ThermSys_control_problems.Flow_pressure_control_liquids;
 
 model Valve_linearisation_case_004_LTI
   extends AES.Icons.CourseworkModel;

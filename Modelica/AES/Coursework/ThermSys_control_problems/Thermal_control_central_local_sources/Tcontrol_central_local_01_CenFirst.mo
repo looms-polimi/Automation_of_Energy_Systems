@@ -1,6 +1,6 @@
-within AES.Coursework.ThermSys_control_problems;
+within AES.Coursework.ThermSys_control_problems.Thermal_control_central_local_sources;
 
-model Tcontrol_central_local_01
+model Tcontrol_central_local_01_CenFirst
   extends Icons.CourseworkModel;
   Modelica.Thermal.HeatTransfer.Components.HeatCapacitor Ccen(C = 5000, T(start = 313.15))  annotation(
     Placement(visible = true, transformation(origin = {-150, 10}, extent = {{-30, -30}, {30, 30}}, rotation = 0)));
@@ -136,4 +136,4 @@ equation
     experiment(StartTime = 0, StopTime = 10000, Tolerance = 1e-6, Interval = 2),
     __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian",
     __OpenModelica_simulationFlags(lv = "LOG_STATS", s = "dassl"));
-end Tcontrol_central_local_01;
+end Tcontrol_central_local_01_CenFirst;

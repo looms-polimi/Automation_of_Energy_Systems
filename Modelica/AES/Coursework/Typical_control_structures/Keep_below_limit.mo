@@ -2,7 +2,7 @@ within AES.Coursework.Typical_control_structures;
 
 model Keep_below_limit
   extends Icons.CourseworkModel;
-  AES.ControlBlocks.AnalogueControllers.PI_awfb_basic C(CSmax = 0, CSmin = -2, K = 15, Ti = 6) annotation(
+  AES.ControlBlocks.AnalogueControllers.PI_awfb_basic C(CSmax = 0, CSmin = -2, K = 30, Ti = 6) annotation(
     Placement(visible = true, transformation(origin = {-50, 30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Continuous.TransferFunction P(a = {10, 11, 1}, b = {1}, initType = Modelica.Blocks.Types.Init.InitialOutput) annotation(
     Placement(visible = true, transformation(origin = {50, 36}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));

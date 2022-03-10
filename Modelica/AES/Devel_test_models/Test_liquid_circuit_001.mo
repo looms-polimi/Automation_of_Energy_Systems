@@ -20,6 +20,10 @@ model Test_liquid_circuit_001
     Placement(visible = true, transformation(origin = {-30, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.RealExpression x(y = if time < 500 then 0.1 else 0.9) annotation(
     Placement(visible = true, transformation(origin = {-110, 50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  AES.ProcessComponents.Thermal.Liquid.Tsensor T1 annotation(
+    Placement(visible = true, transformation(origin = {-18, -60}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
+  AES.ProcessComponents.Thermal.Liquid.Tsensor T2 annotation(
+    Placement(visible = true, transformation(origin = {10, -40}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
 equation
   connect(tube.pwh_b, snk.pwh_a) annotation(
     Line(points = {{22, -10}, {38, -10}}, color = {46, 52, 54}));
@@ -35,6 +39,10 @@ equation
     Line(points = {{-18, -10}, {-2, -10}}, color = {46, 52, 54}));
   connect(x.y, valve.x) annotation(
     Line(points = {{-98, 50}, {-30, 50}, {-30, 0}}, color = {0, 0, 127}));
+  connect(T2.pwh_a, valve.pwh_b) annotation(
+    Line(points = {{-2, -40}, {-18, -40}, {-18, -10}}, color = {46, 52, 54}));
+  connect(valve.pwh_a, T1.pwh_a) annotation(
+    Line(points = {{-42, -10}, {-42, -60}, {-30, -60}}, color = {46, 52, 54}));
   annotation(
     experiment(StartTime = 0, StopTime = 1000, Tolerance = 1e-6, Interval = 0.1),
     __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts ",

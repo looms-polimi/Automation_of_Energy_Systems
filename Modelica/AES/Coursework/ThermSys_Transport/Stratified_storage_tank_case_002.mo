@@ -8,7 +8,7 @@ model Stratified_storage_tank_case_002
     Placement(visible = true, transformation(origin = {-80, 60}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.RealExpression spT(y = 273.15 + 50) annotation(
     Placement(visible = true, transformation(origin = {-130, 36}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.HVAC.StratifiedTank_2zones stank(Abase = 4, H = 5, lcoldstart = 2) annotation(
+  AES.ProcessComponents.Thermal.HVAC.StratifiedTank_2zones stank(Abase = 4, H = 5, lcoldstart = 4.5) annotation(
     Placement(visible = true, transformation(origin = {10, 24}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   AES.ProcessComponents.Thermal.Liquid.Pressuriser psrc annotation(
     Placement(visible = true, transformation(origin = {-50, 6}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));

@@ -1,4 +1,4 @@
-within AES.Coursework.ThermSys_control_problems;
+within AES.Coursework.ThermSys_control_problems.Temperature_control_pipes;
 
 model Tcontrol_pipes_sensor_dynamics_02_PI
   extends Icons.CourseworkModel;

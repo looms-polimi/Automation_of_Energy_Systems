@@ -25,7 +25,7 @@ extends Icons.AnalogueController200x200;
   Modelica.Blocks.Math.Add3 add1 annotation(
     Placement(visible = true, transformation(origin = {18, 0}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
   Modelica.Blocks.Continuous.Derivative dBias(T = Ti, initType = Modelica.Blocks.Types.Init.InitialOutput, k = Ti)  annotation(
-    Placement(visible = true, transformation(origin = {-98, 60}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
+    Placement(visible = true, transformation(origin = {-98, 62}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
 equation
   connect(e.y, gK.u) annotation(
     Line(points = {{-102, 0}, {-84, 0}}, color = {0, 0, 127}));
@@ -44,9 +44,9 @@ equation
   connect(FO.y, add1.u3) annotation(
     Line(points = {{36, -60}, {-20, -60}, {-20, -16}, {-6, -16}}, color = {0, 0, 127}));
   connect(Bias, dBias.u) annotation(
-    Line(points = {{-180, 60}, {-122, 60}}, color = {0, 0, 127}));
+    Line(points = {{-180, 60}, {-151, 60}, {-151, 62}, {-122, 62}}, color = {0, 0, 127}));
   connect(dBias.y, add1.u1) annotation(
-    Line(points = {{-76, 60}, {-20, 60}, {-20, 16}, {-6, 16}}, color = {0, 0, 127}));
+    Line(points = {{-76, 62}, {-20, 62}, {-20, 16}, {-6, 16}}, color = {0, 0, 127}));
   annotation(
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}})),
     Icon(graphics = {Text(origin = {-2, -5}, extent = {{-50, 59}, {50, -59}}, textString = "PI")}, coordinateSystem(initialScale = 0.1)));
