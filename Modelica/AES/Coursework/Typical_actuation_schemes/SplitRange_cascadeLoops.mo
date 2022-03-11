@@ -17,9 +17,9 @@ model SplitRange_cascadeLoops
     Placement(visible = true, transformation(origin = {114, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Continuous.FirstOrder Act1(T = 0.2, k = 1)  annotation(
     Placement(visible = true, transformation(origin = {70, 30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Blocks.Continuous.FirstOrder Act2(T = 0.7, k = -0.8)  annotation(
+  Modelica.Blocks.Continuous.FirstOrder Act2(T = 4, k = -0.8)  annotation(
     Placement(visible = true, transformation(origin = {70, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Blocks.Continuous.TransferFunction CA2(a = {1, 0}, b = -2 / 0.8 * {0.7, 1}) annotation(
+  Modelica.Blocks.Continuous.TransferFunction CA2(a = {1, 0}, b = -2 / 0.8 * {2, 1}) annotation(
     Placement(visible = true, transformation(origin = {32, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Continuous.TransferFunction CA1(a = {1, 0}, b = 2 * {0.2, 1}) annotation(
     Placement(visible = true, transformation(origin = {32, 30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));

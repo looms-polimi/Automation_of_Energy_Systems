@@ -17,7 +17,7 @@ model SplitRange_standard
     Placement(visible = true, transformation(origin = {90, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Continuous.FirstOrder Act1(T = 0.2, k = 1)  annotation(
     Placement(visible = true, transformation(origin = {50, 30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Blocks.Continuous.FirstOrder Act2(T = 0.7, k = -0.8)  annotation(
+  Modelica.Blocks.Continuous.FirstOrder Act2(T = 2, k = -0.8)  annotation(
     Placement(visible = true, transformation(origin = {50, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(fb.y, Cfb.u) annotation(

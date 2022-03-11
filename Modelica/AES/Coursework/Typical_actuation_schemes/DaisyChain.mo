@@ -33,10 +33,10 @@ equation
     Line(points = {{101, 10}, {117, 10}}, color = {0, 0, 127}));
   connect(DC.CSo01[1], Act1.u) annotation(
     Line(points = {{-18, 10}, {20, 10}, {20, 30}, {38, 30}}, color = {0, 0, 127}));
-  connect(DC.CSo01[2], Act2.u) annotation(
-    Line(points = {{-18, 10}, {20, 10}, {20, -10}, {38, -10}}, color = {0, 0, 127}));
   connect(Cfb.y, DC.CSi01) annotation(
     Line(points = {{-58, 10}, {-42, 10}}, color = {0, 0, 127}));
+  connect(DC.CSo01[2], Act2.u) annotation(
+    Line(points = {{-18, 10}, {20, 10}, {20, -10}, {38, -10}}, color = {0, 0, 127}));
   annotation(
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}})),
     experiment(StartTime = 0, StopTime = 300, Tolerance = 1e-6, Interval = 0.6),
