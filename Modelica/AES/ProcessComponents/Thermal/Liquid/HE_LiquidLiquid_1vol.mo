@@ -22,33 +22,48 @@ model HE_LiquidLiquid_1vol
   SI.Temperature Tho(start=Thostart);
   SI.Temperature Tco(start=Tcostart);
   SI.Power Ph,Pc,Ploss;
-protected
+//protected
   /*
-  Given cp,wh,wc,Thi,Tci,P,eta
-     e1: cp*wh*(Thi-Tho) = P; 
-     e2: cp*wc*(Tco-Tci) = P*eta;
-     e3: P =G*(Tho-Tco); 
-         solve([e1,e2,e3],[G,Tho,Tco]);
+  Given cp,wHnom,wCnom,Thinom,Tcinom,Pnom,eta
+     e1  : Pnom   = G*(Thinom+Thonom-Tcinom-Tconom)/2;
+     e2  : Thonom = Thinom-Pnom/wHnom/c;
+     e3  : Tconom = Tcinom+eta*Pnom/wCnom/c;
+     sol : solve([e1,e2,e3],[G,Thonom,Tconom])[1];
   */
 
-  parameter SI.HeatCapacity Ch=system.ro*system.cp*Vh annotation(Evaluate = true);
-  parameter SI.HeatCapacity Cc=system.ro*system.cp*Vc annotation(Evaluate = true);
-  parameter SI.MassFlowRate wHnom=system.ro*qHnom annotation(Evaluate = true);
-  parameter SI.MassFlowRate wCnom=system.ro*qCnom annotation(Evaluate = true);
-  parameter SI.Temperature
-            Thostart=Thinom-Pnom/wCnom/system.cp
+  parameter SI.HeatCapacity
+            Ch=system.ro*system.cp*Vh
+            annotation(Evaluate = true);
+  parameter SI.HeatCapacity
+            Cc=system.ro*system.cp*Vc
+            annotation(Evaluate = true);
+  parameter SI.MassFlowRate
+            wHnom=system.ro*qHnom
+            annotation(Evaluate = true);
+  parameter SI.MassFlowRate
+            wCnom=system.ro*qCnom
             annotation(Evaluate = true);
   parameter SI.Temperature
-            Tcostart=Tcinom+eta*Pnom/wCnom/system.cp
+            Thonom=Thinom-Pnom/(system.cp*wHnom)
             annotation(Evaluate = true);
+  parameter SI.Temperature
+            Tconom=Tcinom+eta*Pnom/(system.cp*wCnom)  
+            annotation(Evaluate = true);
+  parameter SI.Temperature
+            Thostart=Thonom        
+            annotation(Evaluate = true);     
+  parameter SI.Temperature
+            Tcostart=Tconom        
+            annotation(Evaluate = true);             
   parameter SI.ThermalConductance
-            G = Pnom/(Thinom-Tcinom)
+            G = (2*Pnom*system.cp*wCnom*wHnom)
+                /(((2*Thinom-2*Tcinom)*system.cp*wCnom-Pnom*eta)*wHnom-Pnom*wCnom)
             annotation(Evaluate = true);
 equation
 
   Ch*der(Tho) = hotIn.w*system.cp*(Thi-Tho)-Ph;
   Cc*der(Tco) = coldIn.w*system.cp*(Tci-Tco)+Pc;
-  Ph          = G*(Thi-Tci);
+  Ph          = G*(Thi+Tho-Tci-Tco)/2;
   Pc          = Ph*eta;
   Ploss       = Ph-Pc;
   Thi         = actualStream(hotIn.h)/system.cp;

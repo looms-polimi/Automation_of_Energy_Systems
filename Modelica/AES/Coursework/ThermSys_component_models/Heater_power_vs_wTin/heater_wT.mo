@@ -14,7 +14,7 @@ model heater_wT
     Placement(visible = true, transformation(origin = {-10, -10}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
   AES.ProcessComponents.Thermal.Liquid.VectorHPtoHP_conductor conv(Gtotal = 10)  annotation(
     Placement(visible = true, transformation(origin = {30, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
-  Modelica.Thermal.HeatTransfer.Sources.FixedTemperature Ta(T(displayUnit = "K") = 193.15) annotation(
+  Modelica.Thermal.HeatTransfer.Sources.FixedTemperature Ta(T(displayUnit = "K") = 293.15) annotation(
     Placement(visible = true, transformation(origin = {70, -10}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.Ramp w(duration = 8e5, height = wmax - wmin, offset = wmin, startTime = 1e5) annotation(
     Placement(visible = true, transformation(origin = {-110, 50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));

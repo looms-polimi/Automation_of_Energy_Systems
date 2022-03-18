@@ -1,6 +1,6 @@
-within AES.Coursework.ThermSys_Generation;
+within AES.Coursework.ThermSys_component_models;
 
-model AHU_case_001
+model Controlled_AHU_case_002
   extends Icons.CourseworkModel;
   AES.ProcessComponents.Thermal.Air.Fan_controlled_q fan(qmax = 0.5) annotation(
     Placement(visible = true, transformation(origin = {-110, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -12,7 +12,7 @@ model AHU_case_001
     Placement(visible = true, transformation(origin = {-10, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.RealExpression qcmd(y = 0.5) annotation(
     Placement(visible = true, transformation(origin = {-130, 30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.HVAC.ControlledAHU AHU annotation(
+  AES.ProcessComponents.Thermal.HVAC.ControlledAHU U1 annotation(
     Placement(visible = true, transformation(origin = {-80, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.RealExpression spT(y = if time < 500 then 291.15 else 295.15) annotation(
     Placement(visible = true, transformation(origin = {-130, 70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -20,31 +20,37 @@ model AHU_case_001
     Placement(visible = true, transformation(origin = {-130, 50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.BooleanExpression AHUon(y = true) annotation(
     Placement(visible = true, transformation(origin = {-112, -12}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  AES.ProcessComponents.Thermal.Air.DPlin_NomPoint dprec annotation(
+    Placement(visible = true, transformation(origin = {-90, -40}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
   AES.ProcessComponents.Thermal.Air.MAvolume V(Tstart(displayUnit = "K") = 291.15, V = 75, phistart = 0.6) annotation(
     Placement(visible = true, transformation(origin = {-44, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(dp.air_flange2, snk.air_flange1) annotation(
-    Line(points = {{-2, 10}, {18, 10}}, color = {0, 100, 150}));
+    Line(points = {{2, 10}, {18, 10}}, color = {0, 100, 150}));
   connect(src.air_flange1, fan.air_flange1) annotation(
     Line(points = {{-140, 10}, {-118, 10}}, color = {0, 100, 150}));
-  connect(fan.air_flange2, AHU.air_flange1) annotation(
+  connect(fan.air_flange2, U1.air_flange1) annotation(
     Line(points = {{-102, 10}, {-88, 10}}, color = {0, 100, 150}));
   connect(qcmd.y, fan.qcmd01) annotation(
     Line(points = {{-119, 30}, {-110, 30}, {-110, 14}}, color = {0, 0, 127}));
-  connect(spT.y, AHU.Tsp) annotation(
+  connect(spT.y, U1.Tsp) annotation(
     Line(points = {{-118, 70}, {-94, 70}, {-94, 18}, {-88, 18}}, color = {0, 0, 127}));
-  connect(spphi.y, AHU.phisp) annotation(
+  connect(spphi.y, U1.phisp) annotation(
     Line(points = {{-118, 50}, {-100, 50}, {-100, 16}, {-88, 16}}, color = {0, 0, 127}));
-  connect(AHUon.y, AHU.ON) annotation(
+  connect(AHUon.y, U1.ON) annotation(
     Line(points = {{-100, -12}, {-94, -12}, {-94, 4}, {-88, 4}}, color = {255, 0, 255}));
-  connect(V.air_flange1, AHU.air_flange2) annotation(
-    Line(points = {{-52, 10}, {-72, 10}}, color = {0, 100, 150}));
+  connect(dprec.air_flange2, fan.air_flange1) annotation(
+    Line(points = {{-102, -40}, {-130, -40}, {-130, 10}, {-122, 10}}, color = {0, 100, 150}));
   connect(V.air_flange2, dp.air_flange1) annotation(
-    Line(points = {{-36, 10}, {-18, 10}}, color = {0, 100, 150}));
+    Line(points = {{-36, 10}, {-22, 10}}, color = {0, 100, 150}));
+  connect(V.air_flange1, U1.air_flange2) annotation(
+    Line(points = {{-52, 10}, {-72, 10}}, color = {0, 100, 150}));
+  connect(V.air_flange2, dprec.air_flange1) annotation(
+    Line(points = {{-32, 10}, {-32, -40}, {-78, -40}}, color = {0, 100, 150}));
 protected
   annotation(
     experiment(StartTime = 0, StopTime = 8000, Tolerance = 1e-6, Interval = 0.8),
     __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts ",
     __OpenModelica_simulationFlags(lv = "LOG_STATS", s = "dassl"),
     Diagram(coordinateSystem(extent = {{-300, -200}, {300, 200}})));
-end AHU_case_001;
+end Controlled_AHU_case_002;

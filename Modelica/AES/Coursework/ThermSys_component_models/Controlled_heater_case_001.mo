@@ -1,24 +1,24 @@
-within AES.Coursework.ThermSys_Generation;
+within AES.Coursework.ThermSys_component_models;
 
-model Heater_control_case_001
+model Controlled_heater_case_001
   extends AES.Icons.CourseworkModel;
   AES.ProcessComponents.Thermal.HVAC.ControlledLiquidHeater_ideal CH annotation(
     Placement(visible = true, transformation(origin = {-70, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Liquid.Pump_volumetric P(w0 = 1)  annotation(
+  AES.ProcessComponents.Thermal.Liquid.Pump_volumetric P(w0 = 1) annotation(
     Placement(visible = true, transformation(origin = {-30, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Liquid.Tube pipeline(L = 50, n = 20)  annotation(
+  AES.ProcessComponents.Thermal.Liquid.Tube pipeline(L = 50, n = 20) annotation(
     Placement(visible = true, transformation(origin = {30, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Blocks.Sources.RealExpression spT(y = 273.15 + 50)  annotation(
+  Modelica.Blocks.Sources.RealExpression spT(y = 273.15 + 50) annotation(
     Placement(visible = true, transformation(origin = {-110, 16}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Blocks.Sources.RealExpression cmdP(y = 0.1)  annotation(
+  Modelica.Blocks.Sources.RealExpression cmdP(y = 0.1) annotation(
     Placement(visible = true, transformation(origin = {-110, 40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Liquid.Convection_VecVec conv(A = 2, n = 20)  annotation(
+  AES.ProcessComponents.Thermal.Liquid.Convection_VecVec conv(A = 2, n = 20) annotation(
     Placement(visible = true, transformation(origin = {30, 36}, extent = {{-10, 10}, {10, -10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Liquid.surfTcond_prescribed Te(n = 20)  annotation(
+  AES.ProcessComponents.Thermal.Liquid.surfTcond_prescribed Te(n = 20) annotation(
     Placement(visible = true, transformation(origin = {30, 60}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Blocks.Sources.RealExpression iTe(y = 273.15 + 20)  annotation(
+  Modelica.Blocks.Sources.RealExpression iTe(y = 273.15 + 20) annotation(
     Placement(visible = true, transformation(origin = {-110, 60}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Blocks.Sources.BooleanExpression Hon(y = sin(time / 200) > 0)  annotation(
+  Modelica.Blocks.Sources.BooleanExpression Hon(y = sin(time / 200) > 0) annotation(
     Placement(visible = true, transformation(origin = {-110, 4}, extent = {{-10, 10}, {10, -10}}, rotation = 0)));
   inner ProcessComponents.Thermal.System_settings.System_liquid system annotation(
     Placement(visible = true, transformation(origin = {-170, 70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -60,4 +60,4 @@ equation
     experiment(StartTime = 0, StopTime = 2000, Tolerance = 1e-6, Interval = 4),
     __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts",
     __OpenModelica_simulationFlags(lv = "LOG_STATS", s = "dassl"));
-end Heater_control_case_001;
+end Controlled_heater_case_001;

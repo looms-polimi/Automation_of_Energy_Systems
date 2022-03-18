@@ -1,6 +1,6 @@
 within AES.Coursework.ThermSys_component_models;
 
-model HeatExchanger_1vol
+model HeatExchanger_1vol_case_001
   extends Icons.CourseworkModel;
   AES.ProcessComponents.Thermal.Liquid.Node_wT_prescribed Hsrc annotation(
     Placement(visible = true, transformation(origin = {-50, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -42,4 +42,4 @@ equation
     __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts",
     __OpenModelica_simulationFlags(lv = "LOG_STATS", s = "dassl"),
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}})));
-end HeatExchanger_1vol;
+end HeatExchanger_1vol_case_001;

@@ -13,7 +13,7 @@ model Test_AHU_001
   Modelica.Blocks.Sources.RealExpression qcmd(y = 0.5)  annotation(
     Placement(visible = true, transformation(origin = {-130, 30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   AES.ProcessComponents.Thermal.HVAC.ControlledAHU AHU annotation(
-    Placement(visible = true, transformation(origin = {-80, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+    Placement(visible = true, transformation(origin = {-76, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.RealExpression spT(y = if time < 500 then 291.15 else 295.15)  annotation(
     Placement(visible = true, transformation(origin = {-130, 70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.RealExpression spphi(y = 0.55)  annotation(
@@ -34,11 +34,11 @@ equation
   connect(spT.y, AHU.Tsp) annotation(
     Line(points = {{-118, 70}, {-94, 70}, {-94, 18}, {-88, 18}}, color = {0, 0, 127}));
   connect(spphi.y, AHU.phisp) annotation(
-    Line(points = {{-118, 50}, {-100, 50}, {-100, 16}, {-88, 16}}, color = {0, 0, 127}));
+    Line(points = {{-118, 50}, {-100, 50}, {-100, 14}, {-88, 14}}, color = {0, 0, 127}));
   connect(AHUon.y, AHU.ON) annotation(
     Line(points = {{-100, -12}, {-94, -12}, {-94, 4}, {-88, 4}}, color = {255, 0, 255}));
   connect(V.air_flange1, AHU.air_flange2) annotation(
-    Line(points = {{-52, 10}, {-72, 10}}, color = {0, 100, 150}));
+    Line(points = {{-52, 10}, {-64, 10}}, color = {0, 100, 150}));
   connect(V.air_flange2, dp.air_flange1) annotation(
     Line(points = {{-36, 10}, {-18, 10}}, color = {0, 100, 150}));
 protected

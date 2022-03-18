@@ -1,6 +1,6 @@
-within AES.Coursework.ThermSys_Transport;
+within AES.Coursework.ThermSys_component_models;
 
-model HE_simple_case_003
+model HeatExchanger_1vol_case_003
   extends AES.Icons.CourseworkModel;
   AES.ProcessComponents.Thermal.Liquid.HE_LiquidLiquid_1vol HE annotation(
     Placement(visible = true, transformation(origin = {-10, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -12,11 +12,11 @@ model HE_simple_case_003
     Placement(visible = true, transformation(origin = {30, 10}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
   ProcessComponents.Thermal.Liquid.Node_pT_fixed Csnk annotation(
     Placement(visible = true, transformation(origin = {-10, 50}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
-  AES.ProcessComponents.Thermal.Liquid.dp_quadratic dpHE(dpnom = 10000, wnom = 0.2)  annotation(
+  AES.ProcessComponents.Thermal.Liquid.dp_quadratic dpHE(dpnom = 10000, wnom = 0.2) annotation(
     Placement(visible = true, transformation(origin = {-10, -30}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
-  AES.ProcessComponents.Thermal.Liquid.Valve_linear V(dpnom = 10000, wnom = 5)  annotation(
+  AES.ProcessComponents.Thermal.Liquid.Valve_linear V(dpnom = 10000, wnom = 5) annotation(
     Placement(visible = true, transformation(origin = {-50, -30}, extent = {{-10, 10}, {10, -10}}, rotation = -90)));
-  Modelica.Blocks.Sources.RealExpression cmdV(y = max(0, min(1, (time - 100) / 50)))  annotation(
+  Modelica.Blocks.Sources.RealExpression cmdV(y = max(0, min(1, (time - 100) / 50))) annotation(
     Placement(visible = true, transformation(origin = {-110, -30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(HE.coldOut, Csnk.pwh_a) annotation(
@@ -35,10 +35,9 @@ equation
     Line(points = {{-50, -42}, {-50, -50}, {-10, -50}, {-10, -58}}, color = {46, 52, 54}));
   connect(cmdV.y, V.x) annotation(
     Line(points = {{-99, -30}, {-60, -30}}, color = {0, 0, 127}));
-
-annotation(
+  annotation(
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}})),
     experiment(StartTime = 0, StopTime = 1000, Tolerance = 1e-6, Interval = 2),
     __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian -d=aliasConflicts -d=aliasConflicts ",
     __OpenModelica_simulationFlags(lv = "LOG_STATS", s = "dassl"));
-end HE_simple_case_003;
+end HeatExchanger_1vol_case_003;

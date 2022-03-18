@@ -1,5 +1,14 @@
 Hydraulic_circuit
 Pumps_valve
-HeatExchanger_1vol
 Containment_elements
+HeatExchanger_1vol_case_001
+HeatExchanger_1vol_case_002
+HeatExchanger_1vol_case_003
+Controlled_heater_case_001
+Controlled_heater_case_002
+Controlled_heater_case_003
+Controlled_AHU_case_001
+Controlled_AHU_case_002
+HeatPump_case_002
+HeatPump_case_001
 Heater_power_vs_wTin
