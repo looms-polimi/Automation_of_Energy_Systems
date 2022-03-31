@@ -1,11 +1,13 @@
 within AES.Coursework.ThermSys_control_problems.Temperature_control_pipes;
 
 model Tcontrol_pipes_sensor_dynamics_01_gen
+  extends Icons.CourseworkModel;
+  
   parameter Real mu=1;
   parameter Real taup=1;
   parameter Real taus=5;
   parameter Real wc=0.5;
-  extends Icons.CourseworkModel;
+
   Modelica.Blocks.Sources.RealExpression SP(y = if time < 1 then 0 else 1) annotation(
     Placement(visible = true, transformation(origin = {-150, 80}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Continuous.TransferFunction P1(a = {taup, 1}, b = {mu}) annotation(
@@ -19,7 +21,7 @@ model Tcontrol_pipes_sensor_dynamics_01_gen
   Modelica.Blocks.Continuous.TransferFunction S2(a = {taus, 1}, b = {1}) annotation(
     Placement(visible = true, transformation(origin = {92, 0}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
   Modelica.Blocks.Continuous.TransferFunction C2(a = {1, 0}, b = wc / mu * {taus, 1}) annotation(
-    Placement(visible = true, transformation(origin = {72, 30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+    Placement(visible = true, transformation(origin = {70, 30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Continuous.TransferFunction P2(a = {taup, 1}, b = {mu}) annotation(
     Placement(visible = true, transformation(origin = {114, 30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Math.Feedback fb2 annotation(
@@ -58,9 +60,9 @@ equation
   connect(S2.y, fb2.u2) annotation(
     Line(points = {{81, 0}, {34, 0}, {34, 22}}, color = {0, 0, 127}));
   connect(fb2.y, C2.u) annotation(
-    Line(points = {{43, 30}, {59, 30}}, color = {0, 0, 127}));
+    Line(points = {{43, 30}, {58, 30}}, color = {0, 0, 127}));
   connect(C2.y, P2.u) annotation(
-    Line(points = {{83, 30}, {101, 30}}, color = {0, 0, 127}));
+    Line(points = {{81, 30}, {101, 30}}, color = {0, 0, 127}));
   connect(SP.y, fb2.u1) annotation(
     Line(points = {{-139, 80}, {-120, 80}, {-120, 30}, {26, 30}}, color = {0, 0, 127}));
   connect(SP.y, fb3.u1) annotation(
