@@ -6,3 +6,6 @@ sqrtReg
 sqrtReg_der
 layer_fcf_distances
 layer_fcf_conductivities
+sod
+hod
+moh
