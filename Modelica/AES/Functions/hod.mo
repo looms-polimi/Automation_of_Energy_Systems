@@ -8,5 +8,5 @@ function hod "hour of day (0-23)"
   input Real sec_start=0;
   output Real y;
 algorithm
-  y := floor(Functions.sod(t,hour_start,min_start,sec_start)/3600);
+  y := 1.0*(floor(Functions.sod(t,hour_start,min_start,sec_start)/3600));
 end hod;

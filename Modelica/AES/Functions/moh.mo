@@ -12,5 +12,5 @@ protected
 algorithm
   s := Functions.sod(t,hour_start,min_start,sec_start);
   h := Functions.hod(t,hour_start,min_start,sec_start);
-  y := floor((sod-3600*hod)/60);
+  y := 1.0*(floor((s-3600*h)/60));
 end moh;

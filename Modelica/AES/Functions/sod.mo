@@ -8,5 +8,5 @@ function sod "second of day (0-86399)"
   input Real sec_start=0;
   output Real y;
 algorithm
-  y := mod(t-3600*hour_start-60*min_start-sec_start,86400);
+  y := mod(t+3600*hour_start+60*min_start+sec_start,86400);
 end sod;
