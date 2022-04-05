@@ -12,7 +12,7 @@ model Test_air_circ_001
     Placement(visible = true, transformation(origin = {10, 10}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
   AES.ProcessComponents.Thermal.Air.DPlin_NomPoint dp annotation(
     Placement(visible = true, transformation(origin = {-30, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Blocks.Sources.RealExpression qcmd(y = 0.5 + 0 * 0.4 * sin(time / 10))  annotation(
+  Modelica.Blocks.Sources.RealExpression qcmd(y = 0.5 + 0.4 * sin(time / 10))  annotation(
     Placement(visible = true, transformation(origin = {-130, 50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(src.air_flange1, fan.air_flange1) annotation(

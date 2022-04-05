@@ -20,7 +20,7 @@ model Test_AHU_001
     Placement(visible = true, transformation(origin = {-130, 50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.BooleanExpression AHUon(y = true)  annotation(
     Placement(visible = true, transformation(origin = {-112, -12}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Air.MAvolume V(Tstart(displayUnit = "K") = 291.15, V = 75, phistart = 0.6)  annotation(
+  AES.ProcessComponents.Thermal.Air.MAvolume V(Tstart(displayUnit = "K") = 291.15, V = 75, phistart = 0.6) annotation(
     Placement(visible = true, transformation(origin = {-44, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(dp.air_flange2, snk.air_flange1) annotation(
@@ -37,10 +37,10 @@ equation
     Line(points = {{-118, 50}, {-100, 50}, {-100, 14}, {-88, 14}}, color = {0, 0, 127}));
   connect(AHUon.y, AHU.ON) annotation(
     Line(points = {{-100, -12}, {-94, -12}, {-94, 4}, {-88, 4}}, color = {255, 0, 255}));
-  connect(V.air_flange1, AHU.air_flange2) annotation(
-    Line(points = {{-52, 10}, {-64, 10}}, color = {0, 100, 150}));
   connect(V.air_flange2, dp.air_flange1) annotation(
     Line(points = {{-36, 10}, {-18, 10}}, color = {0, 100, 150}));
+  connect(V.air_flange1, AHU.air_flange2) annotation(
+    Line(points = {{-52, 10}, {-64, 10}}, color = {0, 100, 150}));
 protected
   annotation(
     experiment(StartTime = 0, StopTime = 8000, Tolerance = 1e-6, Interval = 0.8),

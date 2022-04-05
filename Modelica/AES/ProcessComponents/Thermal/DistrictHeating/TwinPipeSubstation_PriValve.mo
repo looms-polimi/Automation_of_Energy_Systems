@@ -4,7 +4,7 @@ model TwinPipeSubstation_PriValve
   extends Interfaces.flowTwoTwinPorts_pwh;
   parameter SI.Power Pn=1e5 "rated thermal power";
   parameter SI.Temperature Tn_pi=273.15+100 "nominal primary inlet T";
- // parameter SI.Temperature Tn_po=273.15+60 "nominal primary outlet T";
+  parameter SI.Temperature Tn_po=273.15+60 "nominal primary outlet T";
   parameter SI.Temperature Tn_si=273.15+20 "nominal secondary inlet T";
   parameter SI.Temperature Tn_so=273.15+50 "nominal secondary outlet T";
   parameter Real eta=0.85 "efficiency";

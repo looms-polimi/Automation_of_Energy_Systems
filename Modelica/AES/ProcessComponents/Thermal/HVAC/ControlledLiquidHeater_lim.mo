@@ -30,7 +30,7 @@ equation
   hao              = cp*Tfo;
   hbo              = cp*Tfo;
   cp*Tfi           = hai;
-  ro*V*cp*der(Tfo) = Pc+w*cp*(Tfi-Tfo); /* enegry balance */
+  ro*V*cp*der(Tfo) = Pc+w*cp*(Tfi-Tfo); /* energy balance */
   Ti               = if w>0 then ro*V/w else Tcl;
   if ON then
     xpi+Ti*der(xpi) = Pc;

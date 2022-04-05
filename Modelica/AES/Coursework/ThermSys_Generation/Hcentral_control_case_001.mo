@@ -28,11 +28,11 @@ model Hcentral_control_case_001
     Placement(visible = true, transformation(origin = {-214, 22}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.BooleanExpression Hon(y = true) annotation(
     Placement(visible = true, transformation(origin = {-214, 4}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Liquid.ExpansionVessel_isoT EV(V = 1, p0 = 399999.9999999999) annotation(
+  AES.ProcessComponents.Thermal.Liquid.ExpansionVessel_isoT EV(V = 5, p0 = 399999.9999999999) annotation(
     Placement(visible = true, transformation(origin = {-110, -92}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   AES.ProcessComponents.Thermal.Liquid.MassFlowrateSensor sw annotation(
     Placement(visible = true, transformation(origin = {-68, -98}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
-  AES.ControlBlocks.AnalogueControllers.PI_awfb_basic PI_wh(CSmin = 0, K = 0.2 * 0, Ti = 1) annotation(
+  AES.ControlBlocks.AnalogueControllers.PI_awfb_basic PI_wh(CSmin = 0, K = 0.2, Ti = 1) annotation(
     Placement(visible = true, transformation(origin = {-8, -48}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
   AES.ProcessComponents.Thermal.Liquid.Valve_linear Vrec(dpnom = 99999.99999999999, wnom = 10)  annotation(
     Placement(visible = true, transformation(origin = {-42, -48}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
