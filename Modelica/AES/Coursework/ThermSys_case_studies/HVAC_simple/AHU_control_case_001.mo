@@ -1,4 +1,4 @@
-within AES.Coursework.ThermSys_Generation;
+within AES.Coursework.ThermSys_case_studies.HVAC_simple;
 
 model AHU_control_case_001
   extends Icons.CourseworkModel;

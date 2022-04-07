@@ -1,11 +1,19 @@
-within AES.Coursework.ThermSys_Generation;
+within AES.Coursework.ThermSys_case_studies.HVAC_simple;
 
-model AHU_control_case_003a
+model AHU_control_case_003
   extends Icons.CourseworkModel;
   AES.ProcessComponents.Thermal.Air.Fan_controlled_q fan(qmax = 0.5) annotation(
     Placement(visible = true, transformation(origin = {-110, 50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.RealExpression qcmd(y = 1) annotation(
     Placement(visible = true, transformation(origin = {-130, 70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  AES.ProcessComponents.Thermal.HVAC.ControlledAHU U1 annotation(
+    Placement(visible = true, transformation(origin = {-50, 50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  Modelica.Blocks.Sources.RealExpression spTret(y = if time < 5000 then 273.15 + 22 else 273.15 + 20) annotation(
+    Placement(visible = true, transformation(origin = {-270, 116}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  Modelica.Blocks.Sources.RealExpression spphi(y = 0.55) annotation(
+    Placement(visible = true, transformation(origin = {-130, 90}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  Modelica.Blocks.Sources.BooleanExpression AHUon(y = true) annotation(
+    Placement(visible = true, transformation(origin = {-90, 30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   AES.ProcessComponents.Thermal.Air.MAvolume Room2(Tstart(displayUnit = "K") , V = 5 * 5 * 3, phistart = 0.6) annotation(
     Placement(visible = true, transformation(origin = {60, -80}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
   AES.ProcessComponents.Thermal.Air.MAvolume Room1(Tstart(displayUnit = "K") , V = 5 * 5 * 3, phistart = 0.6) annotation(
@@ -34,6 +42,8 @@ model AHU_control_case_003a
     Placement(visible = true, transformation(origin = {60, -30}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
   AES.ProcessComponents.Thermal.Air.Tsensor sTret annotation(
     Placement(visible = true, transformation(origin = {-154, -120}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  AES.ControlBlocks.AnalogueControllers.PI_awfb_basic PI_Tret(CSmax = 273.15 + 25, CSmin = 273.15 + 15, Ti = 100)  annotation(
+    Placement(visible = true, transformation(origin = {-210, 110}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   AES.ProcessComponents.Thermal.Air.Tsensor tsensor annotation(
     Placement(visible = true, transformation(origin = {172, 100}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
   Modelica.Thermal.HeatTransfer.Sources.PrescribedHeatFlow LocalActuator_Room1 annotation(
@@ -51,10 +61,20 @@ model AHU_control_case_003a
   Modelica.Blocks.Sources.RealExpression uDampR1(y = 1 - SR_room1.CSo01_pos) annotation(
     Placement(visible = true, transformation(origin = {40, 68}, extent = {{10, -10}, {-10, 10}}, rotation = -90)));
 equation
+  connect(fan.air_flange2, U1.air_flange1) annotation(
+    Line(points = {{-98, 50}, {-58, 50}}, color = {0, 100, 150}));
   connect(qcmd.y, fan.qcmd01) annotation(
     Line(points = {{-119, 70}, {-110, 70}, {-110, 54}}, color = {0, 0, 127}));
+  connect(spphi.y, U1.phisp) annotation(
+    Line(points = {{-119, 90}, {-93, 90}, {-93, 54}, {-63, 54}}, color = {0, 0, 127}));
+  connect(AHUon.y, U1.ON) annotation(
+    Line(points = {{-79, 30}, {-68.5, 30}, {-68.5, 44}, {-62, 44}}, color = {255, 0, 255}));
   connect(dpin2.air_flange1, Room2.air_flange1) annotation(
     Line(points = {{22, -80}, {36, -80}}, color = {0, 100, 150}));
+  connect(U1.air_flange2, dpin1.air_flange2) annotation(
+    Line(points = {{-38, 50}, {-20, 50}, {-20, 100}, {-2, 100}}, color = {0, 100, 150}));
+  connect(U1.air_flange2, dpin2.air_flange2) annotation(
+    Line(points = {{-38, 50}, {-20, 50}, {-20, -80}, {-2, -80}}, color = {0, 100, 150}));
   connect(dprec1.air_flange1, Room1.air_flange2) annotation(
     Line(points = {{60, 140}, {141, 140}, {141, 100}, {124, 100}}, color = {0, 100, 150}));
   connect(dprec2.air_flange1, Room2.air_flange2) annotation(
@@ -81,6 +101,12 @@ equation
     Line(points = {{-140, 10}, {60, 10}, {60, 20}}, color = {191, 0, 0}));
   connect(sTret.air_flange1, dprec2.air_flange2) annotation(
     Line(points = {{-142.1, -120}, {-2.1, -120}}, color = {0, 100, 150}));
+  connect(spTret.y, PI_Tret.SP) annotation(
+    Line(points = {{-259, 116}, {-222, 116}}, color = {0, 0, 127}));
+  connect(PI_Tret.CS, U1.Tsp) annotation(
+    Line(points = {{-198, 110}, {-80, 110}, {-80, 58}, {-62, 58}}, color = {0, 0, 127}));
+  connect(sTret.oT, PI_Tret.PV) annotation(
+    Line(points = {{-152, -120}, {-240, -120}, {-240, 106}, {-222, 106}}, color = {0, 0, 127}));
   connect(LocalActuator_Room1.port, Room1.heatPort) annotation(
     Line(points = {{100, 60}, {100, 82}}, color = {191, 0, 0}));
   connect(Room1.air_flange2, tsensor.air_flange1) annotation(
@@ -103,14 +129,10 @@ equation
     Line(points = {{100, 21}, {100, 40}}, color = {0, 0, 127}));
   connect(uDampR1.y, damperRoom1.x) annotation(
     Line(points = {{40, 80}, {40, 90}}, color = {0, 0, 127}));
-  connect(fan.air_flange2, dpin1.air_flange2) annotation(
-    Line(points = {{-98, 50}, {-30, 50}, {-30, 100}, {-2, 100}}, color = {0, 100, 150}));
-  connect(fan.air_flange2, dpin2.air_flange2) annotation(
-    Line(points = {{-98, 50}, {-30, 50}, {-30, -80}, {-2, -80}}, color = {0, 100, 150}));
 protected
   annotation(
     experiment(StartTime = 0, StopTime = 10000, Tolerance = 1e-6, Interval = 1),
     __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts ",
     __OpenModelica_simulationFlags(lv = "LOG_STATS", s = "dassl"),
     Diagram(coordinateSystem(extent = {{-300, -200}, {300, 200}})));
-end AHU_control_case_003a;
+end AHU_control_case_003;

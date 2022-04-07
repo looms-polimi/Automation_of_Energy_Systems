@@ -7,21 +7,21 @@ model MAvolume
   parameter SI.Pressure pstart = 101325 "Initial moist air pressure";
   parameter SI.Temperature Tstart = 273.15 + 20 "Initial moist air temperature";
   parameter Real phistart = 0.5 "Initial relative umidity [0,1]";
-  SI.Mass Ma "Total dry air mass";
-  SI.Mass Mv "Total vapour mass";
+  SI.Mass Ma(stateSelect=StateSelect.avoid) "Total dry air mass";
+  SI.Mass Mv(stateSelect=StateSelect.avoid) "Total vapour mass";
   SI.Energy Ea "Energy of the moist air";
-  SI.Pressure p "Pressure of the air";
+  SI.Pressure p(start=pstart,stateSelect=StateSelect.always);
+  SI.Temperature T(start=Tstart,stateSelect=StateSelect.prefer);
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heatPort annotation(
   Placement(transformation(extent = {{-60, 40}, {60, 60}}), iconTransformation(extent = {{-80, 80}, {80, 100}})));
 initial equation
-  air.T = Tstart;
   air.phi = phistart;
-  air.p = pstart;
 equation
   // No pressure drop
   pa1 = air.p;
   pa2 = air.p;
   air.p = p;
+  air.T = T;
   // Masses and energy
   Ma + Mv = V * air.d;
   Mv = Ma * air.X;

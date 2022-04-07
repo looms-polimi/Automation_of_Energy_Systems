@@ -1,4 +1,4 @@
-within AES.Coursework.ElecSys_PwrFreq_control;
+within AES.Coursework.ElecSys_power_frequency_control;
 
 model BO_rigid_two_generators_PriSec
   extends AES.Icons.CourseworkModel;

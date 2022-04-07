@@ -1,4 +1,4 @@
-within AES.Coursework.ElecSys_PwrFreq_control;
+within AES.Coursework.ElecSys_power_frequency_control;
 
 model PA_islanded_generator_loadDroop
   extends AES.Icons.CourseworkModel;

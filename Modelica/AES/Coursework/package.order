@@ -4,9 +4,9 @@ Tuning_brushup
 Typical_control_structures
 Typical_actuation_schemes
 ElecSys_generator_models
-ElecSys_PwrFreq_control
+ElecSys_power_frequency_control
 ThermSys_component_models
 ThermSys_control_problems
+ThermSys_case_studies
 ThermSys_Generation
 ThermSys_Transport
-ThermSys_Networks
