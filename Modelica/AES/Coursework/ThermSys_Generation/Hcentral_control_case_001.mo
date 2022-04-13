@@ -67,8 +67,6 @@ equation
     Line(points = {{-58, 10}, {58, 10}, {58, -22}}, color = {46, 52, 54}));
   connect(P.pwh_b, Vrec.pwh_a) annotation(
     Line(points = {{-58, 10}, {-42, 10}, {-42, -36}}, color = {46, 52, 54}));
-  connect(PI_wh.CS, Vrec.x) annotation(
-    Line(points = {{-20, -48}, {-32, -48}}, color = {0, 0, 127}));
   connect(sw.ow, PI_wh.PV) annotation(
     Line(points = {{-68, -90}, {-68, -70}, {14, -70}, {14, -52}, {4, -52}}, color = {0, 0, 127}));
   connect(spw.y, PI_wh.SP) annotation(
@@ -87,6 +85,8 @@ equation
     Line(points = {{150, -20}, {160, -20}}, color = {0, 0, 127}));
   connect(spTo.y, H.To) annotation(
     Line(points = {{-202, 22}, {-176, 22}, {-176, 16}, {-122, 16}}, color = {0, 0, 127}));
+  connect(PI_wh.CS, Vrec.x) annotation(
+    Line(points = {{-20, -48}, {-32, -48}}, color = {0, 0, 127}));
   annotation(
     experiment(StartTime = 0, StopTime = 10000, Tolerance = 1e-6, Interval = 0.1),
     __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts ",
