@@ -42,8 +42,8 @@ equation
   Pm             =  wg*taum;
   deltag         =  thetag-thetap;
     
-  wg             =  der(thetag);
-  wp             =  der(thetap);
+  wg-wnom        =  der(thetag);
+  wp-wnom        =  der(thetap);
   
   Pe             =  wp*taue;
   taue           =  K*deltag+F*der(deltag);

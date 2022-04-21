@@ -20,11 +20,11 @@ model Load_linear_droop
 protected
   final parameter SI.AngularVelocity wnom = 2*Modelica.Constants.pi*fnom; 
 equation
-  w    = der(port.theta);
+  w    = der(port.theta)+wnom;
   Pact = max((1-beta)*Preq,min((1+beta)*Preq,Preq+droop*(w-wnom)/wnom*Pnom));
 
   port.P = Pact;
-  fl = der(port.theta)/(2*Modelica.Constants.pi);
+  fl = w/(2*Modelica.Constants.pi);
 annotation(
     Icon(graphics = {Text(origin = {35, 23}, extent = {{-53, 39}, {53, -39}}, textString = "D")}));
 end Load_linear_droop;
