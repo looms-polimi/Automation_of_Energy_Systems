@@ -5,7 +5,7 @@ model Generator_1stOrder_prescribed_P
   
   parameter SI.ApparentPower Prated=30e6 "rated (active) power";
   parameter SI.Frequency fnom=50 "nominal frequency";
-  parameter Real dnom=5 "angle to yield rated power at sync speed [deg]";
+  parameter Real dnom=25 "angle to yield rated power at sync speed [deg]";
   parameter SI.Time Tac=1 "actuation time constant";
   parameter SI.Time Tox=0.5 "proper ox period";
   parameter Real xi=0.9 "damping";

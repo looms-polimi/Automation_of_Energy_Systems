@@ -5,8 +5,8 @@ model Generator_order0_prescribed_P
   
   parameter SI.Power Prated=30e6 "rated (active) power";
   parameter SI.Frequency fnom=50 "nominal frequency";
-  parameter Real dnom=5 "angle to yield rated power at sync speed [deg]";
-  parameter SI.Time Tox=1 "proper ox period";
+  parameter Real dnom=25 "angle to yield rated power at sync speed [deg]";
+  parameter SI.Time Tox=4 "proper ox period";
   parameter Real xi=0.8 "damping";
 
   AES.ProcessComponents.Electric.Interfaces.PowerAnglePort port annotation(

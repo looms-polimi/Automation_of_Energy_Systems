@@ -2,9 +2,9 @@ within AES.Coursework.ElecSys_power_frequency_control;
 
 model PA_two_generators_loadDroop
   extends AES.Icons.CourseworkModel;
-  Modelica.Blocks.Continuous.TransferFunction G1(a = {10, 1}, b = {10e6}, y_start = 10e6) annotation(
+  Modelica.Blocks.Continuous.TransferFunction G1(a = {10, 1}, b = {10e6}) annotation(
     Placement(visible = true, transformation(origin = {44, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Blocks.Continuous.TransferFunction G2(a = {15, 1}, b = {30e6}, y_start = 30e6) annotation(
+  Modelica.Blocks.Continuous.TransferFunction G2(a = {15, 1}, b = {30e6}) annotation(
     Placement(visible = true, transformation(origin = {44, -40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Math.Add as1 annotation(
     Placement(visible = true, transformation(origin = {-36, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
