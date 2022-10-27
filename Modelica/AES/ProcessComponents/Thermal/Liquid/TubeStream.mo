@@ -9,6 +9,7 @@ model TubeStream
   parameter Real kdp=0.1 "nominal dp [bar] per km at nominal flow";
   parameter Integer n=5 "No. of lumps";
   parameter SI.Temperature Tstart=293.15 "initial T, all lumps";
+  parameter SI.CoefficientOfHeatTransfer gamma0=2 "min gamma (still fluid)";
   parameter Boolean fluidHeats=true "T if fluid heats the outside, F otherwise";
   AES.ProcessComponents.Thermal.Interfaces.vectorHeatPort surf(n=n) annotation(
     Placement(visible = true, transformation(origin = {0, 40}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {0, 54}, extent = {{-42, -14}, {42, 14}}, rotation = 0)));
@@ -31,7 +32,7 @@ equation
   Nu              = gamma*D/lambda;
   Pr              = mu*cp/lambda;
   Nu              = 0.023*Re^0.8*Pr^(if fluidHeats then 0.3 else 0.4); /* Dittus-Boelter */
-  surf.Q_flow     = gamma*Alat_lump*(surf.T-T);
+  surf.Q_flow     = max(gamma,gamma0)*Alat_lump*(surf.T-T);
   Clump*der(T[1]) = pwh_a.w*actualStream(pwh_a.h)
                     +w*cp*(if w>0 then -T[1] else -T[2])
                     +surf.Q_flow[1];

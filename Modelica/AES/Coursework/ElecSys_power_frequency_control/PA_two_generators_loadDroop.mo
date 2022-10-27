@@ -20,9 +20,9 @@ model PA_two_generators_loadDroop
     Placement(visible = true, transformation(origin = {-76, -6}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Continuous.TransferFunction Cp2(a = {1}, b = {1.5})  annotation(
     Placement(visible = true, transformation(origin = {-76, -46}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Electric.Generators_PAport.Generator_order0_prescribed_P Ge1(Prated = 10e6, Tox = 2)  annotation(
+  AES.ProcessComponents.Electric.Generators_PAport.Generator_order0_prescribed_P Ge1(Prated = 10e6, Tox = 2, dnom = 10)  annotation(
     Placement(visible = true, transformation(origin = {80, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Electric.Generators_PAport.Generator_order0_prescribed_P Ge2(Tox = 3)  annotation(
+  AES.ProcessComponents.Electric.Generators_PAport.Generator_order0_prescribed_P Ge2(Tox = 3, dnom = 10)  annotation(
     Placement(visible = true, transformation(origin = {80, -40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Math.Feedback fe1 annotation(
     Placement(visible = true, transformation(origin = {-108, -6}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
