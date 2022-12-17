@@ -22,7 +22,7 @@ model MoistAir "Moist air"
   SI.SpecificHeatCapacity cp "moist air specific heat capacity [J/kg da K]";
   SI.SpecificHeatCapacity R "equivalent gas constant of moist air";
 protected
-  SI.Conversions.NonSIunits.Temperature_degC Tc;
+  Real Tc;
 equation
   Tc  = T-273.15;
   x   = X / (1 + X);

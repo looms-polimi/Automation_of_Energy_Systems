@@ -10,7 +10,7 @@ model MSL_electrical_thermal_control
     Placement(visible = true, transformation(origin = {-40, -40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Thermal.HeatTransfer.Sensors.TemperatureSensor sT annotation(
     Placement(visible = true, transformation(origin = {-40, -10}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
-  Modelica.Blocks.Continuous.LimPID PID(Ti = 500 * 0.25, controllerType = Modelica.Blocks.Types.SimpleController.PI, k = 240, limitsAtInit = true, yMax = 100, yMin = 0) annotation(
+  Modelica.Blocks.Continuous.LimPID PID(Ti = 500 * 0.25, controllerType = Modelica.Blocks.Types.SimpleController.PI, k = 240, yMax = 100, yMin = 0) annotation(
     Placement(visible = true, transformation(origin = {-110, 30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.RealExpression Tsp(y = 273.15 + 20) annotation(
     Placement(visible = true, transformation(origin = {-150, 30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -18,7 +18,7 @@ model MSL_electrical_thermal_control
     Placement(visible = true, transformation(origin = {-150, -40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Electrical.Analog.Sources.SignalVoltage Vh annotation(
     Placement(visible = true, transformation(origin = {-70, 30}, extent = {{-10, 10}, {10, -10}}, rotation = -90)));
-  Modelica.Electrical.Analog.Basic.HeatingResistor heater(R_ref = 10, useHeatPort = true) annotation(
+  Modelica.Electrical.Analog.Basic.Resistor heater(R= 10, useHeatPort = true) annotation(
     Placement(visible = true, transformation(origin = {-40, 30}, extent = {{10, -10}, {-10, 10}}, rotation = 90)));
   Modelica.Electrical.Analog.Basic.Ground gnd annotation(
     Placement(visible = true, transformation(origin = {-70, 2}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));

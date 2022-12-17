@@ -18,7 +18,7 @@ extends Icons.AnalogueController200x200;
     Placement(visible = true, transformation(origin = {-120, 0}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
   Modelica.Blocks.Continuous.FirstOrder FO(T = Ti, initType = Modelica.Blocks.Types.Init.InitialOutput, k = 1) annotation(
     Placement(visible = true, transformation(origin = {58, -60}, extent = {{20, -20}, {-20, 20}}, rotation = 0)));
-  Modelica.Blocks.Nonlinear.Limiter sat(limitsAtInit = true, uMax = CSmax, uMin = CSmin) annotation(
+  Modelica.Blocks.Nonlinear.Limiter sat(uMax = CSmax, uMin = CSmin) annotation(
     Placement(visible = true, transformation(origin = {98, 0}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
   Modelica.Blocks.Interfaces.RealInput Bias annotation(
     Placement(visible = true, transformation(origin = {-180, 60}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {0, 120}, extent = {{-20, -20}, {20, 20}}, rotation = -90)));

@@ -12,9 +12,9 @@ model TurbineFollows
     Placement(visible = true, transformation(origin = {10, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Math.Add ia annotation(
     Placement(visible = true, transformation(origin = {108, -4}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Blocks.Continuous.LimPID PIp(Ti = 30, controllerType = .Modelica.Blocks.Types.SimpleController.PI, k = 1.5, limitsAtInit = true, yMax = 1, yMin = 0)  annotation(
+  Modelica.Blocks.Continuous.LimPID PIp(Ti = 30, controllerType = .Modelica.Blocks.Types.SimpleController.PI, k = 1.5, yMax = 1, yMin = 0)  annotation(
     Placement(visible = true, transformation(origin = {-90, 30}, extent = {{-10, 10}, {10, -10}}, rotation = 0)));
-  Modelica.Blocks.Continuous.LimPID PIe(Ti = 10, controllerType = .Modelica.Blocks.Types.SimpleController.PI, k = -10, limitsAtInit = true, yMax = 1, yMin = 0)  annotation(
+  Modelica.Blocks.Continuous.LimPID PIe(Ti = 10, controllerType = .Modelica.Blocks.Types.SimpleController.PI, k = -10, yMax = 1, yMin = 0)  annotation(
     Placement(visible = true, transformation(origin = {-90, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.RealExpression spp(y = if time < 1000 then 0.75 else 0.8)  annotation(
     Placement(visible = true, transformation(origin = {-130, 30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));

@@ -14,7 +14,7 @@ model MSL_electrical_thermal_OpenLoop
     Placement(visible = true, transformation(origin = {-150, -40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Electrical.Analog.Sources.SignalVoltage Vh annotation(
     Placement(visible = true, transformation(origin = {-70, 30}, extent = {{-10, 10}, {10, -10}}, rotation = -90)));
-  Modelica.Electrical.Analog.Basic.HeatingResistor heater(R_ref = 10, useHeatPort = true) annotation(
+  Modelica.Electrical.Analog.Basic.Resistor heater(R_ref = 10, useHeatPort = true) annotation(
     Placement(visible = true, transformation(origin = {-40, 30}, extent = {{10, -10}, {-10, 10}}, rotation = 90)));
   Modelica.Electrical.Analog.Basic.Ground gnd annotation(
     Placement(visible = true, transformation(origin = {-70, 2}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
