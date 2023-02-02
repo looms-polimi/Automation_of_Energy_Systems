@@ -6,17 +6,17 @@ model Hcentral_control_case_002
     Placement(visible = true, transformation(origin = {-30, 50}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
   AES.ProcessComponents.Thermal.Liquid.DiffPressureSensor sdp annotation(
     Placement(visible = true, transformation(origin = {70, -30}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
-  AES.ControlBlocks.AnalogueControllers.PI_awfb_basic PI_dpHC(CSmin = 0, K = 0.01, Ti = 5) annotation(
+  AES.ControlBlocks.AnalogueControllers.PI_awfb_basic PI_dpHC(CSmin = 0, K = 1e-6, Ti = 5) annotation(
     Placement(visible = true, transformation(origin = {30, 50}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
   AES.ProcessComponents.Thermal.Liquid.Pump_centrifugal P(dp0 = 799999.9999999999, w0 = 20) annotation(
     Placement(visible = true, transformation(origin = {-70, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   AES.ProcessComponents.Thermal.Liquid.Tube line(L = 1000, wnom = 5) annotation(
-    Placement(visible = true, transformation(origin = {112, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+    Placement(visible = true, transformation(origin = {112, 12}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   inner AES.ProcessComponents.Thermal.System_settings.System_liquid system annotation(
     Placement(visible = true, transformation(origin = {-270, 132}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   inner AES.ProcessComponents.Thermal.System_settings.System_terrain terrain annotation(
     Placement(visible = true, transformation(origin = {-230, 132}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Liquid.Tube load(L = 100, kdp = 50, wnom = 5) annotation(
+  AES.ProcessComponents.Thermal.Liquid.Tube load(L = 100, wnom = 5) annotation(
     Placement(visible = true, transformation(origin = {140, -62}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
   AES.ProcessComponents.Thermal.Liquid.surfTcond_fixed Tload annotation(
     Placement(visible = true, transformation(origin = {170, -62}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
@@ -64,7 +64,7 @@ equation
   connect(spTo.y, PI_To.SP) annotation(
     Line(points = {{-201, 56}, {-178, 56}}, color = {0, 0, 127}));
   connect(P.pwh_b, line.pwh_a) annotation(
-    Line(points = {{-58, 10}, {100, 10}}, color = {46, 52, 54}));
+    Line(points = {{-58, 10}, {21, 10}, {21, 12}, {100, 12}}, color = {46, 52, 54}));
   connect(P.pwh_b, sdp.pwh_hi) annotation(
     Line(points = {{-58, 10}, {58, 10}, {58, -24}}, color = {46, 52, 54}));
   connect(P.pwh_b, Vrec.pwh_a) annotation(
@@ -84,7 +84,7 @@ equation
   connect(sw.pwh_a, sdp.pwh_lo) annotation(
     Line(points = {{-58, -98}, {58, -98}, {58, -36}}, color = {46, 52, 54}));
   connect(line.pwh_b, Vload.pwh_a) annotation(
-    Line(points = {{124, 10}, {140, 10}, {140, -8}}, color = {46, 52, 54}));
+    Line(points = {{124, 12}, {140, 12}, {140, -8}}, color = {46, 52, 54}));
   connect(Vload.pwh_b, load.pwh_a) annotation(
     Line(points = {{140, -32}, {140, -50}}, color = {46, 52, 54}));
   connect(Vload.x, xload.y) annotation(

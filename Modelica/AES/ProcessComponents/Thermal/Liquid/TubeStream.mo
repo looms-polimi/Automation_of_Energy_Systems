@@ -26,7 +26,11 @@ protected
   final parameter SI.Volume Vlump=Across*L/n;
   final parameter SI.HeatCapacity Clump=cp*ro*Vlump;
 equation
-  w               = Functions.sqrtReg((dp/ro-Modelica.Constants.g_n*dz)/kf);
+  //w               = Functions.sqrtReg((dp/ro-Modelica.Constants.g_n*dz)/kf);
+  
+  // CHECK THIS
+  dp/ro-Modelica.Constants.g_n*dz-kf*w*abs(w) = homotopy(actual=2*L/ro^2/Across^2*w*der(w),simplified = 0);
+
   w               = ro*Across*u;
   Re              = ro*abs(u)*D/mu;
   Nu              = gamma*D/lambda;
@@ -50,6 +54,7 @@ equation
   Q_surf_tot      = sum(surf.Q_flow);
 initial equation
   kdp*1e5*L/1000/ro = kf*wnom^2;
+  der(w) = 0;
 annotation(
     Icon(graphics = {Rectangle(lineColor = {46, 52, 54}, fillColor = {211, 215, 207}, fillPattern = FillPattern.HorizontalCylinder, extent = {{-100, 40}, {100, -40}}), Text(origin = {-76, 3}, lineColor = {204, 0, 0}, extent = {{-44, 29}, {44, -29}}, textString = "a"), Text(origin = {70, 3}, lineColor = {204, 0, 0}, extent = {{-44, 29}, {44, -29}}, textString = "b")}),
     experiment(StartTime = 0, StopTime = 1, Tolerance = 1e-6, Interval = 0.002),

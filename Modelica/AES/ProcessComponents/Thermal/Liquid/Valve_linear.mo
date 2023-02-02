@@ -13,7 +13,7 @@ equation
   hao = hbi;
   hbo = hai;
 initial equation
-  wnom = kv*sqrt(dpnom);
+  0 = wnom - kv*sqrt(dpnom);
 annotation(
     Icon(graphics = {Polygon(origin = {0, 70}, fillColor = {114, 159, 207}, fillPattern = FillPattern.VerticalCylinder, points = {{0, -10}, {-40, -10}, {-40, -2}, {-20, 10}, {20, 10}, {40, -2}, {40, -10}, {0, -10}}), Rectangle(origin = {0, 30}, fillColor = {46, 52, 54}, fillPattern = FillPattern.Solid, extent = {{-2, 30}, {2, -30}}), Polygon(origin = {-50, 0}, fillColor = {211, 215, 207}, fillPattern = FillPattern.HorizontalCylinder, points = {{50, 0}, {-50, 40}, {-50, -40}, {50, 0}}), Polygon(origin = {50, 0}, rotation = 180, fillColor = {211, 215, 207}, fillPattern = FillPattern.HorizontalCylinder, points = {{50, 0}, {-50, 40}, {-50, -40}, {50, 0}}), Ellipse( fillColor = {211, 215, 207}, fillPattern = FillPattern.Sphere, extent = {{-20, 20}, {20, -20}}, endAngle = 360), Polygon(origin = {-6, -60}, fillColor = {52, 101, 164}, fillPattern = FillPattern.Solid, points = {{-40, 6}, {20, 6}, {20, 20}, {50, 0}, {20, -20}, {20, -6}, {-40, -6}, {-40, 6}})}));
 end Valve_linear;

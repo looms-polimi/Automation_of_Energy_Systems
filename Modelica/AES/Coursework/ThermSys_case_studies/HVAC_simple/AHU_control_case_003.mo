@@ -17,7 +17,7 @@ model AHU_control_case_003
   AES.ProcessComponents.Thermal.Air.MAvolume Room2(Tstart(displayUnit = "K") , V = 5 * 5 * 3, phistart = 0.6) annotation(
     Placement(visible = true, transformation(origin = {100, -80}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
   AES.ProcessComponents.Thermal.Air.MAvolume Room1(Tstart(displayUnit = "K") , V = 5 * 5 * 3, phistart = 0.6) annotation(
-    Placement(visible = true, transformation(origin = {100, 100}, extent = {{-20, 20}, {20, -20}}, rotation = 0)));
+    Placement(visible = true, transformation(origin = {102, 100}, extent = {{-20, 20}, {20, -20}}, rotation = 0)));
   AES.ProcessComponents.Thermal.Air.DPlin_NomPoint dpin1 annotation(
     Placement(visible = true, transformation(origin = {10, 100}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
   AES.ProcessComponents.Thermal.Air.DPlin_NomPoint dpin2 annotation(
@@ -74,7 +74,7 @@ equation
   connect(U1.air_flange2, dpin2.air_flange2) annotation(
     Line(points = {{-38, 50}, {-20, 50}, {-20, -80}, {-2, -80}}, color = {0, 100, 150}));
   connect(dprec1.air_flange1, Room1.air_flange2) annotation(
-    Line(points = {{60, 140}, {141, 140}, {141, 100}, {124, 100}}, color = {0, 100, 150}));
+    Line(points = {{60, 140}, {141, 140}, {141, 100}, {126, 100}}, color = {0, 100, 150}));
   connect(dprec2.air_flange1, Room2.air_flange2) annotation(
     Line(points = {{22, -120}, {140, -120}, {140, -80}, {124, -80}}, color = {0, 100, 150}));
   connect(dprec1.air_flange2, dprec2.air_flange2) annotation(
@@ -106,17 +106,17 @@ equation
   connect(sTret.oT, PI_Tret.PV) annotation(
     Line(points = {{-152, -120}, {-240, -120}, {-240, 106}, {-222, 106}}, color = {0, 0, 127}));
   connect(LocalActuator_Room1.port, Room1.heatPort) annotation(
-    Line(points = {{100, 60}, {100, 82}}, color = {191, 0, 0}));
+    Line(points = {{100, 60}, {100, 70}, {102, 70}, {102, 82}}, color = {191, 0, 0}));
   connect(Room1.air_flange2, sTroom1.air_flange1) annotation(
-    Line(points = {{124, 100}, {160, 100}}, color = {0, 100, 150}));
+    Line(points = {{126, 100}, {160, 100}}, color = {0, 100, 150}));
   connect(PI_Room1.SP, spTroom1.y) annotation(
     Line(points = {{238, 46}, {250.5, 46}, {250.5, 42}, {263, 42}}, color = {0, 0, 127}));
   connect(Room1.heatPort, conv1a.port_a) annotation(
-    Line(points = {{100, 82}, {100, 70}, {60, 70}, {60, 40}}, color = {191, 0, 0}));
+    Line(points = {{102, 82}, {102, 70}, {60, 70}, {60, 40}}, color = {191, 0, 0}));
   connect(damperRoom1.air_flange1, dpin1.air_flange1) annotation(
     Line(points = {{28, 100}, {22, 100}}, color = {0, 100, 150}));
   connect(damperRoom1.air_flange2, Room1.air_flange1) annotation(
-    Line(points = {{52, 100}, {76, 100}}, color = {0, 100, 150}));
+    Line(points = {{52, 100}, {78, 100}}, color = {0, 100, 150}));
   connect(Room2.air_flange2, sTroom2.air_flange1) annotation(
     Line(points = {{124, -80}, {158, -80}}, color = {0, 100, 150}));
   connect(Pcmax1.y, LocalActuator_Room1.Q_flow) annotation(
