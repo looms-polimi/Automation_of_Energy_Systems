@@ -58,7 +58,7 @@ equation
     __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts ",
     __OpenModelica_simulationFlags(lv = "LOG_STATS", s = "dassl"),
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}}), graphics = {Text(origin = {-11, 1}, extent = {{-43, 15}, {43, -15}}, textString = "Tune this delay
-for best compensation"), Text(origin = {-108, 43}, extent = {{-48, 15}, {48, -15}}, textString = "Poles added here
+for best compensation"), Text(origin = {-114, 43}, extent = {{-48, 15}, {48, -15}}, textString = "Poles added here
 cannot be too HF
 to avoid amplifying noise")}));
 end FF_compensation_with_delay;

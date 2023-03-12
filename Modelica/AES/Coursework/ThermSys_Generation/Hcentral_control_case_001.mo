@@ -12,7 +12,7 @@ model Hcentral_control_case_001
     Placement(visible = true, transformation(origin = {30, 50}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
   AES.ProcessComponents.Thermal.Liquid.Pump_centrifugal P(dp0 = 799999.9999999999, w0 = 20) annotation(
     Placement(visible = true, transformation(origin = {-70, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Liquid.Tube line(L = 1000, wnom = 5) annotation(
+  AES.ProcessComponents.Thermal.Liquid.Tube line(Di(displayUnit = "km"),L = 1000, dz(displayUnit = "Gm"), n = 30, wnom = 5) annotation(
     Placement(visible = true, transformation(origin = {112, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   inner AES.ProcessComponents.Thermal.System_settings.System_liquid system annotation(
     Placement(visible = true, transformation(origin = {-270, 132}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
