@@ -2,7 +2,7 @@ within AES.Coursework.ElecSys_power_frequency_control;
 
 model PA_two_generators_loadDroop
   extends AES.Icons.CourseworkModel;
-  Modelica.Blocks.Continuous.TransferFunction G1(a = {10, 1}, b = {10e6}) annotation(
+  Modelica.Blocks.Continuous.TransferFunction G1(a = {10, 1}, b = {10e6}*0.2) annotation(
     Placement(visible = true, transformation(origin = {44, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Continuous.TransferFunction G2(a = {15, 1}, b = {30e6}) annotation(
     Placement(visible = true, transformation(origin = {44, -40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -14,13 +14,13 @@ model PA_two_generators_loadDroop
     Placement(visible = true, transformation(origin = {-56, 50}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
   Modelica.Blocks.Math.Gain beta2(k = 0.75) annotation(
     Placement(visible = true, transformation(origin = {-16, 50}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
-  Modelica.Blocks.Continuous.Integrator Cs(k = 0.03) annotation(
+  Modelica.Blocks.Continuous.Integrator Cs(k = 0.03*0.5) annotation(
     Placement(visible = true, transformation(origin = {-96, 80}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Continuous.TransferFunction Cp1(a = {1}, b = {1.5}) annotation(
     Placement(visible = true, transformation(origin = {-76, -6}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Continuous.TransferFunction Cp2(a = {1}, b = {1.5})  annotation(
     Placement(visible = true, transformation(origin = {-76, -46}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Electric.Generators_PAport.Generator_order0_prescribed_P Ge1(Prated = 10e6, Tox = 2, dnom = 10)  annotation(
+  AES.ProcessComponents.Electric.Generators_PAport.Generator_order0_prescribed_P Ge1(Prated = 10e6, Tox = 2, dnom = 10, xi = 0.1)  annotation(
     Placement(visible = true, transformation(origin = {80, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   AES.ProcessComponents.Electric.Generators_PAport.Generator_order0_prescribed_P Ge2(Tox = 3, dnom = 10)  annotation(
     Placement(visible = true, transformation(origin = {80, -40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));

@@ -13,7 +13,7 @@ model Valve_linearisation_case_001
     Placement(visible = true, transformation(origin = {90, -10}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
   AES.ProcessComponents.Thermal.Liquid.Valve_linear valveNL annotation(
     Placement(visible = true, transformation(origin = {-70, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Blocks.Sources.RealExpression xv(y = max(0, min(1, 0.01 * time))) annotation(
+  Modelica.Blocks.Sources.RealExpression xv(y = max(1e-9, min(1, 0.01 * time))) annotation(
     Placement(visible = true, transformation(origin = {-110, 30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   ProcessComponents.Thermal.Liquid.TubeStream streamLIN(L = 20000) annotation(
     Placement(visible = true, transformation(origin = {30, -50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));

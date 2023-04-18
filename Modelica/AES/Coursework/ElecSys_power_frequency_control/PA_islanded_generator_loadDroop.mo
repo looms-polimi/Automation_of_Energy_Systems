@@ -11,9 +11,9 @@ model PA_islanded_generator_loadDroop
     Placement(visible = true, transformation(origin = {-110, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   AES.ProcessComponents.Electric.Loads_PAport.Load_linear_droop L(Pnom = 20e6)  annotation(
     Placement(visible = true, transformation(origin = {8, 30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Blocks.Continuous.LimPID Cps(Ti = 80, controllerType = .Modelica.Blocks.Types.SimpleController.PI, k = 0.1, yMax = 1, yMin = 0)  annotation(
+  Modelica.Blocks.Continuous.LimPID Cps(Ti = 80, controllerType = .Modelica.Blocks.Types.SimpleController.PI, k = 0.15, yMax = 1, yMin = 0)  annotation(
     Placement(visible = true, transformation(origin = {-68, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Electric.Generators_PAport.Generator_order0_prescribed_P G(Tox = 0.8)  annotation(
+  AES.ProcessComponents.Electric.Generators_PAport.Generator_order0_prescribed_P G(Tox = 0.8, xi = 0.3)  annotation(
     Placement(visible = true, transformation(origin = {8, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(dPe.y, L.Preq) annotation(

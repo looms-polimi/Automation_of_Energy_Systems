@@ -11,6 +11,7 @@ model TubeStream
   parameter SI.Temperature Tstart=293.15 "initial T, all lumps";
   parameter SI.CoefficientOfHeatTransfer gamma0=2 "min gamma (still fluid)";
   parameter Boolean fluidHeats=true "T if fluid heats the outside, F otherwise";
+  parameter Boolean hasInertia=false;
   AES.ProcessComponents.Thermal.Interfaces.vectorHeatPort surf(n=n) annotation(
     Placement(visible = true, transformation(origin = {0, 40}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {0, 54}, extent = {{-42, -14}, {42, 14}}, rotation = 0)));
   SI.Velocity u "fluid velocity";
@@ -26,11 +27,15 @@ protected
   final parameter SI.Volume Vlump=Across*L/n;
   final parameter SI.HeatCapacity Clump=cp*ro*Vlump;
 equation
-  //w               = Functions.sqrtReg((dp/ro-Modelica.Constants.g_n*dz)/kf);
-  
+ 
   // CHECK THIS
-  dp/ro-Modelica.Constants.g_n*dz-kf*w*abs(w) = homotopy(actual=2*L/ro^2/Across^2*w*der(w),simplified = 0);
-
+  //w               = Functions.sqrtReg((dp/ro-Modelica.Constants.g_n*dz)/kf);
+  if hasInertia then
+     Across*dp-ro*Across*Modelica.Constants.g_n*dz-kf*w*abs(w)
+                  = homotopy(actual=L*der(w),simplified = 0);
+  else
+     w = Functions.sqrtReg(Across*dp-ro*Across*Modelica.Constants.g_n*dz)/kf;
+  end if;
   w               = ro*Across*u;
   Re              = ro*abs(u)*D/mu;
   Nu              = gamma*D/lambda;

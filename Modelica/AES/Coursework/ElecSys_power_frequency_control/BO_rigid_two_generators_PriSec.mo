@@ -28,11 +28,11 @@ model BO_rigid_two_generators_PriSec
     Placement(visible = true, transformation(origin = {-110, 50}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
   Modelica.Blocks.Math.Gain beta2(k = 0.75) annotation(
     Placement(visible = true, transformation(origin = {-70, 50}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
-  Modelica.Blocks.Continuous.Integrator Cs(k = 0.01) annotation(
+  Modelica.Blocks.Continuous.Integrator Cs(k = 0.03) annotation(
     Placement(visible = true, transformation(origin = {-150, 80}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Blocks.Continuous.TransferFunction Cp1(a = {1}, b = {10}) annotation(
+  Modelica.Blocks.Continuous.TransferFunction Cp1(a = {1}, b = {5}) annotation(
     Placement(visible = true, transformation(origin = {-150, -6}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Blocks.Continuous.TransferFunction Cp2(a = {1}, b = {10})  annotation(
+  Modelica.Blocks.Continuous.TransferFunction Cp2(a = {1}, b = {5})  annotation(
     Placement(visible = true, transformation(origin = {-150, -46}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(Pbal.y, N.u) annotation(

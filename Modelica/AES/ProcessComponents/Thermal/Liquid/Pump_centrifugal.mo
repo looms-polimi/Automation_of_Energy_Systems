@@ -4,6 +4,7 @@ model Pump_centrifugal
   extends Interfaces.flowTwoPorts_pwh(final pbhi=true,w(start=w0/1000));
   parameter SI.PressureDifference dp0=1e5 "dp at cmd=1, zero flow";
   parameter SI.MassFlowRate w0=1 "mass flowrate at cmd=1, zero dp";
+  parameter Boolean noReverse=false "strictly prohibit reverse flow";
   Modelica.Blocks.Interfaces.RealInput cmd annotation(
     Placement(visible = true, transformation(origin = {-114, 108}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {0, 80}, extent = {{-20, -20}, {20, 20}}, rotation = -90)));
   SI.Power P;
@@ -14,7 +15,9 @@ equation
   hao = hbi-dp/ro;
   hbo = hai+dp/ro;
   P   = w*dp/ro;
-  assert(w>=0, "flow reversal not allowed in centrifugal pump");
+  if noReverse then
+     assert(w>=0, "flow reversal not allowed in centrifugal pump");
+  end if;
 initial equation
   dp0-kp*w0^2 = 0;
 annotation(
