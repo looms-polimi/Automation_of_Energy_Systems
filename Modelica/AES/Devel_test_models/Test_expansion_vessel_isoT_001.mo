@@ -10,7 +10,7 @@ model Test_expansion_vessel_isoT_001
     Placement(visible = true, transformation(origin = {-10, 90}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   AES.ProcessComponents.Thermal.Liquid.surfTcond_prescribed T annotation(
     Placement(visible = true, transformation(origin = {110, 90}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Liquid.Pump_volumetric pumpC(w0 = 1) annotation(
+  AES.ProcessComponents.Thermal.Liquid.Pump_volumetric pumpC(w0 = 0.001) annotation(
     Placement(visible = true, transformation(origin = {8, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   AES.ProcessComponents.Thermal.Liquid.Tube tube01(L = 1000, kdp = 1, wnom = 1)  annotation(
     Placement(visible = true, transformation(origin = {110, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -22,7 +22,7 @@ model Test_expansion_vessel_isoT_001
     Placement(visible = true, transformation(origin = {-52, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   AES.ProcessComponents.Thermal.Liquid.Node_pT_fixed ssnk annotation(
     Placement(visible = true, transformation(origin = {170, 20}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
-  ProcessComponents.Thermal.Liquid.ExpansionVessel_isoT ev(V = 1, p0 = 200000)  annotation(
+  ProcessComponents.Thermal.Liquid.ExpansionVessel_isoT ev(T0(displayUnit = "K"), p0 = 2000000)  annotation(
     Placement(visible = true, transformation(origin = {58, 26}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(cmdT.y, T.T) annotation(

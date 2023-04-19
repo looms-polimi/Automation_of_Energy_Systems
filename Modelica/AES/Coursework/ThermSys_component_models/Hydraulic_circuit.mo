@@ -8,11 +8,11 @@ within AES.Coursework.ThermSys_component_models;
     Placement(visible = true, transformation(origin = {-130, 50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.Ramp cmd_v(duration = 10, height = 0.8, offset = 0.1, startTime = 30)  annotation(
     Placement(visible = true, transformation(origin = {-30, 50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Liquid.ExpansionVessel_isoT Vessel(V = 0.05)  annotation(
+  AES.ProcessComponents.Thermal.Liquid.ExpansionVessel_isoT Vessel(V = 0.1)  annotation(
     Placement(visible = true, transformation(origin = {-112, 16}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   inner ProcessComponents.Thermal.System_settings.System_liquid system annotation(
     Placement(visible = true, transformation(origin = {-190, 90}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  ProcessComponents.Thermal.Liquid.Pump_centrifugal Pcen(dp0 = 49999.99999999999, w0 = 0.1) annotation(
+  ProcessComponents.Thermal.Liquid.Pump_centrifugal Pcen(dp0 = 10000, w0 = 0.1) annotation(
     Placement(visible = true, transformation(origin = {-72, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   AES.ProcessComponents.Thermal.Liquid.Node_wT_prescribed inject annotation(
     Placement(visible = true, transformation(origin = {-112, -50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -20,7 +20,7 @@ within AES.Coursework.ThermSys_component_models;
     Placement(visible = true, transformation(origin = {-170, -70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.RealExpression win(y = if time > 10 and time < 12 then 0.05 else 0)  annotation(
     Placement(visible = true, transformation(origin = {-170, -44}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  ProcessComponents.Thermal.Liquid.Tube tube annotation(
+  ProcessComponents.Thermal.Liquid.Tube tube(fluidHeats = true, hasInertia = true)  annotation(
     Placement(visible = true, transformation(origin = {-20, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));  equation
   connect(cmd_v.y, vlin_cen.x) annotation(
     Line(points = {{-19, 50}, {28, 50}, {28, 20}}, color = {0, 0, 127}));

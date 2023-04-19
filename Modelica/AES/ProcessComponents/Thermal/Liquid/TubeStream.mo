@@ -11,7 +11,7 @@ model TubeStream
   parameter SI.Temperature Tstart=293.15 "initial T, all lumps";
   parameter SI.CoefficientOfHeatTransfer gamma0=2 "min gamma (still fluid)";
   parameter Boolean fluidHeats=true "T if fluid heats the outside, F otherwise";
-  parameter Boolean hasInertia=false;
+  parameter Boolean hasInertia=false "account for fluid inertia";
   AES.ProcessComponents.Thermal.Interfaces.vectorHeatPort surf(n=n) annotation(
     Placement(visible = true, transformation(origin = {0, 40}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {0, 54}, extent = {{-42, -14}, {42, 14}}, rotation = 0)));
   SI.Velocity u "fluid velocity";

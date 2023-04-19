@@ -2,24 +2,26 @@ within AES.ProcessComponents.Thermal.Liquid;
 
 model ExpansionVessel_isoT
   outer System_settings.System_liquid system;
-  parameter SI.Pressure p0=101325 "nominal p";
+  parameter SI.Pressure p0=1e5 "nominal p";
   parameter SI.Area V=5 "vessel volume";
   parameter SI.Temperature T0=293.15 "operating temperature";
   parameter SI.MolarMass MM=0.029 "gas molar mass";
   parameter Real lfracstart=0.5 "initial fractional (0-1) level";
-  Real lfrac(start=lfracstart,fixed=true);
+  Real lfrac(start=lfracstart);
   SI.Pressure p;
   SI.Volume Vg;
   AES.ProcessComponents.Thermal.Interfaces.pwhPort pwh_a annotation(
     Placement(visible = true, transformation(origin = {0, -84}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {-120, -60}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
   AES.ProcessComponents.Thermal.Interfaces.pwhPort pwh_b annotation(
     Placement(visible = true, transformation(origin = {10, -74}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {120, -60}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
-protected
-  final parameter SI.Mass Mgas(fixed=false);
+
+//protected
+  final parameter SI.Mass Mgas =  p0*V*(1-lfracstart)*MM
+                                 /(Modelica.Constants.R*T0);
 equation
   system.ro*V*der(lfrac) = pwh_a.w+pwh_b.w;
   Vg                     = V*(1-lfrac);
-  p*Vg                   = Mgas/MM*Modelica.Constants.R*T0;
+  Mgas                   = MM*p*Vg/Modelica.Constants.R*T0;
   
   pwh_a.p = p;
   pwh_b.p = p;

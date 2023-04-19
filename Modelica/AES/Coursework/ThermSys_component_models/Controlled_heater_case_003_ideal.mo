@@ -1,8 +1,8 @@
 within AES.Coursework.ThermSys_component_models;
 
-model Controlled_heater_case_003
+model Controlled_heater_case_003_ideal
   extends AES.Icons.CourseworkModel;
-  AES.ProcessComponents.Thermal.HVAC.ControlledLiquidHeater_ideal CH annotation(
+  AES.ProcessComponents.Thermal.HVAC.ControlledLiquidHeater_ideal CH(Tcl = 50)  annotation(
     Placement(visible = true, transformation(origin = {-90, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   AES.ProcessComponents.Thermal.Liquid.Pump_volumetric P(w0 = 1) annotation(
     Placement(visible = true, transformation(origin = {-50, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -62,4 +62,4 @@ equation
     experiment(StartTime = 0, StopTime = 10000, Tolerance = 1e-6, Interval = 20),
     __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts ",
     __OpenModelica_simulationFlags(lv = "LOG_STATS", s = "dassl"));
-end Controlled_heater_case_003;
+end Controlled_heater_case_003_ideal;

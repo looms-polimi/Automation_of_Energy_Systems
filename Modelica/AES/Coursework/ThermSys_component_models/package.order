@@ -6,9 +6,11 @@ HeatExchanger_1vol_case_002
 HeatExchanger_1vol_case_003
 Controlled_heater_case_001
 Controlled_heater_case_002
-Controlled_heater_case_003
+Controlled_heater_case_003_ideal
+Controlled_heater_case_003_lim
 Controlled_AHU_case_001
 Controlled_AHU_case_002
-HeatPump_case_002
 HeatPump_case_001
+HeatPump_case_002
 Heater_power_vs_wTin
+

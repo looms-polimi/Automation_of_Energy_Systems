@@ -14,9 +14,10 @@ model Tube
   parameter Integer l(min=2)=3 "No. of  wall layers (radial), minimum 2"; 
   parameter SI.Temperature Tstart=293.15 "initial T, all lumps";
   parameter Boolean fluidHeats=true "T if fluid heats the outside, F otherwise";
+  parameter Boolean hasInertia=false "account for fluid inertia";
   AES.ProcessComponents.Thermal.Interfaces.vectorHeatPort surf(n=n) annotation(
     Placement(visible = true, transformation(origin = {0, 90}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {0, 54}, extent = {{-42, -14}, {42, 14}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Liquid.TubeStream fluidStream(D = Di, L = L, Tstart = Tstart, dz = dz, fluidHeats = fluidHeats, kdp = kdp, n = n, pbhi = false, wnom = wnom)  annotation(
+  AES.ProcessComponents.Thermal.Liquid.TubeStream fluidStream(D = Di, L = L, Tstart = Tstart, dz = dz, fluidHeats = fluidHeats, hasInertia = hasInertia, kdp = kdp, n = n, pbhi = false, wnom = wnom)  annotation(
     Placement(visible = true, transformation(origin = {0, 0}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
   AES.ProcessComponents.Thermal.Liquid.TubeWall wall(Di = Di, L = L, Tstart = Tstart, c = cw, l = l, lambda = lambdaw, n = n, ro = row, t = t)  annotation(
     Placement(visible = true, transformation(origin = {1, 43}, extent = {{-21, -21}, {21, 21}}, rotation = 0)));
