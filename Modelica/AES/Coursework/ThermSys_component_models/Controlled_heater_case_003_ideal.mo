@@ -58,7 +58,7 @@ equation
   connect(load.surf, delivery.surf) annotation(
     Line(points = {{70, 52}, {70, -4}}, color = {144, 5, 5}));
   annotation(
-    Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}})),
+    Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}}), graphics = {Text(origin = {-87, -67}, extent = {{-81, 13}, {81, -13}}, textString = "Compare with Controlled_heater_case_003_lim")}),
     experiment(StartTime = 0, StopTime = 10000, Tolerance = 1e-6, Interval = 20),
     __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts ",
     __OpenModelica_simulationFlags(lv = "LOG_STATS", s = "dassl"));
