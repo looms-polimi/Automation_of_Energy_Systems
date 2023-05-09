@@ -12,7 +12,7 @@ model Test_liquid_circuit_002
     Placement(visible = true, transformation(origin = {-112, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.RealExpression Ti(y = 293.15)  annotation(
     Placement(visible = true, transformation(origin = {-112, -36}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Blocks.Sources.RealExpression cmdP(y = if time < 500 then 0.1 else 0.9) annotation(
+  Modelica.Blocks.Sources.RealExpression cmdP(y = if time < 10 then 0.01 else 0.01 + min(1, (time - 10))) annotation(
     Placement(visible = true, transformation(origin = {-112, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.RealExpression xV(y = 500) annotation(
     Placement(visible = true, transformation(origin = {-112, 30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));

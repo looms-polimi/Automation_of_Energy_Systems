@@ -1,4 +1,4 @@
-within AES.Coursework.ThermSys_case_studies.heat_network;
+within AES.Coursework.ThermSys_case_studies.Heat_network;
 
 model HC_case_001
   extends Icons.CourseworkModel;

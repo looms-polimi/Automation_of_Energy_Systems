@@ -37,3 +37,4 @@ Test_multilayer_walls_001
 Test_air_circ_004
 Test_liquid_mixing_streams
 Test_islanding_001
+Test_centrifugal_pump_001

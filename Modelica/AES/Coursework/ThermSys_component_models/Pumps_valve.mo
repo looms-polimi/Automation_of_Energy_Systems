@@ -4,7 +4,7 @@ within AES.Coursework.ThermSys_component_models;
     extends Icons.CourseworkModel;
   AES.ProcessComponents.Thermal.Liquid.Pump_volumetric Pvol(w0 = 0.1)  annotation(
     Placement(visible = true, transformation(origin = {-90, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Liquid.Pump_centrifugal Pcen(dp0 = 49999.99999999999, w0 = 0.1)  annotation(
+  AES.ProcessComponents.Thermal.Liquid.Pump_centrifugal Pcen(dpn0 = 49999.99999999999, wn0 = 0.1)  annotation(
     Placement(visible = true, transformation(origin = {-70, -30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   AES.ProcessComponents.Thermal.Liquid.Node_pT_fixed src annotation(
     Placement(visible = true, transformation(origin = {-152, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));

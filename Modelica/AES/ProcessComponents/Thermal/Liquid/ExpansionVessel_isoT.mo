@@ -3,7 +3,7 @@ within AES.ProcessComponents.Thermal.Liquid;
 model ExpansionVessel_isoT
   outer System_settings.System_liquid system;
   parameter SI.Pressure p0=1e5 "nominal p";
-  parameter SI.Area V=5 "vessel volume";
+  parameter SI.Volume V=5 "vessel volume";
   parameter SI.Temperature T0=293.15 "operating temperature";
   parameter SI.MolarMass MM=0.029 "gas molar mass";
   parameter Real lfracstart=0.5 "initial fractional (0-1) level";

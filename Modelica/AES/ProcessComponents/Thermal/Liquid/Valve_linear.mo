@@ -9,7 +9,7 @@ model Valve_linear
 protected
   final parameter Real kv(fixed=false) annotation(Evaluate = true);
 equation
-  w   = max(0,min(x,1))*kv*Functions.sqrtReg(dp);
+  w   = max(Constants.cmdeps,min(x,1))*kv*Functions.sqrtReg(dp);
   hao = hbi;
   hbo = hai;
 initial equation

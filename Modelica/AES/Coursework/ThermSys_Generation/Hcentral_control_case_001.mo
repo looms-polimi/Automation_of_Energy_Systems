@@ -10,9 +10,9 @@ model Hcentral_control_case_001
     Placement(visible = true, transformation(origin = {70, -28}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
   AES.ControlBlocks.AnalogueControllers.PI_awfb_basic PI_dpHC(CSmin = 0, K = 1e-6, Ti = 5) annotation(
     Placement(visible = true, transformation(origin = {30, 50}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Liquid.Pump_centrifugal P(dp0 = 799999.9999999999, w0 = 20) annotation(
+  AES.ProcessComponents.Thermal.Liquid.Pump_centrifugal P(dp00 = 1500000, dpn0 = 1200000, wn0 = 20) annotation(
     Placement(visible = true, transformation(origin = {-70, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Liquid.Tube line(Di(displayUnit = "km"),L = 1000, dz(displayUnit = "Gm"), n = 30, wnom = 5) annotation(
+  AES.ProcessComponents.Thermal.Liquid.Tube line(Di(displayUnit = "km"),L = 1000, dz(displayUnit = "Gm"), hasInertia = true, n = 30, wnom = 5) annotation(
     Placement(visible = true, transformation(origin = {112, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   inner AES.ProcessComponents.Thermal.System_settings.System_liquid system annotation(
     Placement(visible = true, transformation(origin = {-270, 132}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -40,7 +40,7 @@ model Hcentral_control_case_001
     Placement(visible = true, transformation(origin = {140, -20}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
   Modelica.Blocks.Sources.RealExpression xload(y = if sin(time/500) > 0 then 0.1 else 0.9) annotation(
     Placement(visible = true, transformation(origin = {170, -20}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
-  ProcessComponents.Thermal.Liquid.Valve_linear Vrec(dpnom = 99999.99999999999, wnom = 10) annotation(
+  ProcessComponents.Thermal.Liquid.Valve_linear Vrec(dpnom = 99999.99999999999, wnom = 5) annotation(
     Placement(visible = true, transformation(origin = {-42, -48}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
 equation
   connect(PI_dpHC.CS, FlowCtrl.u) annotation(
@@ -90,7 +90,7 @@ equation
   annotation(
     experiment(StartTime = 0, StopTime = 10000, Tolerance = 1e-06, Interval = 0.1),
     __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian -d=aliasConflicts -d=stateselection",
-    __OpenModelica_simulationFlags(lv = "LOG_STATS", s = "dassl"),
+    __OpenModelica_simulationFlags(lv = "LOG_STATS", s = "dassl", variableFilter = ".*"),
     Diagram(coordinateSystem(extent = {{-300, -160}, {300, 160}})),
     Icon(coordinateSystem(extent = {{-300, -160}, {300, 160}})));
 end Hcentral_control_case_001;

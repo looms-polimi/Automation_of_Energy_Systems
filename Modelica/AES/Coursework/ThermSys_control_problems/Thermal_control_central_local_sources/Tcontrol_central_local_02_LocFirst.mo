@@ -27,7 +27,7 @@ model Tcontrol_central_local_02_LocFirst
   AES.ControlBlocks.ActuationSchemes.u01_yMinMax Prange1(y0=0, y1 = 500)  annotation(
     Placement(visible = true, transformation(origin = {24, 28}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   AES.ProcessComponents.Thermal.Containment.VariableThermalConductor Gtake1 annotation(
-    Placement(visible = true, transformation(origin = {84, 8}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
+    Placement(visible = true, transformation(origin = {84, 12}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
   AES.ControlBlocks.ActuationSchemes.DaisyChain_uniform DC2 annotation(
     Placement(visible = true, transformation(origin = {-12, -72}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   AES.ControlBlocks.AnalogueControllers.PI_awfb_basic C2(CSmin = 0, K = 50, Ti = 10) annotation(
@@ -39,7 +39,7 @@ model Tcontrol_central_local_02_LocFirst
   Modelica.Thermal.HeatTransfer.Sources.PrescribedHeatFlow Ploc2 annotation(
     Placement(visible = true, transformation(origin = {62, -72}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   AES.ProcessComponents.Thermal.Containment.VariableThermalConductor Gtake2 annotation(
-    Placement(visible = true, transformation(origin = {84, -92}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
+    Placement(visible = true, transformation(origin = {84, -88}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
   Modelica.Thermal.HeatTransfer.Sensors.TemperatureSensor sTloc2 annotation(
     Placement(visible = true, transformation(origin = {-6, -114}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
   Modelica.Thermal.HeatTransfer.Components.HeatCapacitor Cloc2(C = 8000) annotation(
@@ -82,9 +82,9 @@ equation
   connect(sTloc1.T, C1.PV) annotation(
     Line(points = {{-16, -14}, {-66, -14}, {-66, 24}, {-56, 24}}, color = {0, 0, 127}));
   connect(Gtake1.hp_b, Cloc1.port) annotation(
-    Line(points = {{84, 18}, {84, 28}, {104, 28}, {104, 38}}, color = {191, 0, 0}));
+    Line(points = {{84, 22}, {84, 28}, {104, 28}, {104, 38}}, color = {191, 0, 0}));
   connect(Grange1.CSoMInMax, Gtake1.Gc) annotation(
-    Line(points = {{65.8, 8}, {73.8, 8}}, color = {0, 0, 127}));
+    Line(points = {{65.8, 8}, {84, 8}}, color = {0, 0, 127}));
   connect(sTloc1.port, Cloc1.port) annotation(
     Line(points = {{4, -14}, {104, -14}, {104, 38}}, color = {191, 0, 0}));
   connect(Ploc2.port, Cloc2.port) annotation(
@@ -92,7 +92,7 @@ equation
   connect(Gloss2.port_a, Cloc2.port) annotation(
     Line(points = {{122, -72}, {104, -72}, {104, -62}}, color = {191, 0, 0}));
   connect(Grange2.CSoMInMax, Gtake2.Gc) annotation(
-    Line(points = {{65.8, -92}, {73.8, -92}}, color = {0, 0, 127}));
+    Line(points = {{65.8, -92}, {84, -92}}, color = {0, 0, 127}));
   connect(sTloc2.port, Cloc2.port) annotation(
     Line(points = {{4, -114}, {104, -114}, {104, -62}}, color = {191, 0, 0}));
   connect(Prange2.CSoMInMax, Ploc2.Q_flow) annotation(
@@ -110,9 +110,9 @@ equation
   connect(Gloss2.port_b, Te.port) annotation(
     Line(points = {{142, -72}, {164, -72}, {164, 28}, {182, 28}}, color = {191, 0, 0}));
   connect(Ccen.port, Gtake2.hp_a) annotation(
-    Line(points = {{-150, -20}, {-150, -140}, {84, -140}, {84, -102}}, color = {191, 0, 0}));
+    Line(points = {{-150, -20}, {-150, -140}, {84, -140}, {84, -98}}, color = {191, 0, 0}));
   connect(Ccen.port, Gtake1.hp_a) annotation(
-    Line(points = {{-150, -20}, {-150, -40}, {84, -40}, {84, -2}}, color = {191, 0, 0}));
+    Line(points = {{-150, -20}, {-150, -40}, {84, -40}, {84, 2}}, color = {191, 0, 0}));
   connect(Ccen.port, Glosscen.port_a) annotation(
     Line(points = {{-150, -20}, {-150, -140}, {120, -140}}, color = {191, 0, 0}));
   connect(Glosscen.port_b, Te.port) annotation(
@@ -130,7 +130,7 @@ equation
   connect(spTc.y, Cc.SP) annotation(
     Line(points = {{-258, -34}, {-242, -34}}, color = {0, 0, 127}));
   connect(Gtake2.hp_b, Cloc2.port) annotation(
-    Line(points = {{84, -82}, {84, -72}, {104, -72}, {104, -62}}, color = {191, 0, 0}));
+    Line(points = {{84, -78}, {84, -72}, {104, -72}, {104, -62}}, color = {191, 0, 0}));
   annotation(
     Diagram(coordinateSystem(extent = {{-300, -200}, {300, 200}})),
     experiment(StartTime = 0, StopTime = 10000, Tolerance = 1e-6, Interval = 2),

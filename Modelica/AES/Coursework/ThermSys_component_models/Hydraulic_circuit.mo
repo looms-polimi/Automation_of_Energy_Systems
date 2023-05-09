@@ -12,7 +12,7 @@ within AES.Coursework.ThermSys_component_models;
     Placement(visible = true, transformation(origin = {-112, 16}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   inner ProcessComponents.Thermal.System_settings.System_liquid system annotation(
     Placement(visible = true, transformation(origin = {-190, 90}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  ProcessComponents.Thermal.Liquid.Pump_centrifugal Pcen(dp0 = 10000, w0 = 0.1) annotation(
+  ProcessComponents.Thermal.Liquid.Pump_centrifugal Pcen(dpn0 = 10000, wn0 = 0.1) annotation(
     Placement(visible = true, transformation(origin = {-72, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   AES.ProcessComponents.Thermal.Liquid.Node_wT_prescribed inject annotation(
     Placement(visible = true, transformation(origin = {-112, -50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
