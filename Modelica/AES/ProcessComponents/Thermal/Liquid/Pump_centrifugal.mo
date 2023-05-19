@@ -8,7 +8,7 @@ model Pump_centrifugal
   parameter SI.PressureDifference dp00=2.5e5 "dp at cmd=cmdnom, w=0";
   parameter Real etaHopt=0.8 "optimal hydraulic efficiency, at cmd=cmdHopt";
   parameter Real cmdHopt=0.8 "optimal efficiency cmd";
-  parameter Real etaH1=0.78 "hydraulic efficiency at cmd=1";
+  parameter Real etaH0=0.3 "min hydraulic efficiency (at cmd near zero)";
   parameter Boolean noReverse=true "strictly prohibit reverse flow";
   Modelica.Blocks.Interfaces.RealInput cmd annotation(
     Placement(visible = true, transformation(origin = {-114, 108}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {0, 80}, extent = {{-20, -20}, {20, 20}}, rotation = -90)));
@@ -16,7 +16,7 @@ model Pump_centrifugal
   SI.Power Pabs "absorbed power (power to fluid over hydraulic efficiency)";
 protected
   final parameter Real kp=(dp00-dpn0)/wn0^2;
-  final parameter Real keta=(etaHopt-etaH1)/(1-cmdHopt)^2;
+  final parameter Real keta=(etaHopt-etaH0)/cmdHopt^2;
 equation
   dp   = dp00*(max(Constants.cmdeps,min(1,cmd))/cmdnom)^2-kp*w^2;
   hao  = hbi-dp/ro;

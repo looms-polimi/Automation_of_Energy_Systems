@@ -10,7 +10,7 @@ model Keep_below_limit
     Placement(visible = true, transformation(origin = {12, 36}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.RealExpression SP(y = 0.8) annotation(
     Placement(visible = true, transformation(origin = {-110, 36}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Blocks.Sources.RealExpression LD(y = 1 + 0.6 * sin(time / 10)) annotation(
+  Modelica.Blocks.Sources.RealExpression LD(y = 1 + 0.6*sin(time/10)) annotation(
     Placement(visible = true, transformation(origin = {-110, 70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(SP.y, C.SP) annotation(
@@ -25,7 +25,7 @@ equation
     Line(points = {{-38, 30}, {0, 30}}, color = {0, 0, 127}));
   annotation(
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}})),
-    experiment(StartTime = 0, StopTime = 150, Tolerance = 1e-6, Interval = 0.3),
-  __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian -d=aliasConflicts ",
-  __OpenModelica_simulationFlags(lv = "LOG_STATS", s = "dassl"));
+    experiment(StartTime = 0, StopTime = 150, Tolerance = 1e-06, Interval = 0.3),
+    __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian -d=aliasConflicts",
+    __OpenModelica_simulationFlags(lv = "LOG_STATS", s = "dassl", variableFilter = ".*"));
 end Keep_below_limit;

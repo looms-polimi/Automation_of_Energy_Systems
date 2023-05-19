@@ -19,6 +19,8 @@ model TwinPipeClosure
   parameter SI.Temperature Tstart=293.15 "initial T, all lumps";
   parameter Boolean hasInertia=true "account for fluid inertia";
 
+  SI.Power Ploss_total = Tterrain.port.Q_flow;
+
   AES.ProcessComponents.Thermal.Liquid.Tube tubeH(Di = Di, L = L, Tstart = Tstart, cw = cw, dz = dz, fluidHeats = true, hasInertia = hasInertia, kdp = kdp / 2, l = l, lambdaw = lambdaw, n = n, row = row, t = t, wnom = wnom)  annotation(
     Placement(visible = true, transformation(origin = {-20, 70}, extent = {{-20, 20}, {20, -20}}, rotation = 0)));
   AES.ProcessComponents.Thermal.Liquid.Tube tubeC(Di = Di, L = L, Tstart = Tstart, cw = cw, dz = dz, fluidHeats = true, hasInertia = hasInertia, kdp = kdp / 2, l = l, lambdaw = lambdaw, n = n, row = row, t = t, wnom = wnom) annotation(
