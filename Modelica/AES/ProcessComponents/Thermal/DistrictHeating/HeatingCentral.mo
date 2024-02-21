@@ -53,7 +53,7 @@ equation
   connect(t2.pwh_a, pwh.pwh_H) annotation(
     Line(points = {{64, 74}, {74, 74}, {74, 44}, {48, 44}, {48, -4}, {58, -4}}, color = {46, 52, 54}));
 initial equation
-  FlowCtrl.y = if ON then spw01 else w0off * spw01
+  FlowCtrl.y = if ON then spw01 else w0off * spw01;
 annotation(
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}})),
     Icon(graphics = {Rectangle(origin = {70.1, 11}, fillColor = {238, 238, 236}, fillPattern = FillPattern.HorizontalCylinder, extent = {{29.9, 5}, {-29.9, -5}}), Rectangle(origin = {70.1, -11}, fillColor = {238, 238, 236}, fillPattern = FillPattern.HorizontalCylinder, extent = {{29.9, 5}, {-29.9, -5}}), Rectangle(origin = {-49.98, 0}, fillColor = {85, 87, 83}, fillPattern = FillPattern.Solid, extent = {{-50.02, 80}, {50.02, -80}}), Rectangle(origin = {19.9, -20.02}, fillColor = {193, 125, 17}, fillPattern = FillPattern.Solid, extent = {{-19.9, 60.02}, {19.9, -60.02}}), Text(origin = {-48, -2}, lineColor = {255, 255, 85}, extent = {{-42, 52}, {42, -52}}, textString = "HS")}));
