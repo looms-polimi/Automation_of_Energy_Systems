@@ -32,7 +32,7 @@ model HNcontrol_HC_SS_case_001
     Placement(visible = true, transformation(origin = {-32, -70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.RealExpression spTret(y = 273.15 + 60) annotation(
     Placement(visible = true, transformation(origin = {-90, -64}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.DistrictHeating.TwinPipeClosure closure(L = 1000, wnom = 10)  annotation(
+  AES.ProcessComponents.Thermal.DistrictHeating.TwinPipeClosure closure(L = 1000, wnom = 10, hasInertia = false)  annotation(
     Placement(visible = true, transformation(origin = {70, -40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   AES.ProcessComponents.Thermal.Liquid.surfQcond_prescribed pQload annotation(
     Placement(visible = true, transformation(origin = {70, 50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));

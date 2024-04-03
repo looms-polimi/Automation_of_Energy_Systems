@@ -8,7 +8,7 @@ model HNcontrol_HC_SS_case_002
     Placement(visible = true, transformation(origin = {-2, -40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.RealExpression spTsupply(y = 273.15 + 100) annotation(
     Placement(visible = true, transformation(origin = {-168, -34}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Blocks.Sources.RealExpression spDp(y = min(1e5 *time / 60, 3e4)) annotation(
+  Modelica.Blocks.Sources.RealExpression spDp(y = min(1e5*time/60, 3e4)) annotation(
     Placement(visible = true, transformation(origin = {-168, -64}, extent = {{-10, 10}, {10, -10}}, rotation = 0)));
   Modelica.Blocks.Sources.BooleanExpression ON(y = true) annotation(
     Placement(visible = true, transformation(origin = {-168, -46}, extent = {{-10, 10}, {10, -10}}, rotation = 0)));
@@ -39,8 +39,8 @@ model HNcontrol_HC_SS_case_002
   AES.ProcessComponents.Thermal.Liquid.TwinPipeDiffPressureSensor sDp annotation(
     Placement(visible = true, transformation(origin = {-90, -86}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   AES.ControlBlocks.AnalogueControllers.PI_awfb_basic PI_Dp(CSmax = 1, CSmin = 0.01, K = 20, Ti = 10) annotation(
-    Placement(visible = true, transformation(origin = {-130, -70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.DistrictHeating.TwinPipeClosure closure(wnom = 10) annotation(
+    Placement(transformation(origin = {-130, -70}, extent = {{-10, -10}, {10, 10}})));
+  AES.ProcessComponents.Thermal.DistrictHeating.TwinPipeClosure closure(wnom = 10, hasInertia = false) annotation(
     Placement(visible = true, transformation(origin = {90, -40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(ON.y, HC.ON) annotation(
@@ -73,8 +73,6 @@ equation
     Line(points = {{49, 50}, {70, 50}}, color = {0, 0, 127}));
   connect(pQload.surf, tubeload.surf) annotation(
     Line(points = {{78, 41.3333}, {78, 23.3333}}, color = {144, 5, 5}));
-  connect(PI_Dp.CS, HC.spw01) annotation(
-    Line(points = {{-118, -70}, {-112, -70}, {-112, -40}, {-102, -40}}, color = {0, 0, 127}));
   connect(spDp.y, PI_Dp.SP) annotation(
     Line(points = {{-157, -64}, {-142, -64}}, color = {0, 0, 127}));
   connect(HC.tpwh_a, sDp.tpwh_a) annotation(
@@ -83,6 +81,8 @@ equation
     Line(points = {{-88, -86}, {-150, -86}, {-150, -74}, {-142, -74}}, color = {0, 0, 127}));
   connect(SS1.tpwh_b, closure.tpwh_a) annotation(
     Line(points = {{53.6, -40}, {77.6, -40}}));
+  connect(HC.spw01, PI_Dp.CS) annotation(
+    Line(points = {{-102, -40}, {-112, -40}, {-112, -70}, {-118, -70}}, color = {0, 0, 127}));
   annotation(
     experiment(StartTime = 0, StopTime = 100000, Tolerance = 1e-6, Interval = 1000),
     __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts ",

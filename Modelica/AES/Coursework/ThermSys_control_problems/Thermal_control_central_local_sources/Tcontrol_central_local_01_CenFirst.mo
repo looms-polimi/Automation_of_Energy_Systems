@@ -3,7 +3,7 @@ within AES.Coursework.ThermSys_control_problems.Thermal_control_central_local_so
 model Tcontrol_central_local_01_CenFirst
   extends Icons.CourseworkModel;
   Modelica.Thermal.HeatTransfer.Components.HeatCapacitor Ccen(C = 5000, T(start = 313.15))  annotation(
-    Placement(visible = true, transformation(origin = {-150, 10}, extent = {{-30, -30}, {30, 30}}, rotation = 0)));
+    Placement(transformation(origin = {-150, 10}, extent = {{-30, -30}, {30, 30}})));
   Modelica.Thermal.HeatTransfer.Components.HeatCapacitor Cloc1(C = 5000)  annotation(
     Placement(visible = true, transformation(origin = {104, 48}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Thermal.HeatTransfer.Sources.PrescribedHeatFlow Ploc1 annotation(
@@ -71,10 +71,6 @@ equation
     Line(points = {{142, 28}, {182, 28}}, color = {191, 0, 0}));
   connect(Te.T, Text.y) annotation(
     Line(points = {{204, 28}, {225, 28}}, color = {0, 0, 127}));
-  connect(DC1.CSo01[2], Prange1.CSi01) annotation(
-    Line(points = {{0, 28}, {12, 28}}, color = {0, 0, 127}));
-  connect(DC1.CSo01[1], Grange1.CSi01) annotation(
-    Line(points = {{0, 28}, {6, 28}, {6, 8}, {42, 8}}, color = {0, 0, 127}));
   connect(Prange1.CSoMInMax, Ploc1.Q_flow) annotation(
     Line(points = {{35.8, 28}, {51.8, 28}}, color = {0, 0, 127}));
   connect(spT1.y, C1.SP) annotation(
@@ -110,27 +106,31 @@ equation
   connect(Gloss2.port_b, Te.port) annotation(
     Line(points = {{142, -72}, {164, -72}, {164, 28}, {182, 28}}, color = {191, 0, 0}));
   connect(Ccen.port, Gtake2.hp_a) annotation(
-    Line(points = {{-150, -20}, {-150, -140}, {84, -140}, {84, -98}}, color = {191, 0, 0}));
+    Line(points = {{-152, -20}, {-152, -140}, {84, -140}, {84, -98}}, color = {191, 0, 0}));
   connect(Ccen.port, Gtake1.hp_a) annotation(
-    Line(points = {{-150, -20}, {-150, -40}, {84, -40}, {84, 2}}, color = {191, 0, 0}));
+    Line(points = {{-152, -20}, {-152, -40}, {84, -40}, {84, 2}}, color = {191, 0, 0}));
   connect(Ccen.port, Glosscen.port_a) annotation(
-    Line(points = {{-150, -20}, {-150, -140}, {120, -140}}, color = {191, 0, 0}));
+    Line(points = {{-152, -20}, {-150, -140}, {120, -140}}, color = {191, 0, 0}));
   connect(Glosscen.port_b, Te.port) annotation(
     Line(points = {{140, -140}, {164, -140}, {164, 28}, {182, 28}}, color = {191, 0, 0}));
   connect(Pc.port, Ccen.port) annotation(
-    Line(points = {{-160, -40}, {-150, -40}, {-150, -20}}, color = {191, 0, 0}));
+    Line(points = {{-160, -40}, {-150, -40}, {-152, -20}}, color = {191, 0, 0}));
   connect(Prangec.CSoMInMax, Pc.Q_flow) annotation(
     Line(points = {{-188, -40}, {-180, -40}}, color = {0, 0, 127}));
   connect(Cc.CS, Prangec.CSi01) annotation(
     Line(points = {{-218, -40}, {-212, -40}}, color = {0, 0, 127}));
   connect(Ccen.port, sTc.port) annotation(
-    Line(points = {{-150, -20}, {-150, -70}, {-160, -70}}, color = {191, 0, 0}));
+    Line(points = {{-152, -20}, {-150, -70}, {-160, -70}}, color = {191, 0, 0}));
   connect(sTc.T, Cc.PV) annotation(
     Line(points = {{-180, -70}, {-252, -70}, {-252, -44}, {-242, -44}}, color = {0, 0, 127}));
   connect(spTc.y, Cc.SP) annotation(
     Line(points = {{-258, -34}, {-242, -34}}, color = {0, 0, 127}));
   connect(Gtake2.hp_b, Cloc2.port) annotation(
     Line(points = {{84, -78}, {84, -72}, {104, -72}, {104, -62}}, color = {191, 0, 0}));
+  connect(DC1.CSo01[1], Grange1.CSi01) annotation(
+    Line(points = {{0, 28}, {4, 28}, {4, 8}, {42, 8}}, color = {0, 0, 127}));
+  connect(DC1.CSo01[2], Prange1.CSi01) annotation(
+    Line(points = {{0, 28}, {12, 28}}, color = {0, 0, 127}));
   annotation(
     Diagram(coordinateSystem(extent = {{-300, -200}, {300, 200}})),
     experiment(StartTime = 0, StopTime = 10000, Tolerance = 1e-6, Interval = 2),
