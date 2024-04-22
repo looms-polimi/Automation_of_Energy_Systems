@@ -11,5 +11,5 @@ package Constants "Pakage with constants"
   final constant SI.MolarMass MMa = 0.029 "molar mass of dry air";
   final constant SI.MolarMass MMw = 0.018 "molar mass of water";
   final constant SI.Pressure patm = 101325 "Atmospheric pressure";
-  final constant SI.Density d_a_typ = 1020 "typ dens of air for w/q param conv";
+  final constant SI.Density d_a_typ = 1.1 "typ dens of air for w/q param conv";
 end Constants;

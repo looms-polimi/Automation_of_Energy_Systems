@@ -8,7 +8,7 @@ model Hcentral_control_case_002
     Placement(visible = true, transformation(origin = {70, -30}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
   AES.ControlBlocks.AnalogueControllers.PI_awfb_basic PI_dpHC(CSmin = 0, K = 1e-6, Ti = 5) annotation(
     Placement(visible = true, transformation(origin = {30, 50}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Liquid.Pump_centrifugal P(dp00 = 1500000, dpn0 = 1200000,wn0 = 20) annotation(
+  AES.ProcessComponents.Thermal.Liquid.Pump_centrifugal P(dp00 = 1500000, dpn0 = 1200000, wn0 = 20) annotation(
     Placement(visible = true, transformation(origin = {-70, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   AES.ProcessComponents.Thermal.Liquid.Tube line(L = 1000, wnom = 5) annotation(
     Placement(visible = true, transformation(origin = {112, 12}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -34,15 +34,15 @@ model Hcentral_control_case_002
     Placement(visible = true, transformation(origin = {-166, 50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   AES.ControlBlocks.AnalogueControllers.PI_awfb_basic PI_wh(CSmin = 0, K = 0.2, Ti = 1) annotation(
     Placement(visible = true, transformation(origin = {-10, -50}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Liquid.Valve_linear Vrec(dpnom = 99999.99999999999, wnom = 5)  annotation(
+  AES.ProcessComponents.Thermal.Liquid.Valve_linear Vrec(dpnom = 99999.99999999999, wnom = 5) annotation(
     Placement(visible = true, transformation(origin = {-42, -50}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
   Modelica.Blocks.Sources.RealExpression spw(y = 5) annotation(
     Placement(visible = true, transformation(origin = {30, -44}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
   AES.ProcessComponents.Thermal.Liquid.Valve_linear Vload annotation(
     Placement(visible = true, transformation(origin = {140, -20}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
-  Modelica.Blocks.Sources.RealExpression xload(y = if sin(time / 500) > 0 then 0.4 else 0.7) annotation(
+  Modelica.Blocks.Sources.RealExpression xload(y = if sin(time/500) > 0 then 0.4 else 0.7) annotation(
     Placement(visible = true, transformation(origin = {170, -20}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Liquid.Header heater(V = 5)  annotation(
+  AES.ProcessComponents.Thermal.Liquid.Header heater(V = 5) annotation(
     Placement(visible = true, transformation(origin = {-110, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Thermal.HeatTransfer.Sources.PrescribedHeatFlow Ph annotation(
     Placement(visible = true, transformation(origin = {-130, 50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -100,9 +100,9 @@ equation
   connect(PI_To.CS, Ph.Q_flow) annotation(
     Line(points = {{-154, 50}, {-140, 50}}, color = {0, 0, 127}));
   annotation(
-    experiment(StartTime = 0, StopTime = 10000, Tolerance = 1e-6, Interval = 1),
-    __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts ",
-    __OpenModelica_simulationFlags(lv = "LOG_STATS", s = "dassl"),
+    experiment(StartTime = 0, StopTime = 10000, Tolerance = 1e-06, Interval = 1),
+    __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts",
+    __OpenModelica_simulationFlags(lv = "LOG_STDOUT,LOG_ASSERT,LOG_STATS", s = "dassl", variableFilter = ".*"),
     Diagram(coordinateSystem(extent = {{-300, -160}, {300, 160}})),
     Icon(coordinateSystem(extent = {{-300, -160}, {300, 160}})));
 end Hcentral_control_case_002;

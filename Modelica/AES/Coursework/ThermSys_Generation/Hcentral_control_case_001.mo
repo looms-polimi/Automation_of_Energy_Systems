@@ -90,7 +90,7 @@ equation
   annotation(
     experiment(StartTime = 0, StopTime = 10000, Tolerance = 1e-06, Interval = 0.1),
     __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian -d=aliasConflicts -d=stateselection",
-    __OpenModelica_simulationFlags(lv = "LOG_STATS", s = "dassl", variableFilter = ".*"),
+    __OpenModelica_simulationFlags(lv = "LOG_STDOUT,LOG_ASSERT,LOG_STATS", s = "dassl", variableFilter = ".*"),
     Diagram(coordinateSystem(extent = {{-300, -160}, {300, 160}})),
     Icon(coordinateSystem(extent = {{-300, -160}, {300, 160}})));
 end Hcentral_control_case_001;

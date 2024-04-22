@@ -6,7 +6,7 @@ model Valve_linear
   parameter SI.MassFlowRate wnom=1 "nominal w at dpnom and x=1";
   Modelica.Blocks.Interfaces.RealInput x annotation(
     Placement(visible = true, transformation(origin = {-78, 88}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {0, 100}, extent = {{-20, -20}, {20, 20}}, rotation = -90)));
-protected
+//protected
   final parameter Real kv(fixed=false) annotation(Evaluate = true);
 equation
   w   = max(Constants.cmdeps,min(x,1))*kv*Functions.sqrtReg(dp);

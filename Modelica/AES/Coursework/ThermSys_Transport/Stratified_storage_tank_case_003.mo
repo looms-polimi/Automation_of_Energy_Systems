@@ -24,7 +24,7 @@ model Stratified_storage_tank_case_003
     Placement(visible = true, transformation(origin = {62, 30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   AES.ProcessComponents.Thermal.Liquid.Pump_volumetric pump_circ(w0 = 1.1) annotation(
     Placement(visible = true, transformation(origin = {24, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Blocks.Sources.RealExpression PcoldOn(y = if time < 10000 then 0 else 0.5) annotation(
+  Modelica.Blocks.Sources.RealExpression PcoldOn(y = if time < 10000 then 0 else 1) annotation(
     Placement(visible = true, transformation(origin = {-50, 30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(x.y, H.To) annotation(
