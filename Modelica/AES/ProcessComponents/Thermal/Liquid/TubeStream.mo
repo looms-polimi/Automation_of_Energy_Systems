@@ -59,6 +59,7 @@ equation
   Q_surf_tot      = sum(surf.Q_flow);
 initial equation
   // Across*dp - kf*w*abs(w) = 0;
+  der(w)=0;
   kdp*1e5*L/1000*Across = kf*wnom^2;
 annotation(
     Icon(graphics = {Rectangle(lineColor = {46, 52, 54}, fillColor = {211, 215, 207}, fillPattern = FillPattern.HorizontalCylinder, extent = {{-100, 40}, {100, -40}}), Text(origin = {-76, 3}, lineColor = {204, 0, 0}, extent = {{-44, 29}, {44, -29}}, textString = "a"), Text(origin = {70, 3}, lineColor = {204, 0, 0}, extent = {{-44, 29}, {44, -29}}, textString = "b")}),
