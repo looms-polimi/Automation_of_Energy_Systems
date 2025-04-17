@@ -2,7 +2,7 @@ within AES.Coursework.ThermSys_component_models;
 
 model HeatPump_case_001
   extends AES.Icons.CourseworkModel;
-  Modelica.Blocks.Sources.RealExpression iTc(y = 273.15 + 7 - min(5, time / 200)) annotation(
+  Modelica.Blocks.Sources.RealExpression iTc(y = 273.15 + 7 - min(5, time/200)) annotation(
     Placement(visible = true, transformation(origin = {-150, -30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   AES.ProcessComponents.Thermal.HVAC.HP_CarnotFractionCOPh HP annotation(
     Placement(visible = true, transformation(origin = {-50, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));

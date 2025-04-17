@@ -5,7 +5,7 @@ model MSL_loop_base
 
   Modelica.Blocks.Continuous.TransferFunction Process(a = {5, 6, 1}, b = {1})  annotation(
     Placement(visible = true, transformation(origin = {70, 16}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Blocks.Continuous.TransferFunction Cfb(a = {5, 0}, b = 4 * {5, 1})  annotation(
+  Modelica.Blocks.Continuous.TransferFunction Cfb(a = {5, 0}, b = 4* {5, 1})  annotation(
     Placement(visible = true, transformation(origin = {-10, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Math.Add ald annotation(
     Placement(visible = true, transformation(origin = {30, 16}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));

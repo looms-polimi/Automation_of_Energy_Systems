@@ -6,7 +6,7 @@ model TimeDivisionOutput
     Placement(visible = true, transformation(origin = {30, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.RealExpression SP(y = if time < 1 then 0 else 0.6 + 0.5 * sign(sin((time - 1) / 20)))  annotation(
     Placement(visible = true, transformation(origin = {-130, 16}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ControlBlocks.ActuationSchemes.TimeDivisionOutput TDO(Ttdo = 0.1)  annotation(
+  AES.ControlBlocks.ActuationSchemes.TimeDivisionOutput TDO(Ttdo = 0.25)  annotation(
     Placement(visible = true, transformation(origin = {-10, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   AES.ControlBlocks.AnalogueControllers.PI_awfb_basic Cfb(CSmin = 0, Ti = 5)  annotation(
     Placement(visible = true, transformation(origin = {-70, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));

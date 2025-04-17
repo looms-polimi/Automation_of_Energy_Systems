@@ -36,7 +36,7 @@ model HP_heater_DaisyChain_case_001
     Placement(visible = true, transformation(origin = {50, -40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   ProcessComponents.Thermal.HVAC.HP_CarnotFractionCOPh HP(Wmax = 2000) annotation(
     Placement(visible = true, transformation(origin = {50, -60}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  ProcessComponents.Thermal.Liquid.Tube delivery(Di = 0.01, L = 10) annotation(
+  ProcessComponents.Thermal.Liquid.Tube delivery(Di = 0.01, L = 10, hasInertia = true) annotation(
     Placement(visible = true, transformation(origin = {170, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   ProcessComponents.Thermal.Liquid.surfQcond_prescribed load annotation(
     Placement(visible = true, transformation(origin = {170, 80}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));

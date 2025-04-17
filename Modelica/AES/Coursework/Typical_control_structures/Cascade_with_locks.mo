@@ -8,9 +8,9 @@ model Cascade_with_locks
     Placement(visible = true, transformation(origin = {110, 30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.RealExpression SP(y = if time > 20 and time < 50 then 2 else 0.5) annotation(
     Placement(visible = true, transformation(origin = {-130, 30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ControlBlocks.AnalogueControllers.PI_awfb_full PI_E(CSmax = 100, CSmin = -100, K = 2, Ti = 10, hasLocks = true)  annotation(
+  AES.ControlBlocks.AnalogueControllers.PI_awfb_full PI_E(CSmax = 100, CSmin = -100, K = 2, Ti = 10, hasLocks = true) annotation(
     Placement(transformation(origin = {-68, 16}, extent = {{-10, -20}, {10, 20}})));
-  AES.ControlBlocks.AnalogueControllers.PI_awfb_full PI_I(K = 2)  annotation(
+  AES.ControlBlocks.AnalogueControllers.PI_awfb_full PI_I(K = 2) annotation(
     Placement(visible = true, transformation(origin = {-10, 16}, extent = {{-10, -20}, {10, 20}}, rotation = 0)));
 equation
   connect(P_I.y, P_E.u) annotation(
@@ -31,7 +31,7 @@ equation
     Line(points = {{0, 22}, {16, 22}, {16, -28}, {-88, -28}, {-88, 10}, {-78, 10}}, color = {255, 0, 255}));
   annotation(
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}})),
-    experiment(StartTime = 0, StopTime = 200, Tolerance = 1e-6, Interval = 0.4),
-  __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian -d=aliasConflicts ",
-  __OpenModelica_simulationFlags(lv = "LOG_STATS", s = "dassl"));
+    experiment(StartTime = 0, StopTime = 200, Tolerance = 1e-06, Interval = 0.4),
+    __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian -d=aliasConflicts",
+    __OpenModelica_simulationFlags(lv = "LOG_STDOUT,LOG_ASSERT,LOG_STATS", s = "dassl", variableFilter = ".*"));
 end Cascade_with_locks;
