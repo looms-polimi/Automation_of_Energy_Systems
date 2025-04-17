@@ -14,9 +14,9 @@ model HeatPump_case_001a
     Placement(transformation(origin = {-150, 30}, extent = {{-10, -10}, {10, 10}})));
   Modelica.Blocks.Sources.RealExpression iTh(y = 273.15 + 35) annotation(
     Placement(transformation(origin = {-150, 70}, extent = {{-10, -10}, {10, 10}})));
-  Modelica.Thermal.HeatTransfer.Components.ThermalConductor Gh1(G = 200/5)  annotation(
+  Modelica.Thermal.HeatTransfer.Components.ThermalConductor Gh1(G = 200/5) annotation(
     Placement(transformation(origin = {-50, 50}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
-  Modelica.Thermal.HeatTransfer.Components.ThermalConductor Gc1(G = 100/5)  annotation(
+  Modelica.Thermal.HeatTransfer.Components.ThermalConductor Gc1(G = 100/5) annotation(
     Placement(transformation(origin = {-50, -30}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
   AES.ProcessComponents.Thermal.HVAC.HP_CarnotFractionCOPh HP2 annotation(
     Placement(transformation(origin = {8, 10}, extent = {{-10, -10}, {10, 10}})));
@@ -50,8 +50,8 @@ equation
   connect(cmd.y, HP2.cmd01) annotation(
     Line(points = {{-138, 30}, {-20, 30}, {-20, 10}, {0, 10}}, color = {0, 0, 127}));
   annotation(
-    experiment(StartTime = 0, StopTime = 10000, Tolerance = 1e-6, Interval = 1),
-    __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts ",
-    __OpenModelica_simulationFlags(lv = "LOG_STATS", s = "dassl"),
+    experiment(StartTime = 0, StopTime = 10000, Tolerance = 1e-06, Interval = 1),
+    __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts",
+    __OpenModelica_simulationFlags(lv = "LOG_STDOUT,LOG_ASSERT,LOG_STATS", s = "dassl", variableFilter = ".*"),
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}})));
 end HeatPump_case_001a;
