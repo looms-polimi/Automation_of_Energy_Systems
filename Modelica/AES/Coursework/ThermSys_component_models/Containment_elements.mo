@@ -4,7 +4,7 @@ model Containment_elements
   extends Icons.CourseworkModel;
   AES.ProcessComponents.Thermal.Containment.SolidMultilayer_Homogeneous homogeneous(s = 0.1) annotation(
     Placement(visible = true, transformation(origin = {-10, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Containment.SolidMultilayer_NonHomogeneous nonhomogeneous(lambda = {2.4, 0.02, 0.1}, s = {0.02, 0.05, 0.01}) annotation(
+  AES.ProcessComponents.Thermal.Containment.SolidMultilayer_NonHomogeneous nonhomogeneous annotation(
     Placement(visible = true, transformation(origin = {-10, -30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Thermal.HeatTransfer.Sources.FixedTemperature T2(T = 273.15 + 20) annotation(
     Placement(visible = true, transformation(origin = {50, -10}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));

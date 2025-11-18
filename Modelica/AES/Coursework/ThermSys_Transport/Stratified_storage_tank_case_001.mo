@@ -13,7 +13,7 @@ model Stratified_storage_tank_case_001
   AES.ProcessComponents.Thermal.Liquid.Pressuriser psrc annotation(
     Placement(visible = true, transformation(origin = {-72, -46}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   AES.ProcessComponents.Thermal.HVAC.ControlledLiquidHeater_ideal H annotation(
-    Placement(visible = true, transformation(origin = {-124, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+    Placement(transformation(origin = {-116, -10}, extent = {{-10, -10}, {10, 10}})));
   Modelica.Blocks.Sources.BooleanExpression Hon(y = true) annotation(
     Placement(visible = true, transformation(origin = {-170, 30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   AES.ProcessComponents.Thermal.Liquid.Pump_volumetric pump_heat annotation(
@@ -26,15 +26,15 @@ model Stratified_storage_tank_case_001
     Placement(visible = true, transformation(origin = {24, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(x.y, H.To) annotation(
-    Line(points = {{-159, 10}, {-147, 10}, {-147, -5}, {-135, -5}}, color = {0, 0, 127}));
+    Line(points = {{-159, 10}, {-147, 10}, {-147, -4}, {-128, -4}}, color = {0, 0, 127}));
   connect(H.ON, Hon.y) annotation(
-    Line(points = {{-134, -2}, {-140, -2}, {-140, 30}, {-159, 30}}, color = {255, 0, 255}));
+    Line(points = {{-128, -16}, {-140, -16}, {-140, 30}, {-159, 30}}, color = {255, 0, 255}));
   connect(stank.coldOut, psrc.pwh_b) annotation(
     Line(points = {{-22, -22}, {-28, -22}, {-28, -52}, {-60, -52}}, color = {46, 52, 54}));
   connect(psrc.pwh_a, H.pwh_a) annotation(
-    Line(points = {{-84, -52}, {-140, -52}, {-140, -10}, {-136, -10}}, color = {46, 52, 54}));
+    Line(points = {{-84, -52}, {-140, -52}, {-140, -10}, {-128, -10}}, color = {46, 52, 54}));
   connect(H.pwh_b, pump_heat.pwh_a) annotation(
-    Line(points = {{-112, -10}, {-100, -10}}, color = {46, 52, 54}));
+    Line(points = {{-104, -10}, {-100, -10}}, color = {46, 52, 54}));
   connect(pump_heat.pwh_b, stank.hotIn) annotation(
     Line(points = {{-76, -10}, {-22, -10}}, color = {46, 52, 54}));
   connect(pi.y, pump_heat.cmd) annotation(
@@ -50,8 +50,8 @@ equation
   connect(pi.y, pump_circ.cmd) annotation(
     Line(points = {{-99, 30}, {24, 30}, {24, -2}}, color = {0, 0, 127}));
   annotation(
-    experiment(StartTime = 0, StopTime = 10000, Tolerance = 1e-6, Interval = 1),
-    __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts ",
-    __OpenModelica_simulationFlags(lv = "LOG_STATS", s = "dassl"),
+    experiment(StartTime = 0, StopTime = 10000, Tolerance = 1e-06, Interval = 1),
+    __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts",
+    __OpenModelica_simulationFlags(lv = "LOG_STDOUT,LOG_ASSERT,LOG_STATS", s = "dassl", variableFilter = ".*"),
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}})));
 end Stratified_storage_tank_case_001;

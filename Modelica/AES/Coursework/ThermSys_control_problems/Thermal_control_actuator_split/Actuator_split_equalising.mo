@@ -33,10 +33,6 @@ equation
     Line(points = {{-38, 4}, {-30, 4}, {-30, -10}, {-22, -10}}, color = {0, 0, 127}));
   connect(SR.CSo01_pos, FA1.u) annotation(
     Line(points = {{-38, 16}, {-30, 16}, {-30, 30}, {-22, 30}}, color = {0, 0, 127}));
-  connect(FA2.y, Act2.u) annotation(
-    Line(points = {{1, -10}, {17, -10}}, color = {0, 0, 127}));
-  connect(FA1.y, Act1.u) annotation(
-    Line(points = {{1, 30}, {17, 30}}, color = {0, 0, 127}));
   connect(Act1.y, Pa1.Q_flow) annotation(
     Line(points = {{42, 30}, {60, 30}}, color = {0, 0, 127}));
   connect(Act2.y, Pa2.Q_flow) annotation(
@@ -57,6 +53,10 @@ equation
     Line(points = {{-138, 16}, {-102, 16}}, color = {0, 0, 127}));
   connect(CT.CS, SR.CSi01) annotation(
     Line(points = {{-78, 10}, {-62, 10}}, color = {0, 0, 127}));
+  connect(FA1.y, Act1.u) annotation(
+    Line(points = {{2, 30}, {18, 30}}, color = {0, 0, 127}));
+  connect(FA2.y, Act2.u) annotation(
+    Line(points = {{2, -10}, {18, -10}}, color = {0, 0, 127}));
   annotation(
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}})),
     experiment(StartTime = 0, StopTime = 3000, Tolerance = 1e-6, Interval = 1),

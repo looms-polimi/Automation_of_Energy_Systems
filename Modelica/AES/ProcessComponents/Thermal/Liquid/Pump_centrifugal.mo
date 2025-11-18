@@ -18,7 +18,7 @@ protected
   final parameter Real kp=(dp00-dpn0)/wn0^2;
   final parameter Real keta=(etaHopt-etaH0)/cmdHopt^2;
 equation
-  dp   = dp00*(max(Constants.cmdeps,min(1,cmd))/cmdnom)^2-kp*w^2;
+  dp   = dp00*(max(Constants.cmdeps,min(1,cmd))/cmdnom)^2-kp*w*abs(w);
   hao  = hbi-dp/ro;
   hbo  = hai+dp/ro;
   etaH = etaHopt-keta*(cmd-cmdHopt)^2;

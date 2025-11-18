@@ -4,21 +4,21 @@ model Heater_control_case_004
   extends AES.Icons.CourseworkModel;
   AES.ProcessComponents.Thermal.HVAC.ControlledLiquidHeater_lim CH annotation(
     Placement(visible = true, transformation(origin = {-90, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Liquid.Pump_volumetric P(w0 = 1)  annotation(
+  AES.ProcessComponents.Thermal.Liquid.Pump_volumetric P(w0 = 1) annotation(
     Placement(visible = true, transformation(origin = {-50, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Liquid.Tube pipeline(L = 50)  annotation(
+  AES.ProcessComponents.Thermal.Liquid.Tube pipeline(L = 50) annotation(
     Placement(visible = true, transformation(origin = {10, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Blocks.Sources.RealExpression spT(y = if time < 5000 then 273.15 + 50 else 273.15 + 52)  annotation(
+  Modelica.Blocks.Sources.RealExpression spT(y = if time < 5000 then 273.15 + 50 else 273.15 + 52) annotation(
     Placement(visible = true, transformation(origin = {-130, -4}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Blocks.Sources.RealExpression cmdP(y = 0.9)  annotation(
+  Modelica.Blocks.Sources.RealExpression cmdP(y = 0.9) annotation(
     Placement(visible = true, transformation(origin = {-130, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Liquid.Convection_VecVec loss(A = 2)  annotation(
+  AES.ProcessComponents.Thermal.Liquid.Convection_VecVec loss(A = 2) annotation(
     Placement(visible = true, transformation(origin = {10, 16}, extent = {{-10, 10}, {10, -10}}, rotation = 0)));
   AES.ProcessComponents.Thermal.Liquid.surfTcond_prescribed Te annotation(
     Placement(visible = true, transformation(origin = {10, 40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Blocks.Sources.RealExpression iTe(y = 273.15 + 20)  annotation(
+  Modelica.Blocks.Sources.RealExpression iTe(y = 273.15 + 20) annotation(
     Placement(visible = true, transformation(origin = {-130, 40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Blocks.Sources.BooleanExpression Hon(y = true)  annotation(
+  Modelica.Blocks.Sources.BooleanExpression Hon(y = true) annotation(
     Placement(visible = true, transformation(origin = {-130, -16}, extent = {{-10, 10}, {10, -10}}, rotation = 0)));
   AES.ProcessComponents.Thermal.Liquid.Pressuriser pressuriser annotation(
     Placement(visible = true, transformation(origin = {-70, -34}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -26,7 +26,7 @@ model Heater_control_case_004
     Placement(visible = true, transformation(origin = {70, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   AES.ProcessComponents.Thermal.Liquid.surfQcond_prescribed load annotation(
     Placement(visible = true, transformation(origin = {70, 60}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Blocks.Sources.RealExpression iQload(y = -1000)  annotation(
+  Modelica.Blocks.Sources.RealExpression iQload(y = -1000) annotation(
     Placement(visible = true, transformation(origin = {-130, 60}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   inner ProcessComponents.Thermal.System_settings.System_liquid system annotation(
     Placement(visible = true, transformation(origin = {-170, 70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -57,10 +57,9 @@ equation
     Line(points = {{-119, 60}, {62, 60}}, color = {0, 0, 127}));
   connect(load.surf, delivery.surf) annotation(
     Line(points = {{70, 52}, {70, -4}}, color = {144, 5, 5}));
-
-annotation(
+  annotation(
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}})),
-    experiment(StartTime = 0, StopTime = 10000, Tolerance = 1e-6, Interval = 20),
-    __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts ",
-    __OpenModelica_simulationFlags(lv = "LOG_STATS", s = "dassl"));
+    experiment(StartTime = 0, StopTime = 10000, Tolerance = 1e-06, Interval = 20),
+    __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts",
+    __OpenModelica_simulationFlags(lv = "LOG_STDOUT,LOG_ASSERT,LOG_STATS", s = "dassl", variableFilter = ".*"));
 end Heater_control_case_004;

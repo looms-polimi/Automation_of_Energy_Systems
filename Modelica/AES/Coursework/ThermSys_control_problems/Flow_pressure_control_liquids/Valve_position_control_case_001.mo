@@ -10,7 +10,7 @@ model Valve_position_control_case_001
     Placement(transformation(origin = {-10, 30}, extent = {{-10, -10}, {10, 10}})));
   Modelica.Blocks.Math.Add actuator_combination annotation(
     Placement(transformation(origin = {90, 10}, extent = {{-10, -10}, {10, 10}})));
-  Modelica.Blocks.Continuous.LimPID Cfast(Ti = 1, controllerType = Modelica.Blocks.Types.SimpleController.PI, k = 0.4, yMax = 1, yMin = 0) annotation(
+  Modelica.Blocks.Continuous.LimPID Cfast(Ti = 1, controllerType = Modelica.Blocks.Types.SimpleController.PI, k = 0.4*0.1, yMax = 1, yMin = 0) annotation(
     Placement(transformation(origin = {-88, 30}, extent = {{-10, 10}, {10, -10}})));
   Modelica.Blocks.Continuous.LimPID Cslow(Ti = 50, k = 0.2, yMax = 1, yMin = 0) annotation(
     Placement(transformation(origin = {-48, -20}, extent = {{-10, 10}, {10, -10}})));

@@ -4,11 +4,11 @@ model HNcontrol_HC_SS_case_002
   extends Icons.CourseworkModel;
   AES.ProcessComponents.Thermal.DistrictHeating.HeatingCentral HC(w0 = 40)  annotation(
     Placement(visible = true, transformation(origin = {-90, -40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.DistrictHeating.TwinPipe line1(L = 1000, wnom = 10) annotation(
+  AES.ProcessComponents.Thermal.DistrictHeating.TwinPipe line1(L = 1000, wnom = 10, hasInertia = false) annotation(
     Placement(visible = true, transformation(origin = {-2, -40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.RealExpression spTsupply(y = 273.15 + 100) annotation(
     Placement(visible = true, transformation(origin = {-168, -34}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Blocks.Sources.RealExpression spDp(y = min(1e5*time/60, 3e4)) annotation(
+  Modelica.Blocks.Sources.RealExpression spDp(y = 3e4 + 0*min(1e5*time/60, 3e4)) annotation(
     Placement(visible = true, transformation(origin = {-168, -64}, extent = {{-10, 10}, {10, -10}}, rotation = 0)));
   Modelica.Blocks.Sources.BooleanExpression ON(y = true) annotation(
     Placement(visible = true, transformation(origin = {-168, -46}, extent = {{-10, 10}, {10, -10}}, rotation = 0)));
@@ -28,10 +28,6 @@ model HNcontrol_HC_SS_case_002
     Placement(visible = true, transformation(origin = {-2, 18}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.RealExpression Pcmd(y = 1) annotation(
     Placement(visible = true, transformation(origin = {-42, 50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ControlBlocks.AnalogueControllers.PI_awfb_basic PI_TretSS1(CSmax = 1, CSmin = 0.01, K = 0.2, Ti = 10)  annotation(
-    Placement(visible = true, transformation(origin = {18, -70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Blocks.Sources.RealExpression spTret(y = 273.15 + 60) annotation(
-    Placement(visible = true, transformation(origin = {-42, -64}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   AES.ProcessComponents.Thermal.Liquid.surfQcond_prescribed pQload annotation(
     Placement(visible = true, transformation(origin = {78, 50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.RealExpression Qload(y = (-1e5) + 1e4 * sin(time / 1000)) annotation(
@@ -42,6 +38,8 @@ model HNcontrol_HC_SS_case_002
     Placement(transformation(origin = {-130, -70}, extent = {{-10, -10}, {10, 10}})));
   AES.ProcessComponents.Thermal.DistrictHeating.TwinPipeClosure closure(wnom = 10, hasInertia = false) annotation(
     Placement(visible = true, transformation(origin = {90, -40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  Modelica.Blocks.Sources.RealExpression cmdPri(y = 0.5) annotation(
+    Placement(transformation(origin = {-10, -70}, extent = {{-10, -10}, {10, 10}})));
 equation
   connect(ON.y, HC.ON) annotation(
     Line(points = {{-157, -46}, {-102, -46}}, color = {255, 0, 255}));
@@ -63,12 +61,6 @@ equation
     Line(points = {{10, 18}, {26, 18}}, color = {46, 52, 54}));
   connect(Pcmd.y, pump.cmd) annotation(
     Line(points = {{-31, 50}, {-2, 50}, {-2, 26}}, color = {0, 0, 127}));
-  connect(PI_TretSS1.CS, SS1.cmdVpri) annotation(
-    Line(points = {{30, -70}, {38, -70}, {38, -48}}, color = {0, 0, 127}));
-  connect(SS1.ToutPri, PI_TretSS1.PV) annotation(
-    Line(points = {{46, -48}, {46, -86}, {-2, -86}, {-2, -74}, {6, -74}}, color = {0, 0, 127}));
-  connect(spTret.y, PI_TretSS1.SP) annotation(
-    Line(points = {{-31, -64}, {6, -64}}, color = {0, 0, 127}));
   connect(Qload.y, pQload.Q) annotation(
     Line(points = {{49, 50}, {70, 50}}, color = {0, 0, 127}));
   connect(pQload.surf, tubeload.surf) annotation(
@@ -83,6 +75,8 @@ equation
     Line(points = {{53.6, -40}, {77.6, -40}}));
   connect(HC.spw01, PI_Dp.CS) annotation(
     Line(points = {{-102, -40}, {-112, -40}, {-112, -70}, {-118, -70}}, color = {0, 0, 127}));
+  connect(cmdPri.y, SS1.cmdVpri) annotation(
+    Line(points = {{1, -70}, {38, -70}, {38, -48}}, color = {0, 0, 127}));
   annotation(
     experiment(StartTime = 0, StopTime = 100000, Tolerance = 1e-6, Interval = 1000),
     __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts ",

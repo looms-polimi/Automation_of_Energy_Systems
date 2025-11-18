@@ -10,7 +10,7 @@ model Keep_within_two_limits
     Placement(visible = true, transformation(origin = {-110, 36}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.RealExpression LD(y = 20 + 10*sin(time/10)) annotation(
     Placement(visible = true, transformation(origin = {-110, 68}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  ControlBlocks.AnalogueControllers.PI_awfb_basic C_lo(CSmax = 10, CSmin = 0, K = 25*2, Ti = 6) annotation(
+  ControlBlocks.AnalogueControllers.PI_awfb_basic C_lo(CSmax = 10, CSmin = 0, K = 25, Ti = 6) annotation(
     Placement(visible = true, transformation(origin = {-50, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.RealExpression LO_limit(y = 19) annotation(
     Placement(visible = true, transformation(origin = {-110, -4}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -37,5 +37,5 @@ equation
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}})),
     experiment(StartTime = 0, StopTime = 150, Tolerance = 1e-06, Interval = 0.3),
     __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian -d=aliasConflicts",
-    __OpenModelica_simulationFlags(lv = "LOG_STATS", s = "dassl", variableFilter = ".*"));
+    __OpenModelica_simulationFlags(lv = "LOG_STDOUT,LOG_ASSERT,LOG_STATS", s = "dassl", variableFilter = ".*"));
 end Keep_within_two_limits;

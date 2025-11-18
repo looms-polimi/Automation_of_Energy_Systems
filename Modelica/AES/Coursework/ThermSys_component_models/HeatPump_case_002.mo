@@ -8,20 +8,20 @@ model HeatPump_case_002
     Placement(visible = true, transformation(origin = {-10, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Thermal.HeatTransfer.Sources.PrescribedTemperature Tc annotation(
     Placement(visible = true, transformation(origin = {110, 10}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
-  Modelica.Blocks.Sources.RealExpression cmdHP(y = 1) annotation(
-    Placement(visible = true, transformation(origin = {-170, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  Modelica.Blocks.Sources.RealExpression cmdHP(y = if sin(time/100) > 0 then 1 else 1e-9) annotation(
+    Placement(transformation(origin = {-156, 20}, extent = {{-10, -10}, {10, 10}})));
   AES.ProcessComponents.Thermal.Liquid.Pressuriser pressuriser annotation(
     Placement(visible = true, transformation(origin = {-92, 76}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Liquid.Pump_centrifugal pump(dpn0 = 999.9999999999999) annotation(
+  AES.ProcessComponents.Thermal.Liquid.Pump_centrifugal pump(dpn0 = 999.9999999999999, noReverse = false) annotation(
     Placement(visible = true, transformation(origin = {-50, 70}, extent = {{-10, 10}, {10, -10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Liquid.Tube tubeH(Di = 0.02, L = 1, t = 0.001) annotation(
+  AES.ProcessComponents.Thermal.Liquid.Tube tubeH(Di = 0.02, L = 1, t = 0.001, hasInertia = true) annotation(
     Placement(visible = true, transformation(origin = {-10, 70}, extent = {{-10, 10}, {10, -10}}, rotation = 0)));
   AES.ProcessComponents.Thermal.Liquid.Tube tubeC(Di = 0.02, L = 1, t = 0.001) annotation(
     Placement(visible = true, transformation(origin = {-10, -30}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
   AES.ProcessComponents.Thermal.Liquid.Tube tubeLoad(Di = 0.02, L = 1, t = 0.001) annotation(
     Placement(visible = true, transformation(origin = {30, 10}, extent = {{10, 10}, {-10, -10}}, rotation = 90)));
-  Modelica.Blocks.Sources.RealExpression cmdP(y = 0.5) annotation(
-    Placement(visible = true, transformation(origin = {-170, 40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  Modelica.Blocks.Sources.RealExpression cmdP(y = 0.5+ 0.4*sin(time/50)) annotation(
+    Placement(transformation(origin = {-144, 52}, extent = {{-10, -10}, {10, 10}})));
   AES.ProcessComponents.Thermal.Liquid.VectorHPtoHP_conductor adapLoad(Gtotal = 1000) annotation(
     Placement(visible = true, transformation(origin = {70, 10}, extent = {{-10, 10}, {10, -10}}, rotation = -90)));
   AES.ProcessComponents.Thermal.Liquid.VectorHPtoHP_conductor adapH(Gtotal = 1000) annotation(
@@ -46,9 +46,9 @@ equation
   connect(Tc.T, iTc.y) annotation(
     Line(points = {{122, 10}, {139, 10}}, color = {0, 0, 127}));
   connect(cmdHP.y, HP.cmd01) annotation(
-    Line(points = {{-158, 20}, {-18, 20}}, color = {0, 0, 127}));
+    Line(points = {{-145, 20}, {-18, 20}}, color = {0, 0, 127}));
   connect(cmdP.y, pump.cmd) annotation(
-    Line(points = {{-158, 40}, {-50, 40}, {-50, 62}}, color = {0, 0, 127}));
+    Line(points = {{-133, 52}, {-104.5, 52}, {-104.5, 62}, {-50, 62}}, color = {0, 0, 127}));
   connect(HP.hotPort, adapH.HP) annotation(
     Line(points = {{-10, 30}, {-10, 46}}, color = {191, 0, 0}));
   connect(adapH.vectorHP, tubeH.surf) annotation(

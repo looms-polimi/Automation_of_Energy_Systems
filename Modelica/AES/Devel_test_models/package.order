@@ -21,6 +21,7 @@ Test_AHU_001
 Test_stank_001
 Test_stank_002
 Test_HP_001
+Test_HP_001a
 Test_HP_002
 Test_HE_LiquidLiquid_001
 Test_HC_001
@@ -38,3 +39,7 @@ Test_air_circ_004
 Test_liquid_mixing_streams
 Test_islanding_001
 Test_centrifugal_pump_001
+dz
+dz2
+Keep_within_two_limits_actuators
+Test_cascade_01

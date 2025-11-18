@@ -2,7 +2,7 @@ within AES.Coursework.ThermSys_case_studies.Heat_network;
 
 model HNcontrol_HC_SS_case_001
   extends Icons.CourseworkModel;
-  AES.ProcessComponents.Thermal.DistrictHeating.HeatingCentral HC(w0 = 10)  annotation(
+  AES.ProcessComponents.Thermal.DistrictHeating.HeatingCentral HC(w0 = 10) annotation(
     Placement(visible = true, transformation(origin = {-110, -40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   AES.ProcessComponents.Thermal.DistrictHeating.TwinPipe line1(L = 1000, wnom = 10) annotation(
     Placement(visible = true, transformation(origin = {-28, -40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -16,27 +16,27 @@ model HNcontrol_HC_SS_case_001
     Placement(visible = true, transformation(origin = {-170, 70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   inner AES.ProcessComponents.Thermal.System_settings.System_terrain terrain annotation(
     Placement(visible = true, transformation(origin = {-130, 70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.DistrictHeating.pressuriser_tp_C press_tp_C(pC = 999999.9999999999)  annotation(
+  AES.ProcessComponents.Thermal.DistrictHeating.pressuriser_tp_C press_tp_C(pC = 999999.9999999999) annotation(
     Placement(visible = true, transformation(origin = {-70, -40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   AES.ProcessComponents.Thermal.Liquid.Tube tubeload annotation(
     Placement(visible = true, transformation(origin = {70, 18}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  ProcessComponents.Thermal.DistrictHeating.TwinPipeSubstation_PriValve SS1(Dpn_p = 20000)  annotation(
+  ProcessComponents.Thermal.DistrictHeating.TwinPipeSubstation_PriValve SS1(Dpn_p = 20000) annotation(
     Placement(visible = true, transformation(origin = {14, -40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Liquid.ExpansionVessel_isoT vessel(V = 0.2, p0 = 300000)  annotation(
+  AES.ProcessComponents.Thermal.Liquid.ExpansionVessel_isoT vessel(V = 0.2, p0 = 300000) annotation(
     Placement(visible = true, transformation(origin = {22, 24}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Liquid.Pump_volumetric pump(w0 = 5)  annotation(
+  AES.ProcessComponents.Thermal.Liquid.Pump_volumetric pump(w0 = 5) annotation(
     Placement(visible = true, transformation(origin = {-30, 18}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.RealExpression Pcmd(y = 1) annotation(
     Placement(visible = true, transformation(origin = {-70, 40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ControlBlocks.AnalogueControllers.PI_awfb_basic PI_TretSS1(CSmax = 1, CSmin = 0.01, K = 0.2, Ti = 10)  annotation(
+  AES.ControlBlocks.AnalogueControllers.PI_awfb_basic PI_TretSS1(CSmax = 1, CSmin = 0.01, K = 0.2, Ti = 10) annotation(
     Placement(visible = true, transformation(origin = {-32, -70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.RealExpression spTret(y = 273.15 + 60) annotation(
     Placement(visible = true, transformation(origin = {-90, -64}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.DistrictHeating.TwinPipeClosure closure(L = 1000, wnom = 10, hasInertia = false)  annotation(
+  AES.ProcessComponents.Thermal.DistrictHeating.TwinPipeClosure closure(L = 1000, wnom = 10, hasInertia = false) annotation(
     Placement(visible = true, transformation(origin = {70, -40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   AES.ProcessComponents.Thermal.Liquid.surfQcond_prescribed pQload annotation(
     Placement(visible = true, transformation(origin = {70, 50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Blocks.Sources.RealExpression Qload(y = (-1e5) + 1e4 * sin(time / 1000)) annotation(
+  Modelica.Blocks.Sources.RealExpression Qload(y = (-1e5) + 1e4*sin(time/1000)) annotation(
     Placement(visible = true, transformation(origin = {30, 50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   AES.ProcessComponents.Thermal.Liquid.TwinPipeDiffPressureSensor sDpHC annotation(
     Placement(visible = true, transformation(origin = {-110, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -78,8 +78,8 @@ equation
   connect(sDpHC.tpwh_a, HC.tpwh_a) annotation(
     Line(points = {{-98, -10}, {-90, -10}, {-90, -40}, {-98, -40}}));
   annotation(
-    experiment(StartTime = 0, StopTime = 100000, Tolerance = 1e-6, Interval = 1000),
-    __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts ",
-    __OpenModelica_simulationFlags(lv = "LOG_STATS", s = "dassl"),
+    experiment(StartTime = 0, StopTime = 100000, Tolerance = 1e-06, Interval = 100),
+    __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts -d=aliasConflicts",
+    __OpenModelica_simulationFlags(lv = "LOG_STDOUT,LOG_ASSERT,LOG_STATS", s = "dassl", variableFilter = ".*"),
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}})));
 end HNcontrol_HC_SS_case_001;
