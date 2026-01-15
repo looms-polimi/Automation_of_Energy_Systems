@@ -3,7 +3,5 @@ FF_compensation
 FF_compensation_simple_lead_lag
 FF_compensation_with_delay
 Cascade_with_locks
-Keep_below_limit
-Keep_within_two_limits
 Smith_predictor
 Hi_gain_linearising

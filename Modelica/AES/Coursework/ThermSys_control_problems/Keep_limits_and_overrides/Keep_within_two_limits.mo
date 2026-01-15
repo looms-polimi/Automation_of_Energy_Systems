@@ -1,8 +1,8 @@
-within AES.Coursework.Typical_control_structures;
+within AES.Coursework.ThermSys_control_problems.Keep_limits_and_overrides;
 
 model Keep_within_two_limits
   extends Icons.CourseworkModel;
-  AES.ControlBlocks.AnalogueControllers.PI_awfb_basic C_hi(CSmax = 0, CSmin = -10, K = 15*4, Ti = 8) annotation(
+  ControlBlocks.AnalogueControllers.PI_awfb_basic C_hi(CSmax = 0, CSmin = -10, K = 15*4, Ti = 8) annotation(
     Placement(visible = true, transformation(origin = {-50, 30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Continuous.TransferFunction P(a = {10, 11, 1}, b = {1}, initType = Modelica.Blocks.Types.Init.InitialOutput, y_start = 20) annotation(
     Placement(visible = true, transformation(origin = {50, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));

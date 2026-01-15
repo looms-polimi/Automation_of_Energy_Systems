@@ -51,6 +51,8 @@ equation
     Line(points = {{58, -6}, {0, -6}, {0, 16}}, color = {46, 52, 54}));
   connect(split_b.pwhTwin_HC, tpwh_b) annotation(
     Line(points = {{82, 0}, {110, 0}}));
+  connect(tpwh_a, tpwh_b) annotation(
+    Line(points = {{-110, 0}, {110, 0}}));
 
 annotation(
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}})),

@@ -17,7 +17,7 @@ model Actuator_split_equalising
   Modelica.Thermal.HeatTransfer.Sources.FixedTemperature Tamb(T(displayUnit = "K") = 293.15)  annotation(
     Placement(visible = true, transformation(origin = {30, 70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Thermal.HeatTransfer.Sensors.TemperatureSensor sT annotation(
-    Placement(visible = true, transformation(origin = {-10, -50}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
+    Placement(transformation(origin = {-10, -40}, extent = {{10, -10}, {-10, 10}})));
   Modelica.Thermal.HeatTransfer.Components.HeatCapacitor Cap(C = 1e4, T(displayUnit = "K"))  annotation(
     Placement(visible = true, transformation(origin = {142, 10}, extent = {{-20, -20}, {20, 20}}, rotation = -90)));
   Modelica.Thermal.HeatTransfer.Components.ThermalConductor Gloss(G = 100)  annotation(
@@ -46,9 +46,9 @@ equation
   connect(Pa2.port, Cap.port) annotation(
     Line(points = {{80, -10}, {100, -10}, {100, 10}, {122, 10}}, color = {191, 0, 0}));
   connect(Cap.port, sT.port) annotation(
-    Line(points = {{122, 10}, {100, 10}, {100, -50}, {0, -50}}, color = {191, 0, 0}));
+    Line(points = {{122, 10}, {100, 10}, {100, -40}, {0, -40}}, color = {191, 0, 0}));
   connect(CT.PV, sT.T) annotation(
-    Line(points = {{-102, 6}, {-120, 6}, {-120, -50}, {-20, -50}}, color = {0, 0, 127}));
+    Line(points = {{-102, 6}, {-120, 6}, {-120, -40}, {-21, -40}}, color = {0, 0, 127}));
   connect(SP.y, CT.SP) annotation(
     Line(points = {{-138, 16}, {-102, 16}}, color = {0, 0, 127}));
   connect(CT.CS, SR.CSi01) annotation(
