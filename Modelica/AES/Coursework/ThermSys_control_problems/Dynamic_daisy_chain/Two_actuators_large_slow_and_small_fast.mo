@@ -1,6 +1,5 @@
-within AES.Coursework.ThermSys_control_problems;
+within AES.Coursework.ThermSys_control_problems.Dynamic_daisy_chain;
 
-package Dynamic_daisy_chain
   model Two_actuators_large_slow_and_small_fast
     extends Icons.CourseworkModel;
     parameter Real c = 3.5;
@@ -58,6 +57,3 @@ package Dynamic_daisy_chain
 (e.g., range midpoint for max action space in both directions)", horizontalAlignment = TextAlignment.Left), Text(origin = {-141, 1}, extent = {{-55, 13}, {55, -13}}, textString = "SP for the main
 controlled variable", horizontalAlignment = TextAlignment.Left)}));
   end Two_actuators_large_slow_and_small_fast;
-  extends Modelica.Icons.Package;
-  extends Icons.CourseworkModel;
-end Dynamic_daisy_chain;
