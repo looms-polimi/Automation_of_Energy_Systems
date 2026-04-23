@@ -1,16 +1,16 @@
 within AES.Coursework.Typical_control_structures;
 
-model Cascade_with_locks
+model Cascade_basic
   extends Icons.CourseworkModel;
   Modelica.Blocks.Continuous.FirstOrder P_I(T = 1, k = 1) annotation(
     Placement(visible = true, transformation(origin = {50, 30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Continuous.FirstOrder P_E(T = 10, k = 1) annotation(
     Placement(visible = true, transformation(origin = {110, 30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Blocks.Sources.RealExpression SP(y = if time > 20 and time < 50 then 2 else 0.5) annotation(
+  Modelica.Blocks.Sources.RealExpression SP(y = if time < 100 then 0.2 else 0.5) annotation(
     Placement(visible = true, transformation(origin = {-130, 30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ControlBlocks.AnalogueControllers.PI_awfb_full PI_E(CSmax = 100, CSmin = -100, K = 2, Ti = 10, hasLocks = true) annotation(
+  ControlBlocks.AnalogueControllers.PI_awfb_full PI_E(CSmax = 100, CSmin = -100, K = 2, Ti = 10, hasLocks = true) annotation(
     Placement(transformation(origin = {-68, 16}, extent = {{-10, -20}, {10, 20}})));
-  AES.ControlBlocks.AnalogueControllers.PI_awfb_full PI_I(K = 2, CSmin = 0) annotation(
+  ControlBlocks.AnalogueControllers.PI_awfb_full PI_I(K = 2) annotation(
     Placement(visible = true, transformation(origin = {-10, 16}, extent = {{-10, -20}, {10, 20}}, rotation = 0)));
 equation
   connect(P_I.y, P_E.u) annotation(
@@ -34,4 +34,4 @@ equation
     experiment(StartTime = 0, StopTime = 200, Tolerance = 1e-06, Interval = 0.4),
     __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian -d=aliasConflicts",
     __OpenModelica_simulationFlags(lv = "LOG_STDOUT,LOG_ASSERT,LOG_STATS", s = "dassl", variableFilter = ".*"));
-end Cascade_with_locks;
+end Cascade_basic;

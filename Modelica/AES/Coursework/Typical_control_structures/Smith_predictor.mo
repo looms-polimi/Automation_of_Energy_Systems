@@ -8,7 +8,7 @@ model Smith_predictor
     Placement(visible = true, transformation(origin = {-30, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Nonlinear.FixedDelay Pdelay(delayTime = 20) annotation(
     Placement(visible = true, transformation(origin = {10, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Blocks.Nonlinear.FixedDelay Mdelay(delayTime = 22) annotation(
+  Modelica.Blocks.Nonlinear.FixedDelay Mdelay(delayTime = 20) annotation(
     Placement(visible = true, transformation(origin = {10, -60}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Continuous.TransferFunction Mr(a = {1, 2, 1}) annotation(
     Placement(visible = true, transformation(origin = {-30, -30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -45,7 +45,7 @@ equation
     Line(points = {{-148, 10}, {-130, 10}}, color = {0, 0, 127}));
   annotation(
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}})),
-    experiment(StartTime = 0, StopTime = 500, Tolerance = 1e-06, Interval = 1),
+    experiment(StartTime = 0, StopTime = 100, Tolerance = 1e-06, Interval = 1),
     __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian -d=aliasConflicts",
-    __OpenModelica_simulationFlags(lv = "LOG_STATS", s = "dassl"));
+    __OpenModelica_simulationFlags(lv = "LOG_STDOUT,LOG_ASSERT,LOG_STATS", s = "dassl", variableFilter = ".*"));
 end Smith_predictor;

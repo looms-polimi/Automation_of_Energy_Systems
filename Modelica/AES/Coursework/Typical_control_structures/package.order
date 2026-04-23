@@ -2,6 +2,7 @@ Decoupling
 FF_compensation
 FF_compensation_simple_lead_lag
 FF_compensation_with_delay
+Cascade_basic
 Cascade_with_locks
 Smith_predictor
 Hi_gain_linearising

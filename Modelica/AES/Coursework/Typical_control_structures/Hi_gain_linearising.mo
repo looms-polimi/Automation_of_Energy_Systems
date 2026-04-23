@@ -9,7 +9,7 @@ model Hi_gain_linearising
     Placement(transformation(origin = {20, -10}, extent = {{-20, -10}, {20, 10}})));
   Modelica.Blocks.Continuous.TransferFunction Pcl(a = {1, 1.5, 1}, b = {1}) annotation(
     Placement(transformation(origin = {70, -10}, extent = {{-10, -10}, {10, 10}})));
-  Modelica.Blocks.Continuous.TransferFunction C(b = {1, 2, 1}, a = {0.2, 1, 0})  annotation(
+  Modelica.Blocks.Continuous.TransferFunction C(b = 5*{1, 2, 1}, a = {0.2, 1, 0})  annotation(
     Placement(transformation(origin = {-30, -10}, extent = {{-10, -10}, {10, 10}})));
   Modelica.Blocks.Sources.RealExpression w(y = if time < 1 then 0 else min(1, 0.5*(time - 1)))  annotation(
     Placement(transformation(origin = {-130, -10}, extent = {{-10, -10}, {10, 10}})));

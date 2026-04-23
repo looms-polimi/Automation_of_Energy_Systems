@@ -4,15 +4,15 @@ model Test_liquid_circuit_001
   extends Icons.TestModel;
   inner AES.ProcessComponents.Thermal.System_settings.System_liquid system annotation(
     Placement(visible = true, transformation(origin = {-170, 70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Liquid.surfTcond_fixed surfTcond(T = 303.15) annotation(
+  AES.ProcessComponents.Thermal.Liquid.surfTcond_fixed surfTcond(T = 303.15, n = 10) annotation(
     Placement(visible = true, transformation(origin = {10, 30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   AES.ProcessComponents.Thermal.Liquid.Node_pT_fixed snk(p(displayUnit = "Pa")) annotation(
     Placement(visible = true, transformation(origin = {50, -10}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
-  AES.ProcessComponents.Thermal.Liquid.TubeStream tube(dz = 2.5)  annotation(
+  AES.ProcessComponents.Thermal.Liquid.TubeStream tube(dz = 2.5, n = 10)  annotation(
     Placement(visible = true, transformation(origin = {10, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   AES.ProcessComponents.Thermal.Liquid.Node_pT_prescribed src annotation(
     Placement(visible = true, transformation(origin = {-70, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Blocks.Sources.RealExpression pi(y = 101315 + 20000 + 10000 * sin(time / 50))  annotation(
+  Modelica.Blocks.Sources.RealExpression pi(y = 1e5)  annotation(
     Placement(visible = true, transformation(origin = {-110, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.RealExpression Ti(y = 293.15)  annotation(
     Placement(visible = true, transformation(origin = {-110, -30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));

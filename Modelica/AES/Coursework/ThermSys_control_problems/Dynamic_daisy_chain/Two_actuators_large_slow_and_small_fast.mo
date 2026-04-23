@@ -12,15 +12,15 @@ within AES.Coursework.ThermSys_control_problems.Dynamic_daisy_chain;
       Placement(transformation(origin = {130, 10}, extent = {{-10, -10}, {10, 10}})));
     Modelica.Blocks.Continuous.LimPID Cfast(Ti = 1, controllerType = Modelica.Blocks.Types.SimpleController.PI, k = 0.4*0.1, yMax = 1, yMin = 0) annotation(
       Placement(transformation(origin = {-28, 30}, extent = {{-10, 10}, {10, -10}})));
-    Modelica.Blocks.Continuous.LimPID Cslow(Ti = 50, k = 0.2, yMax = 1, yMin = 0) annotation(
+    Modelica.Blocks.Continuous.LimPID Cslow(Ti = 50, k = 0.4, yMax = 1, yMin = 0) annotation(
       Placement(transformation(origin = {16, -10}, extent = {{-10, -10}, {10, 10}}, rotation = -0)));
-    Modelica.Blocks.Sources.RealExpression u_fast_set(y = 0.5) annotation(
+    Modelica.Blocks.Sources.RealExpression u_fast_set(y = 0.1) annotation(
       Placement(transformation(origin = {-80, -30}, extent = {{-20, -20}, {20, 20}})));
     Modelica.Blocks.Continuous.TransferFunction process(a = {0.5, 1}, b = {1}) annotation(
       Placement(transformation(origin = {170, 10}, extent = {{-10, -10}, {10, 10}})));
     Modelica.Blocks.Sources.RealExpression process_var_set(y = if time < 100 then 2 elseif time < 200 then 20
      elseif time < 300 then 20 + 3*sin(time - 200/5)
-     elseif time < 400 then 30 else 25) annotation(
+     elseif time < 400 then 30 else 10) annotation(
       Placement(transformation(origin = {-129, 30}, extent = {{-67, -38}, {67, 38}})));
     Modelica.Blocks.Math.Gain small_fast_gain(k = 10) annotation(
       Placement(transformation(origin = {90, 30}, extent = {{-10, -10}, {10, 10}})));

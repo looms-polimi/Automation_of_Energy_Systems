@@ -2,7 +2,7 @@ within AES.Coursework.ThermSys_control_problems.Keep_limits_and_overrides;
 
 model Keep_within_two_limits
   extends Icons.CourseworkModel;
-  ControlBlocks.AnalogueControllers.PI_awfb_basic C_hi(CSmax = 0, CSmin = -10, K = 15*4, Ti = 8) annotation(
+  ControlBlocks.AnalogueControllers.PI_awfb_basic C_hi(CSmax = 0, CSmin = -10, K = 15*5, Ti = 8) annotation(
     Placement(transformation(origin = {-50, 30}, extent = {{-10, -10}, {10, 10}})));
   Modelica.Blocks.Continuous.TransferFunction P(a = {10, 11, 1}, b = {1}, initType = Modelica.Blocks.Types.Init.InitialOutput, y_start = 20) annotation(
     Placement(transformation(origin = {110, 10}, extent = {{-10, -10}, {10, 10}})));
@@ -10,7 +10,7 @@ model Keep_within_two_limits
     Placement(visible = true, transformation(origin = {-110, 36}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.RealExpression LD(y = 20 + 10*sin(time/10)) annotation(
     Placement(visible = true, transformation(origin = {-110, 68}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  ControlBlocks.AnalogueControllers.PI_awfb_basic C_lo(CSmax = 10, CSmin = 0, K = 25, Ti = 6) annotation(
+  ControlBlocks.AnalogueControllers.PI_awfb_basic C_lo(CSmax = 10, CSmin = 0, K = 25/4, Ti = 6) annotation(
     Placement(transformation(origin = {-50, -10}, extent = {{-10, -10}, {10, 10}})));
   Modelica.Blocks.Sources.RealExpression LO_limit(y = 19) annotation(
     Placement(visible = true, transformation(origin = {-110, -4}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
