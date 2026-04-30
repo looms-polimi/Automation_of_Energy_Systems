@@ -1,6 +1,7 @@
 within AES.Coursework.Typical_control_structures;
 
 model Hi_gain_linearising
+  extends Icons.CourseworkModel;
   Modelica.Blocks.Continuous.TransferFunction Pol(b = {1}, a = {1, 1.5, 1})  annotation(
     Placement(transformation(origin = {70, 30}, extent = {{-10, -10}, {10, 10}})));
   Modelica.Blocks.Sources.RealExpression NLCol(y = 0.5*w.y + 0.5*w.y^4)  annotation(

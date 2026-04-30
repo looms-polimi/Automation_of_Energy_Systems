@@ -4,5 +4,6 @@ FF_compensation_simple_lead_lag
 FF_compensation_with_delay
 Cascade_basic
 Cascade_with_locks
+Cascade_with_locks_and_tracking
 Smith_predictor
 Hi_gain_linearising

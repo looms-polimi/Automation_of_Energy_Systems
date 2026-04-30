@@ -46,8 +46,6 @@ model HN_heating_station_control
     Placement(visible = true, transformation(origin = {-110, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Thermal.HeatTransfer.Sources.PrescribedHeatFlow Ph annotation(
     Placement(visible = true, transformation(origin = {-130, 50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Blocks.Sources.RealExpression realExpression(y = 1e6) annotation(
-    Placement(visible = true, transformation(origin = {-198, 102}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(PI_dpHC.CS, FlowCtrl.u) annotation(
     Line(points = {{18, 50}, {-18, 50}}, color = {0, 0, 127}));
